@@ -11,9 +11,16 @@
     "@chakra-ui/core": "^1.0.0-rc.4",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
+    "@mdx-js/loader": "^1.6.18",
+    "@saschazar/next-mdx-extended": "^4.0.0",
     "emotion-theming": "^10.0.27",
+    "gray-matter": "^4.0.2",
+    "mdx-prism": "^0.3.1",
     "next": "9.5.3",
+    "next-mdx-remote": "^1.0.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "rehype": "^11.0.0",
+    "remark-code-titles": "^0.1.1"
   }
 }

@@ -1,12 +1,18 @@
-import { ChakraProvider } from '@chakra-ui/core'
+import { ChakraProvider, Global } from '@chakra-ui/core'
 import Layout from '../components/Layout'
+import globalStyle from '../styles/global'
+import { MDXProvider } from '@mdx-js/react'
+import mdxcomponents from '../utils/mdxcomponents'
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider resetCSS>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <MDXProvider components={mdxcomponents}>
+        <Layout>
+          <Global styles={globalStyle} />
+          <Component {...pageProps} />
+        </Layout>
+      </MDXProvider>
     </ChakraProvider>
   )
 }

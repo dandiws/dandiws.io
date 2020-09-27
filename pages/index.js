@@ -19,17 +19,26 @@ export default function Home() {
           <Heading as="h2" mb={5} size="lg">
             Articles
           </Heading>
-          <ArticleCard title="Everything I learn From Making This Website">
+          <ArticleCard
+            href="/blog/hello-world"
+            title="Everything I learn From Making This Website"
+          >
             Amet consectetur adipisicing elit. Ea obcaecati expedita illum
             itaque doloremque ab, quod dolor ipsa dignissimos sequi blanditiis
             voluptas tempora ipsam dolorem porro minima perspiciatis eum eos?
           </ArticleCard>
-          <ArticleCard title="React.JS Easy Step by Step">
+          <ArticleCard
+            href="/blog/hello-world"
+            title="React.JS Easy Step by Step"
+          >
             Consectetur adipisicing elit. Ea obcaecati expedita illum itaque
             doloremque ab, quod dolor ipsa dignissimos sequi blanditiis voluptas
             tempora ipsam dolorem porro minima perspiciatis eum eos?
           </ArticleCard>
-          <ArticleCard title="Make Cool Syntax Highlighting In ReactJS App">
+          <ArticleCard
+            href="/blog/hello-world"
+            title="Make Cool Syntax Highlighting In ReactJS App"
+          >
             Ea obcaecati expedita illum itaque doloremque ab, quod dolor ipsa
             dignissimos sequi blanditiis voluptas tempora ipsam dolorem porro
             minima perspiciatis eum eos?

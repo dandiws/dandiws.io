@@ -31,6 +31,8 @@ const Menu = ({ show }) => {
       align="center"
       transform={[show ? 'translateX(0)' : 'translateX(100%)', 'translateX(0)']}
       zIndex={10}
+      transition="transform .2s ease-out"
+      fontSize={['xl', 'md']}
     >
       <NextLink href="/blog">
         <Link py={5} px={2} mx={2}>
