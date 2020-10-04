@@ -1,28 +1,26 @@
-import { theme } from '@chakra-ui/core'
 import { css } from '@emotion/core'
 
-const prismTheme = css`
+const prismcss = (theme) => css`
   pre::-webkit-scrollbar {
     width: 14px;
   }
 
   pre::-webkit-scrollbar-track {
-    background-color: #6272a4;
-    border-radius: 0px;
+    background-color: ${theme.colors.dark[100]};
+    border-radius: 0.5em;
   }
 
   pre::-webkit-scrollbar-thumb {
-    background-color: #bd93f9;
-    border-radius: 0px;
+    background-color: ${theme.colors.whiteAlpha[200]};
+    border-radius: 0.5em;
   }
 
   code[class*='language-'],
   pre[class*='language-'] {
     color: #ccc;
-    background: rgb(40, 41, 54);
+    background: ${theme.colors.dark[100]};
     text-shadow: none;
-    font-family: PT Mono, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-      monospace;
+    font-family: 'Fira Code', monospace;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -45,7 +43,7 @@ const prismTheme = css`
   code[class*='language-']::-moz-selection,
   code[class*='language-'] ::-moz-selection {
     text-shadow: none;
-    background-color: #333556;
+    background-color: ${theme.colors.accent};
   }
 
   pre[class*='language-']::selection,
@@ -53,7 +51,7 @@ const prismTheme = css`
   code[class*='language-']::selection,
   code[class*='language-'] ::selection {
     text-shadow: none;
-    background-color: #333556;
+    background-color: ${theme.colors.accent};
   }
 
   @media print {
@@ -65,7 +63,7 @@ const prismTheme = css`
 
   /* Code blocks */
   pre[class*='language-'] {
-    background: rgba(40, 41, 54, 1) !important;
+    background: ${(props) => console.log(props)} !important;
     border-radius: 0.5em;
     padding: 1em;
     margin: 0.5em 0;
@@ -75,7 +73,7 @@ const prismTheme = css`
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    background: rgba(40, 41, 54, 1);
+    background: ${theme.colors.dark[100]};
   }
 
   /* Inline code */
@@ -146,7 +144,7 @@ const prismTheme = css`
   }
 
   .token.important {
-    color: rgba(255, 121, 198, 1);
+    color: ${theme.colors.red[400]};
     font-weight: bold;
   }
 
@@ -167,7 +165,7 @@ const prismTheme = css`
   }
 
   .token.keyword {
-    color: rgba(255, 121, 198, 1);
+    color: ${theme.colors.red[400]};
   }
 
   .token.boolean {
@@ -199,7 +197,7 @@ const prismTheme = css`
   }
 
   .token.builtin {
-    color: rgba(255, 121, 198, 1);
+    color: ${theme.colors.red[400]};
   }
 
   .token.attr-value {
@@ -223,7 +221,7 @@ const prismTheme = css`
   }
 
   .token {
-    color: #ff79c6;
+    color: ${theme.colors.red[400]};
   }
 
   .language-cpp .token.string {
@@ -271,7 +269,7 @@ const prismTheme = css`
   }
 
   .language-php .token.function {
-    color: #ff79c6;
+    color: ${theme.colors.red[400]};
   }
 
   .language-php .token.keyword {
@@ -386,7 +384,6 @@ const prismTheme = css`
     background-color: var(--verde);
   }
   /* override */
-  code[class*='language-'],
   pre[class*='language-'] {
     margin-bottom: 2rem;
   }
@@ -395,12 +392,12 @@ const prismTheme = css`
 
   .remark-code-title {
     padding: 6px 2em;
-    background-color: rgba(40, 41, 54, 1);
+    background-color: ${theme.colors.dark[100]};
     font-size: 13px;
     margin-top: 0.5em;
     border-radius: 0.5em 0.5em 0 0;
     display: inline-block;
-    border-bottom: 1px solid ${theme.colors.gray[800]};
+    border-bottom: 1px solid ${theme.colors.dark[200]};
     color: ${theme.colors.gray[400]};
   }
   .remark-code-title + code[class*='language-'],
@@ -411,4 +408,4 @@ const prismTheme = css`
   }
 `
 
-export default prismTheme
+export default prismcss

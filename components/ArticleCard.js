@@ -1,37 +1,41 @@
-import { Box, Heading, Text, theme, useColorMode } from '@chakra-ui/core'
-import styled from '@emotion/styled'
+import { Box, Flex, Heading, Text } from '@chakra-ui/core'
+import { css } from '@emotion/core'
 import Link from 'next/link'
+import Divider from './Divider'
 
-const ArticleCardWrapper = styled(Box)`
-  &:hover {
-    cursor: pointer;
-    color: ${({ colormode }) =>
-      colormode == 'light'
-        ? theme.colors.purple[500]
-        : theme.colors.yellow[400]};
-    background-color: ${({ colormode }) =>
-      colormode == 'light' ? theme.colors.gray[200] : theme.colors.gray[900]};
-  }
-`
-const ArticleCard = ({ href, title, children, ...props }) => {
-  const { colorMode } = useColorMode()
+const ArticleCard = ({ post, ...props }) => {
+  const slug = post.__resourcePath.replace('.mdx', '')
 
   return (
-    <Link href={href}>
-      <ArticleCardWrapper
-        {...props}
-        rounded="md"
-        py={3}
-        px={5}
-        mx={-5}
-        colormode={colorMode}
-      >
-        <Heading as="h2" size="md" mb={1}>
-          {title}
-        </Heading>
-        <Text color="gray.500">{children}</Text>
-      </ArticleCardWrapper>
-    </Link>
+    <Box {...props} rounded="md" py={3}>
+      <Flex mb={2}>
+        <Text textStyle="postDetail" as="span">
+          {post.published_at_formatted}
+        </Text>
+        <Divider mx={4} color="gray.700" />
+        <Text textStyle="postDetail" as="span">
+          {Math.ceil(Math.random() * 9999)} views
+        </Text>
+      </Flex>
+      <Box>
+        <Link href={slug}>
+          <Heading
+            _hover={(theme) => ({
+              cursor: 'pointer',
+              color: theme.colors.accent,
+              textDecoration: 'underline',
+            })}
+            as="h2"
+            size="md"
+            mb={3}
+          >
+            {post.title}
+          </Heading>
+        </Link>
+
+        <Text color="gray.500">{post.summary}</Text>
+      </Box>
+    </Box>
   )
 }
 

@@ -1,79 +1,73 @@
 import {
   Box,
-  Container,
   Flex,
+  Grid,
   Heading,
   IconButton,
   Input,
-  StackItem,
   Text,
   theme,
-  useColorMode,
+  useColorModeValue,
   VStack,
 } from '@chakra-ui/core'
+import Container from '../components/Container'
 import ArticleCard from '../components/ArticleCard'
 import Search from '../components/icons/Search'
+import { useCallback, useEffect, useState } from 'react'
+import ArticleList from '../components/ArticleList'
+import articles from '../utils/articles'
 
-const searchBg = {
-  light: theme.colors.gray[200],
-  dark: theme.colors.gray[900],
+const SearchInput = ({ searchQuery, onInputChange }) => {
+  const inputBg = useColorModeValue('gray.100', 'dark.100')
+
+  return (
+    <Input
+      value={searchQuery}
+      onChange={onInputChange}
+      placeholder="Search articles"
+      bg={inputBg}
+    />
+  )
 }
 
 export default function Blog() {
-  const { colorMode } = useColorMode()
+  const [searchQuery, setSearchQuery] = useState('')
+  const [filteredArticles, setFilteredArticles] = useState(() => articles)
+
+  useEffect(() => {
+    if (searchQuery == '') setFilteredArticles(() => articles)
+
+    setFilteredArticles(() =>
+      articles.filter((article) =>
+        article.title.toLowerCase().includes(searchQuery.toLowerCase().trim())
+      )
+    )
+  }, [searchQuery])
+
+  const onInputChange = useCallback((e) => setSearchQuery(e.target.value), [
+    setSearchQuery,
+  ])
+
   return (
-    <Container maxW="md" py={10}>
-      <VStack spacing={8} align="start">
-        <StackItem w="full">
+    <Container>
+      <VStack spacing={10} align="start">
+        <Box>
           <Heading as="h1" size="2xl" mb={3}>
             Blog
           </Heading>
-          <Text color="gray.500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto saepe
-            dignissimos molestiae, natus veritatis quas vitae quos asperiores
-            voluptate odit sequi vero aspernatur quo laudantium voluptatibus sit
-            rerum blanditiis repudiandae?
+          <Text maxW="lg" color="gray.500">
+            Here you can find my articles about tutorials, tips & trick,
+            opinion, etc. I hope it help you in any way. Thank you for reading
+            :)
           </Text>
-        </StackItem>
-        <StackItem w="full">
-          <Flex>
-            <Input placeholder="Search articles" bg={searchBg[colorMode]} />
-            <IconButton ml={3} icon={<Search />} />
-          </Flex>
-        </StackItem>
-        <StackItem w="full">
-          <Box>
-            <Text as="span" fontSize="sm" color="gray.500">
-              Showing 8 of 65 articles
-            </Text>
+        </Box>
+        <SearchInput searchQuery={searchQuery} onInputChange={onInputChange} />
+        <Box>
+          <Box textStyle="gray:sm" mb={3}>
+            Showing {filteredArticles.length} of {articles.length} articles
           </Box>
-        </StackItem>
-        <StackItem>
-          <ArticleCard
-            href="/blog/hello-world"
-            title="Everything I learn From Making This Website"
-          >
-            Amet consectetur adipisicing elit. Ea obcaecati expedita illum
-            itaque doloremque ab, quod dolor ipsa dignissimos sequi blanditiis
-            voluptas tempora ipsam dolorem porro minima perspiciatis eum eos?
-          </ArticleCard>
-          <ArticleCard
-            href="/blog/hello-world"
-            title="React.JS Easy Step by Step"
-          >
-            Consectetur adipisicing elit. Ea obcaecati expedita illum itaque
-            doloremque ab, quod dolor ipsa dignissimos sequi blanditiis voluptas
-            tempora ipsam dolorem porro minima perspiciatis eum eos?
-          </ArticleCard>
-          <ArticleCard
-            href="/blog/hello-world"
-            title="Make Cool Syntax Highlighting In ReactJS App"
-          >
-            Ea obcaecati expedita illum itaque doloremque ab, quod dolor ipsa
-            dignissimos sequi blanditiis voluptas tempora ipsam dolorem porro
-            minima perspiciatis eum eos?
-          </ArticleCard>
-        </StackItem>
+          <ArticleList posts={filteredArticles} />
+        </Box>
       </VStack>
     </Container>
   )

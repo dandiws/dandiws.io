@@ -9,8 +9,13 @@ export default class Document extends NextDocument {
 
   render() {
     return (
-      <Html>
-        <Head />
+      <Html lang="en">
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           {/* 👇 Here's the script */}
           <ColorModeScript defaultColorMode="dark" />
