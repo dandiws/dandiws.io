@@ -3,12 +3,15 @@ import Head from 'next/head'
 import Divider from '../components/Divider'
 import Container from '../components/Container'
 import Author from '../components/Author'
+import ViewCounter from '../components/ViewCounter'
 
-const BlogPost = ({ frontMatter, children }) => {
+const BlogPost = ({ frontMatter: post, children }) => {
+  const slug = post.__resourcePath.replace('.mdx', '').replace('blog/','')
+
   return (
     <Container maxW="md">
       <Head>
-        <title>{frontMatter.title} - Dandi Wiratsangka</title>
+        <title>{post.title} - Dandi Wiratsangka</title>
       </Head>
       <Flex
         alignItems="center"
@@ -18,18 +21,18 @@ const BlogPost = ({ frontMatter, children }) => {
         py={16}
       >
         <Heading as="h1" fontSize={['2rem', '2.4rem', '3rem', '4rem']} mb={8}>
-          {frontMatter.title}
+          {post.title}
         </Heading>
         <Box mb={10}>
           <Flex wrap="nowrap">
             <Text textStyle="postDetail">
-              {frontMatter.published_at_formatted}
+              {post.published_at_formatted}
             </Text>
             <Divider mx={[1, 1, 3]} color="gray.700" />
-            <Text textStyle="postDetail">{frontMatter.read_time.text}</Text>
-            <Divider mx={[1, 1, 3]} color="gray.700" />
+            <Text textStyle="postDetail">{post.read_time.text}</Text>
+            <Divider mx={[1, 1, 3]} color="gray.700" />            
             <Text textStyle="postDetail">
-              {Math.ceil(Math.random() * 9999)} views
+              <ViewCounter slug={slug} />
             </Text>
           </Flex>
         </Box>

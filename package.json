@@ -15,6 +15,7 @@
     "babel-plugin-import-glob-array": "^0.2.0",
     "dayjs": "^1.9.1",
     "emotion-theming": "^10.0.27",
+    "firebase-admin": "^9.6.0",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.1",
     "next": "9.5.3",
@@ -23,6 +24,7 @@
     "react-dom": "16.13.1",
     "reading-time": "^1.2.0",
     "rehype": "^11.0.0",
-    "remark-code-titles": "^0.1.1"
+    "remark-code-titles": "^0.1.1",
+    "swr": "^0.5.5"
   }
 }

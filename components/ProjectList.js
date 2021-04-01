@@ -6,7 +6,7 @@ const ProjectList = ({ projects = [] }) => {
   return (
     <VStack spacing={24}>
       {projects.map((project, i) => (
-        <ProjectItem project={project} reversed={i % 2 === 1} />
+        <ProjectItem key={project.url+project.name} project={project} reversed={i % 2 === 1} />
       ))}
     </VStack>
   )

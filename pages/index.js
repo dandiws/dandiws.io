@@ -26,7 +26,7 @@ export default function Home() {
             </Text>
           </Box>
         </Box>
-        <Box>
+        <Box width="100%">
           <Heading as="h2" mb={5} size="lg">
             Latest Articles
           </Heading>
