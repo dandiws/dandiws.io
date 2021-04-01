@@ -23,7 +23,7 @@ const Author = () => (
         mb={[8, 8, 0]}
         size="lg"
         name="Dandi Wiratsangka S"
-        src="/pp.jpg"
+        src="/images/avatar.jpg"
         bg="accent"
         borderWidth="3px"
         borderColor="accent"
@@ -32,7 +32,7 @@ const Author = () => (
         <Heading as="h2" size="md">
           Dandi Wiratsangka S
         </Heading>
-        <Text color="gray.500">Fullstack Javascript Engineer</Text>
+        <Text color="gray.500">Software Engineer</Text>
       </Box>
     </Flex>
     <Flex>

@@ -4,6 +4,8 @@ import Container from '../components/Container'
 import ArticleList from '../components/ArticleList'
 import NextLink from 'next/link'
 import { latestArticles } from '../utils/articles'
+import ProjectList from '../components/ProjectList'
+import projects from '../utils/projects'
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
       <Head>
         <title>Dandi Wiratsangka</title>
       </Head>
-      <VStack spacing={16} align="start">
+      <VStack spacing={32} align="start">
         <Box textAlign="center" py={16}>
           <Heading as="h1" fontSize={['2.6rem', '4rem']} mb={3}>
             Hello, I'm Dandi
@@ -36,6 +38,12 @@ export default function Home() {
               </Button>
             </Link>
           </Flex>
+        </Box>
+        <Box>
+          <Heading as="h2" mb={12} size="lg">
+            Projects
+          </Heading>
+          <ProjectList projects={projects} />
         </Box>
       </VStack>
     </Container>

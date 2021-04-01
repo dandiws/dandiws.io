@@ -39,6 +39,7 @@ const NavMenu = ({ show, ...props }) => {
     >
       <NavLink href="/blog">Blog</NavLink>
       <NavLink href="/about">About</NavLink>
+      <NavLink href="/resume.pdf">Resume</NavLink>
     </Flex>
   )
 }
