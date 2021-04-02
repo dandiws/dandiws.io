@@ -1,5 +1,5 @@
-import { Container } from '@chakra-ui/core'
+import { Container } from '@chakra-ui/layout'
 
-const MyContainer = (props) => <Container maxW="lg" px={8} {...props} />
+const MyContainer = (props) => <Container maxW="container.lg" px={8} {...props} />
 
 export default MyContainer

@@ -1,4 +1,4 @@
-const { Icon } = require('@chakra-ui/core')
+import Icon from '@chakra-ui/icon'
 
 const Github = (props) => (
   <Icon viewBox="0 0 24 24" {...props}>

@@ -1,15 +1,15 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/core'
 import Head from 'next/head'
 import Divider from '../components/Divider'
 import Container from '../components/Container'
 import Author from '../components/Author'
 import ViewCounter from '../components/ViewCounter'
+import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 
 const BlogPost = ({ frontMatter: post, children }) => {
-  const slug = post.__resourcePath.replace('.mdx', '').replace('blog/','')
+  const slug = post.__resourcePath.replace('.mdx', '').replace('blog/', '')
 
   return (
-    <Container maxW="md">
+    <Container maxW="container.md">
       <Head>
         <title>{post.title} - Dandi Wiratsangka</title>
       </Head>
@@ -30,7 +30,7 @@ const BlogPost = ({ frontMatter: post, children }) => {
             </Text>
             <Divider mx={[1, 1, 3]} color="gray.700" />
             <Text textStyle="postDetail">{post.read_time.text}</Text>
-            <Divider mx={[1, 1, 3]} color="gray.700" />            
+            <Divider mx={[1, 1, 3]} color="gray.700" />
             <Text textStyle="postDetail">
               <ViewCounter slug={slug} />
             </Text>

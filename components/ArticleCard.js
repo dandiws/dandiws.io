@@ -1,11 +1,10 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/core'
-import { css } from '@emotion/core'
+import { Heading, Flex, Box, Text } from '@chakra-ui/layout'
 import Link from 'next/link'
 import Divider from './Divider'
 import ViewCounter from './ViewCounter'
 
 const ArticleCard = ({ post, ...props }) => {
-  const slug = post.__resourcePath.replace('.mdx', '').replace('blog/','')
+  const slug = post.__resourcePath.replace('.mdx', '').replace('blog/', '')
 
   return (
     <Box {...props} rounded="md" py={3}>
@@ -15,7 +14,7 @@ const ArticleCard = ({ post, ...props }) => {
         </Text>
         <Divider mx={4} color="gray.700" />
         <Text textStyle="postDetail" as="span">
-          <ViewCounter slug={slug} readOnly/>
+          <ViewCounter slug={slug} readOnly />
         </Text>
       </Flex>
       <Box>
@@ -24,7 +23,7 @@ const ArticleCard = ({ post, ...props }) => {
             _hover={(theme) => ({
               cursor: 'pointer',
               color: theme.colors.accent,
-              textDecoration: 'underline',
+              textDecoration: 'underline'
             })}
             as="h2"
             size="md"

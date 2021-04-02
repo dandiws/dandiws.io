@@ -1,23 +1,16 @@
 import NextLink from 'next/link'
-import {
-  Box,
-  Flex,
-  IconButton,
-  Link,
-  transform,
-  useColorMode,
-  useColorModeValue,
-} from '@chakra-ui/core'
 import Sun from './icons/Sun'
 import Moon from './icons/Moon'
 import Hamburger from './icons/Hamburger'
 import Close from './icons/Close'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import DwLogo from './icons/DwLogo'
 import Container from './Container'
 import NavMenu from './NavMenu'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { Box, Flex, Link } from '@chakra-ui/layout'
+import { useColorModeValue, useColorMode } from '@chakra-ui/color-mode'
+import { IconButton } from '@chakra-ui/button'
 
 const Navbar = () => {
   const [menuHidden, setMenuHidden] = useState(true)
@@ -43,7 +36,7 @@ const Navbar = () => {
                 <DwLogo
                   transition="transform .2s ease-out"
                   _hover={{
-                    transform: 'rotate(90deg)',
+                    transform: 'rotate(90deg)'
                   }}
                   boxSize={12}
                 />
@@ -55,7 +48,7 @@ const Navbar = () => {
             <Flex>
               <IconButton
                 variant="unstyled"
-                icon={colorMode == 'dark' ? <Sun /> : <Moon />}
+                icon={colorMode === 'dark' ? <Sun /> : <Moon />}
                 onClick={toggleColorMode}
               />
               <IconButton

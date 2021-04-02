@@ -1,16 +1,9 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Link,
-  Divider,
-  useColorModeValue,
-} from '@chakra-ui/core'
+import { Flex, Heading, Link, Divider, Box, Text } from '@chakra-ui/layout'
 import Container from '../components/Container'
 import NextLink from 'next/link'
 import ArticleList from '../components/ArticleList'
 import { latestArticles } from '../utils/articles'
+import { useColorModeValue } from '@chakra-ui/color-mode'
 
 const NotFound = () => {
   const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')

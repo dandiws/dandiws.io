@@ -1,4 +1,4 @@
-const { Icon } = require('@chakra-ui/core')
+import Icon from '@chakra-ui/icon'
 
 const Moon = (props) => (
   <Icon {...props} viewBox="0 0 24 24">

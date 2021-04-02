@@ -1,16 +1,10 @@
-import {
-  Avatar,
-  Box,
-  Flex,
-  Heading,
-  IconButton,
-  Link,
-  Text,
-} from '@chakra-ui/core'
 import Github from './icons/Github'
 import Linkedin from './icons/Linkedin'
 import Instagram from './icons/Instagram'
 import Mail from './icons/Mail'
+import { Flex, Box, Heading, Link, Text } from '@chakra-ui/layout'
+import { Avatar } from '@chakra-ui/avatar'
+import { IconButton } from '@chakra-ui/button'
 
 const Author = () => (
   <Flex

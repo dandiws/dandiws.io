@@ -13,7 +13,7 @@ const ProjectItem = ({ project, reversed = false, ...props }) => {
           _hover={(theme) => ({
             cursor: 'pointer',
             color: theme.colors.accent,
-            textDecoration: 'underline',
+            textDecoration: 'underline'
           })}
           as="h3"
           fontSize={['1.65rem']}

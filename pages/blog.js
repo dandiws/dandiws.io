@@ -1,18 +1,7 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  IconButton,
-  Input,
-  Text,
-  theme,
-  useColorModeValue,
-  VStack,
-} from '@chakra-ui/core'
+import { VStack, Box, Heading, Text } from '@chakra-ui/layout'
+import { useColorModeValue } from '@chakra-ui/color-mode'
+import { Input } from '@chakra-ui/input'
 import Container from '../components/Container'
-import ArticleCard from '../components/ArticleCard'
-import Search from '../components/icons/Search'
 import { useCallback, useEffect, useState } from 'react'
 import ArticleList from '../components/ArticleList'
 import articles from '../utils/articles'
@@ -30,12 +19,12 @@ const SearchInput = ({ searchQuery, onInputChange }) => {
   )
 }
 
-export default function Blog() {
+export default function Blog () {
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredArticles, setFilteredArticles] = useState(() => articles)
 
   useEffect(() => {
-    if (searchQuery == '') setFilteredArticles(() => articles)
+    if (searchQuery === '') setFilteredArticles(() => articles)
 
     setFilteredArticles(() =>
       articles.filter((article) =>
@@ -45,7 +34,7 @@ export default function Blog() {
   }, [searchQuery])
 
   const onInputChange = useCallback((e) => setSearchQuery(e.target.value), [
-    setSearchQuery,
+    setSearchQuery
   ])
 
   return (

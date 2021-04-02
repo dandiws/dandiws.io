@@ -1,4 +1,4 @@
-import { Icon } from '@chakra-ui/core'
+import Icon from '@chakra-ui/icon'
 
 const Sun = (props) => (
   <Icon {...props} viewBox="0 0 24 24">

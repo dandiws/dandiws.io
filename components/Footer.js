@@ -1,7 +1,8 @@
-import { Box, Flex, Link, Text, useColorModeValue } from '@chakra-ui/core'
 import Container from './Container'
 import NextLink from 'next/link'
 import Divider from './Divider'
+import { useColorModeValue } from '@chakra-ui/color-mode'
+import { Box, Flex, Link, Text } from '@chakra-ui/layout'
 
 const Footer = () => {
   const linkColor = useColorModeValue('gray.700', 'gray.400')

@@ -1,4 +1,6 @@
-import { Flex, Link, useColorModeValue } from '@chakra-ui/core'
+import { useColorModeValue } from '@chakra-ui/color-mode'
+import { Flex, Link } from '@chakra-ui/layout'
+
 import NextLink from 'next/link'
 
 const NavLink = ({ href, children, ...props }) => (
@@ -9,7 +11,7 @@ const NavLink = ({ href, children, ...props }) => (
       my={[3, 0]}
       _hover={{
         textDecor: 'none',
-        color: 'accent',
+        color: 'accent'
       }}
     >
       {children}
