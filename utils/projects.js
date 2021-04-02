@@ -17,7 +17,7 @@ const projects = [
     name: 'Dandiws.io',
     url: 'https://github.com/dandiws/dandiws.io',
     image_url: '/images/dandiwsio.png',
-    summary: 'Dandiws.io is this current website. Built with Next.js, MDX, and Chakra.ui',
+    summary: 'Dandiws.io is this current website. Built with Next.js, MDX, and Chakra-ui',
     year: 2020
   }
 ]
