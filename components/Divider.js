@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/core'
+import { Box } from '@chakra-ui/layout'
 
 const Divider = ({ divider = '/', ...props }) => (
   <Box
     {...props}
     _before={{
-      content: `'${divider}'`,
+      content: `'${divider}'`
     }}
   />
 )

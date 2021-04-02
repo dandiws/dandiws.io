@@ -1,5 +1,5 @@
-import { Box, Container, Flex, Heading, Text } from '@chakra-ui/core'
 import Head from 'next/head'
+import { Box, Container, Heading } from '@chakra-ui/layout'
 
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
@@ -8,7 +8,7 @@ dayjs.extend(customParseFormat)
 
 const MdxLayout = ({ frontMatter, children }) => {
   return (
-    <Container maxW="md">
+    <Container maxW="container.md">
       <Head>
         <title>{frontMatter.title} - Dandi Wiratsangka</title>
       </Head>

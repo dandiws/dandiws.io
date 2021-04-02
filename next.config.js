@@ -3,7 +3,6 @@ const remarkCodeTitles = require('remark-code-titles')
 const rehypeMdxPrism = require('mdx-prism')
 const readingTime = require('reading-time')
 const dayjs = require('dayjs')
-const customParseFormat = require('dayjs/plugin/customParseFormat')
 
 module.exports = withMdxEnhanced({
   layoutPath: 'layouts',
@@ -20,10 +19,10 @@ module.exports = withMdxEnhanced({
           frontMatter.published_at && dayjs(frontMatter.published_at).valueOf(),
         published_at_formatted:
           frontMatter.published_at &&
-          dayjs(frontMatter.published_at).format('DD MMMM YYYY'),
+          dayjs(frontMatter.published_at).format('DD MMMM YYYY')
       }
-    },
+    }
     // phase: 'prebuild',
   },
-  reExportDataFetching: false,
+  reExportDataFetching: false
 })()

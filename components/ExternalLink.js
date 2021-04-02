@@ -1,4 +1,4 @@
-import { Link } from '@chakra-ui/core'
+import { Link } from '@chakra-ui/layout'
 import ExternalLinkIcon from './icons/ExternalLink'
 
 const ExternalLink = ({ children, ...props }) => (
@@ -8,7 +8,7 @@ const ExternalLink = ({ children, ...props }) => (
     {...props}
     isExternal
   >
-    {children} <ExternalLinkIcon color="current" />
+    {children} <ExternalLinkIcon />
   </Link>
 )
 

@@ -1,17 +1,20 @@
 import Head from 'next/head'
-import { Box, Heading, Text, VStack, Flex, Button, Link } from '@chakra-ui/core'
-import Container from '../components/Container'
-import ArticleList from '../components/ArticleList'
+import Container from 'components/Container'
+import ArticleList from 'components/ArticleList'
 import NextLink from 'next/link'
-import { latestArticles } from '../utils/articles'
+import { latestArticles } from 'utils/articles'
+import ProjectList from 'components/ProjectList'
+import projects from 'utils/projects'
+import { Box, Flex, Heading, Link, Text, VStack } from '@chakra-ui/layout'
+import { Button } from '@chakra-ui/button'
 
-export default function Home() {
+export default function Home () {
   return (
     <Container>
       <Head>
         <title>Dandi Wiratsangka</title>
       </Head>
-      <VStack spacing={16} align="start">
+      <VStack spacing={32} align="start">
         <Box textAlign="center" py={16}>
           <Heading as="h1" fontSize={['2.6rem', '4rem']} mb={3}>
             Hello, I'm Dandi
@@ -24,7 +27,7 @@ export default function Home() {
             </Text>
           </Box>
         </Box>
-        <Box>
+        <Box width="100%">
           <Heading as="h2" mb={5} size="lg">
             Latest Articles
           </Heading>
@@ -36,6 +39,12 @@ export default function Home() {
               </Button>
             </Link>
           </Flex>
+        </Box>
+        <Box>
+          <Heading as="h2" mb={12} size="lg">
+            Projects
+          </Heading>
+          <ProjectList projects={projects} />
         </Box>
       </VStack>
     </Container>

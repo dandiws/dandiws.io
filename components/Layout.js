@@ -1,13 +1,8 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { Box } from '@chakra-ui/core'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { Box } from '@chakra-ui/layout'
 
 const Layout = ({ children }) => {
-  const router = useRouter()
-
-  useEffect(() => {}, [router.asPath])
   return (
     <Box>
       <Navbar />

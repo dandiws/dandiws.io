@@ -1,4 +1,4 @@
-import { Icon } from '@chakra-ui/core'
+import Icon from '@chakra-ui/icon'
 
 const Search = (props) => (
   <Icon viewBox="0 0 24 24">

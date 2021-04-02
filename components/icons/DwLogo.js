@@ -1,4 +1,4 @@
-import { Icon } from '@chakra-ui/core'
+import Icon from '@chakra-ui/icon'
 
 const DwLogo = (props) => (
   <Icon {...props} viewBox="0 0 12000 12000">

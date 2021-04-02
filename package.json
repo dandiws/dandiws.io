@@ -5,16 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --fix --ext .js,.jsx"
   },
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-rc.4",
-    "@emotion/core": "^10.0.35",
-    "@emotion/styled": "^10.0.27",
+    "@chakra-ui/react": "^1.4.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@mdx-js/loader": "^1.6.18",
     "babel-plugin-import-glob-array": "^0.2.0",
     "dayjs": "^1.9.1",
-    "emotion-theming": "^10.0.27",
+    "firebase-admin": "^9.6.0",
+    "framer-motion": "^4",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.1",
     "next": "9.5.3",
@@ -23,6 +26,17 @@
     "react-dom": "16.13.1",
     "reading-time": "^1.2.0",
     "rehype": "^11.0.0",
-    "remark-code-titles": "^0.1.1"
+    "remark-code-titles": "^0.1.1",
+    "swr": "^0.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "eslint-config-standard-react": "^11.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1"
   }
 }
