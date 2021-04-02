@@ -5,7 +5,30 @@ import Mail from './icons/Mail'
 import { Flex, Box, Heading, Link, Text } from '@chakra-ui/layout'
 import { Avatar } from '@chakra-ui/avatar'
 import { IconButton } from '@chakra-ui/button'
+import { useColorModeValue } from '@chakra-ui/color-mode'
 
+const BorderedAvatar = () => {
+  const bg = useColorModeValue('white', 'dark.200')
+  return (
+    <Box
+      bgGradient="linear(to-l, #7928CA, accent)"
+      padding="2px"
+      width="auto"
+      height="auto"
+      borderRadius="50%"
+      mb={[8, 8, 0]}
+    >
+      <Avatar
+        size="lg"
+        name="Dandi Wiratsangka S"
+        src="/images/avatar.jpg"
+        bg={bg}
+        borderColor={bg}
+        borderWidth={2}
+      />
+    </Box>
+  )
+}
 const Author = () => (
   <Flex
     align="center"
@@ -13,21 +36,18 @@ const Author = () => (
     direction={['column', 'column', 'row']}
   >
     <Flex direction={['column', 'column', 'row']} align="center" mb={[8, 8, 0]}>
-      <Avatar
-        mb={[8, 8, 0]}
-        size="lg"
-        name="Dandi Wiratsangka S"
-        src="/images/avatar.jpg"
-        bg="accent"
-        borderWidth="3px"
-        borderColor="accent"
-      />
-      <Box ml={6}>
-        <Heading as="h2" size="md">
+      <BorderedAvatar />
+      <Flex
+        ml={6}
+        textAlign={['center', 'center', 'left']}
+        justifyContent={['center', 'center', 'flex-start']}
+        flexDirection="column"
+      >
+        <Heading as="h2" size="md" mb={1}>
           Dandi Wiratsangka S
         </Heading>
         <Text color="gray.500">Software Engineer</Text>
-      </Box>
+      </Flex>
     </Flex>
     <Flex>
       <Link href="https://github.com/dandiws" ml={3} isExternal>

@@ -5,6 +5,7 @@ import Container from '../components/Container'
 import { useCallback, useEffect, useState } from 'react'
 import ArticleList from '../components/ArticleList'
 import articles from '../utils/articles'
+import Head from 'next/head'
 
 const SearchInput = ({ searchQuery, onInputChange }) => {
   const inputBg = useColorModeValue('gray.100', 'dark.100')
@@ -39,6 +40,9 @@ export default function Blog () {
 
   return (
     <Container>
+      <Head>
+        <title>Blog - Dandi Wiratsangka</title>
+      </Head>
       <VStack spacing={10} align="start">
         <Box>
           <Heading as="h1" size="2xl" mb={3}>

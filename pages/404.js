@@ -4,11 +4,15 @@ import NextLink from 'next/link'
 import ArticleList from '../components/ArticleList'
 import { latestArticles } from '../utils/articles'
 import { useColorModeValue } from '@chakra-ui/color-mode'
+import Head from 'next/head'
 
 const NotFound = () => {
   const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
   return (
     <Container>
+      <Head>
+        <title>404 - Dandi Wiratsangka</title>
+      </Head>
       <Flex
         direction="column"
         align="center"
