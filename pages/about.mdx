@@ -1,0 +1,44 @@
+---
+# layout: 'blogpost'
+title: 'About Me'
+published_at: '2021-04-02'
+---
+
+import { Image } from '@chakra-ui/image'
+import { Flex, Text } from '@chakra-ui/layout'
+import ExternalLink from 'components/ExternalLink'
+import Author from 'components/Author'
+
+Hello there!
+You've manage to reach this page, so I assume you want to know more about me 😀.
+So let me introduce my self.
+
+<Flex
+  flexDirection={['column', 'row']}
+  alignItems={['center', 'start']}
+  mb={32}
+>
+  <Image
+    w={150}
+    h={150}
+    src="/images/avatar.jpg"
+    mb={3}
+    filter="grayscale(1)"
+    mr={8}
+    mb={[6, 0]}
+  />
+  <div>
+    <Text as="p" lineHeight="28px" mb={3}>
+      My name is Dandi Wiratsangka Sejati. I'm a software engineer and currently
+      working at <ExternalLink href="https://mechlab.id">Mechlab</ExternalLink>.
+      I graduated from Universitas Gadjah Mada with bachelor degree in Computer
+      Science in 2020. Currently I live in my hometown Pemalang, Central Java,
+      Indonesia.
+    </Text>
+    <Text as="p" lineHeight="28px">
+      Want to know more about my experience? <ExternalLink href="/resume.pdf">Download Resume</ExternalLink>.
+    </Text>
+  </div>
+</Flex>
+
+<Author />
