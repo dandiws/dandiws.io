@@ -9,13 +9,12 @@ import Container from './Container'
 import NavMenu from './NavMenu'
 import { useRouter } from 'next/router'
 import { Box, Flex, Link } from '@chakra-ui/layout'
-import { useColorModeValue, useColorMode } from '@chakra-ui/color-mode'
+import { useColorMode } from '@chakra-ui/color-mode'
 import { IconButton } from '@chakra-ui/button'
 
 const Navbar = () => {
   const [menuHidden, setMenuHidden] = useState(true)
   const { colorMode, toggleColorMode } = useColorMode()
-  const navbarBg = useColorModeValue('white', 'dark.200')
   const router = useRouter()
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const Navbar = () => {
   }
 
   return (
-    <Box bg={navbarBg} py={4}>
+    <Box py={4}>
       <Container>
         <Flex align="center" justify="space-between">
           <Box>
@@ -44,7 +43,7 @@ const Navbar = () => {
             </NextLink>
           </Box>
           <Flex align="center" color="gray.500">
-            <NavMenu mr={6} bg={navbarBg} show={!menuHidden} />
+            <NavMenu mr={6} show={!menuHidden} />
             <Flex>
               <IconButton
                 variant="unstyled"

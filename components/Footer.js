@@ -6,11 +6,12 @@ import { Box, Flex, Link, Text } from '@chakra-ui/layout'
 
 const Footer = () => {
   const linkColor = useColorModeValue('gray.700', 'gray.400')
+  const thisYear = new Date().getFullYear()
   return (
     <Box py={16} textStyle="gray:sm">
       <Container>
         <Flex justify="center" alignItems="center">
-          <Text>&copy; 2020</Text>
+          <Text>&copy; 2020 - {thisYear}</Text>
           <Divider mx={4} color="gray.700" />
           <Link
             color={linkColor}

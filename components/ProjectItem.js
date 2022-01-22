@@ -28,7 +28,7 @@ const ProjectItem = ({ project, reversed = false, ...props }) => {
             textDecoration: 'underline'
           })}
           as="h3"
-          fontSize="1.65rem"
+          size="md"
           mb={4}
         >
           <a href={project.url} target="__blank">

@@ -1,5 +1,5 @@
 const fonts = {
-  heading: 'Zilla Slab',
+  heading: 'Lora',
   body: 'Inter'
 }
 

@@ -12,16 +12,13 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Inter:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Zilla+Slab:wght@400;700&display=swap"
             rel="stylesheet"
           />
         </Head>
