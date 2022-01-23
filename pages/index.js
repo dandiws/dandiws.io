@@ -20,7 +20,7 @@ export default function Home ({ latestArticles }) {
       </Head>
       <VStack spacing={40} align="start">
         <Box as="header" textAlign="left" py={16}>
-          <Heading as="h1" fontSize="3rem" mb={3}>
+          <Heading as="h1" fontSize={['3.25rem', '5rem']} mb={3}>
             Hello, I'm Dandi Wiratsangka
           </Heading>
           <Box color="gray.500">

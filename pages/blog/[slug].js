@@ -87,8 +87,6 @@ export const getStaticPaths = async () => {
     // Map the path into the static paths object required by Next.js
     .map((slug) => ({ params: { slug } }))
 
-  console.log(postFilePaths)
-
   return {
     paths,
     fallback: false

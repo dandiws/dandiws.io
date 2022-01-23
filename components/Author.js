@@ -1,7 +1,7 @@
 import { Flex, Box, Heading, Text } from '@chakra-ui/layout'
-import { Avatar } from '@chakra-ui/avatar'
 import { useColorModeValue } from '@chakra-ui/color-mode'
 import SocialButtons from './SocialButtons'
+import Image from './Image'
 
 const BorderedAvatar = () => {
   const bg = useColorModeValue('white', 'dark.200')
@@ -9,18 +9,21 @@ const BorderedAvatar = () => {
     <Box
       bgGradient="linear(to-l, #7928CA, accent)"
       padding="2px"
-      width="auto"
-      height="auto"
       borderRadius="50%"
       mb={[8, 8, 0]}
+      w="60px"
+      h="60px"
     >
-      <Avatar
+      <Image
         size="lg"
-        name="Dandi Wiratsangka S"
+        alt="Dandi Wiratsangka S"
         src="/images/avatar.jpg"
         bg={bg}
         borderColor={bg}
         borderWidth={2}
+        width={200}
+        height={200}
+        borderRadius="50%"
       />
     </Box>
   )
