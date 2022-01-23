@@ -9,6 +9,7 @@ import { Button } from '@chakra-ui/button'
 import ExternalLink from 'components/ExternalLink'
 import { useColorModeValue } from '@chakra-ui/react'
 import { getLatestArticles } from 'utils/mdxUtils'
+import { NextSeo } from 'next-seo'
 
 export default function Home ({ latestArticles }) {
   const btnBgc = useColorModeValue('gray.100', 'dark.100')
@@ -16,8 +17,11 @@ export default function Home ({ latestArticles }) {
     <Container>
       <Head>
         <title>Dandi Wiratsangka</title>
-        <meta name="description" content="Dandi Wiratsangka's personal website" />
       </Head>
+      <NextSeo
+        title="Dandi Wiratsangka"
+        description="Dandi Wiratsangka's personal website"
+      />
       <VStack spacing={40} align="start">
         <Box as="header" textAlign="left" py={16}>
           <Heading as="h1" fontSize={['3.25rem', '5rem']} mb={3}>

@@ -1,5 +1,5 @@
 import path from 'path'
-import GenericPageLayout from 'layouts'
+import GenericPageLayout from 'layouts/generic'
 import { MDXRemote } from 'next-mdx-remote'
 import { pageFilePaths, PAGES_PATH } from 'utils/mdxUtils'
 import matter from 'gray-matter'

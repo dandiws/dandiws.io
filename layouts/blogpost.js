@@ -4,14 +4,25 @@ import Container from '../components/Container'
 import Author from '../components/Author'
 import ViewCounter from '../components/ViewCounter'
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
+import dayjs from 'dayjs'
+import { NextSeo } from 'next-seo'
 
-const BlogPost = ({ frontMatter: post, children }) => {
-  const slug = post.__resourcePath.replace('.mdx', '').replace('blog/', '')
-
+const BlogPost = ({
+  title,
+  publishedAt,
+  summary,
+  readingTime,
+  slug,
+  children
+}) => {
   return (
     <Container maxW="container.md">
+      <NextSeo
+        title={title}
+        description={summary}
+      />
       <Head>
-        <title>{post.title} - Dandi Wiratsangka</title>
+        <title>{title} - Dandi Wiratsangka</title>
       </Head>
       <Flex
         alignItems="center"
@@ -21,15 +32,15 @@ const BlogPost = ({ frontMatter: post, children }) => {
         py={16}
       >
         <Heading as="h1" fontSize={['2rem', '2.4rem', '3rem', '4rem']} mb={8}>
-          {post.title}
+          {title}
         </Heading>
         <Box mb={10}>
           <Flex wrap="nowrap">
             <Text textStyle="postDetail">
-              {post.published_at_formatted}
+              {dayjs(publishedAt).format('DD MMMM YYYY')}
             </Text>
             <Divider mx={[1, 1, 3]} color="gray.700" />
-            <Text textStyle="postDetail">{post.read_time.text}</Text>
+            <Text textStyle="postDetail">{readingTime}</Text>
             <Divider mx={[1, 1, 3]} color="gray.700" />
             <Text textStyle="postDetail">
               <ViewCounter slug={slug} />
@@ -37,7 +48,7 @@ const BlogPost = ({ frontMatter: post, children }) => {
           </Flex>
         </Box>
       </Flex>
-      <Box mb={20}>{children}</Box>
+      <Box mb={20} as="main">{children}</Box>
       <Author />
     </Container>
   )
