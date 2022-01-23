@@ -13,6 +13,7 @@ const NavLink = ({ href, children, ...props }) => (
         textDecor: 'none',
         color: 'accent'
       }}
+      transition="color 0.15s ease-out"
     >
       {children}
     </Link>
@@ -21,9 +22,12 @@ const NavLink = ({ href, children, ...props }) => (
 
 const NavMenu = ({ show, ...props }) => {
   const navlinkColor = useColorModeValue('dark.100', 'gray.300')
+  const navBg = useColorModeValue('white', 'dark.200')
+
   return (
     <Flex
       {...props}
+      bg={[navBg, 'transparent']}
       as="nav"
       pos={['fixed', 'relative']}
       top={[0, 'auto']}

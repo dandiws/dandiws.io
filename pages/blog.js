@@ -4,7 +4,7 @@ import { Input } from '@chakra-ui/input'
 import Container from '../components/Container'
 import { useCallback, useEffect, useState } from 'react'
 import ArticleList from '../components/ArticleList'
-import articles from '../utils/articles'
+import { getAllArticles } from 'utils/mdxUtils'
 import Head from 'next/head'
 
 const SearchInput = ({ searchQuery, onInputChange }) => {
@@ -20,7 +20,7 @@ const SearchInput = ({ searchQuery, onInputChange }) => {
   )
 }
 
-export default function Blog () {
+export default function Blog ({ articles }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredArticles, setFilteredArticles] = useState(() => articles)
 
@@ -64,4 +64,12 @@ export default function Blog () {
       </VStack>
     </Container>
   )
+}
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      articles: getAllArticles()
+    }
+  }
 }

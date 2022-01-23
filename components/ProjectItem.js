@@ -1,5 +1,5 @@
-import { Image } from '@chakra-ui/image'
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
+import Image from './Image'
 
 const ProjectItem = ({ project, reversed = false, ...props }) => {
   return (
@@ -11,16 +11,7 @@ const ProjectItem = ({ project, reversed = false, ...props }) => {
       }}
       alignItems="center"
     >
-      <Box
-        width={{
-          base: '100%',
-          md: '40%'
-        }}
-        ml={{
-          base: 0,
-          md: reversed ? 8 : 0
-        }}
-      >
+      <Box>
         <Heading
           _hover={(theme) => ({
             cursor: 'pointer',
@@ -40,19 +31,28 @@ const ProjectItem = ({ project, reversed = false, ...props }) => {
         </Text>
         <Text color="gray.500">{project.summary}</Text>
       </Box>
-      <Image
+      <Box
         ml={{
           base: 0,
-          md: reversed ? 0 : 8
+          md: reversed ? 0 : 16
         }}
         mt={{
-          base: 8,
+          base: 16,
           md: 0
         }}
-        src={project.image_url}
-        borderRadius="0.25rem"
-        width={['100%', '100%', '60%']}
-      />
+        mr={{
+          base: 0,
+          md: reversed ? 16 : 0
+        }}
+      >
+        <Image
+          width={900}
+          height={600}
+          src={project.image_url}
+          borderRadius="0.25rem"
+          alt={project.name}
+        />
+      </Box>
     </Flex>
   )
 }

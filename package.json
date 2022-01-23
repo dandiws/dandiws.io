@@ -1,6 +1,6 @@
 {
   "name": "dandiws.github.io",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,27 +10,27 @@
     "lint:fix": "eslint . --fix --ext .js,.jsx"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.4.2",
+    "@chakra-ui/react": "^1.7.4",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "babel-plugin-import-glob-array": "^0.2.0",
     "dayjs": "^1.9.1",
     "firebase-admin": "^9.6.0",
-    "framer-motion": "^4",
+    "framer-motion": "^5",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.1",
-    "next": "^10.1.2",
-    "next-mdx-enhanced": "^4.0.0",
+    "next": "12",
+    "next-mdx-remote": "^3.0.8",
+    "next-seo": "^4.29.0",
     "react": "^17.0.2",
-    "react-dom": "16.13.1",
+    "react-dom": "^17.0.2",
     "reading-time": "^1.2.0",
     "rehype": "^11.0.0",
     "remark-code-titles": "^0.1.1",
     "swr": "^0.5.5"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-jsx": "^10.0.0",

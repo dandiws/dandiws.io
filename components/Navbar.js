@@ -46,16 +46,20 @@ const Navbar = () => {
             <NavMenu mr={6} show={!menuHidden} />
             <Flex>
               <IconButton
+                aria-label="Toggle theme"
                 variant="unstyled"
                 icon={colorMode === 'dark' ? <Sun /> : <Moon />}
                 onClick={toggleColorMode}
+                transition="none"
               />
               <IconButton
+                aria-label={menuHidden ? 'Open navigation menu' : 'Close navigation menu'}
                 d={['block', 'none']}
                 variant="unstyled"
                 icon={menuHidden ? <Hamburger /> : <Close />}
                 onClick={toggleMenu}
                 zIndex={10}
+                transition="none"
               />
             </Flex>
           </Flex>
