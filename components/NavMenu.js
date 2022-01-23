@@ -13,6 +13,7 @@ const NavLink = ({ href, children, ...props }) => (
         textDecor: 'none',
         color: 'accent'
       }}
+      transition="color 0.15s ease-out"
     >
       {children}
     </Link>

@@ -1,7 +1,9 @@
 /* eslint-disable react/display-name */
-import { Text, Heading, OrderedList, UnorderedList, ListItem } from '@chakra-ui/layout'
+import { Text, Heading, OrderedList, UnorderedList, ListItem, Flex, Box } from '@chakra-ui/layout'
 import Blockquote from '../components/Blockquote'
 import ExternalLink from '../components/ExternalLink'
+import Author from '../components/Author'
+import Image from '../components/Image'
 
 const mdxcomponents = {
   h1: (props) => <Heading {...props} as="h1" size="2xl" mb={5} />,
@@ -15,7 +17,11 @@ const mdxcomponents = {
   ol: (props) => <OrderedList {...props} mb={8} />,
   blockquote: (props) => <Blockquote mb={6} {...props} />,
   li: ListItem,
-  a: ExternalLink
+  a: ExternalLink,
+  Flex,
+  Image,
+  Author,
+  Box
 }
 
 export default mdxcomponents

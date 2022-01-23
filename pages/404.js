@@ -2,11 +2,11 @@ import { Flex, Heading, Link, Divider, Box, Text } from '@chakra-ui/layout'
 import Container from '../components/Container'
 import NextLink from 'next/link'
 import ArticleList from '../components/ArticleList'
-import { latestArticles } from '../utils/articles'
+import { getLatestArticles } from '../utils/mdxUtils'
 import { useColorModeValue } from '@chakra-ui/color-mode'
 import Head from 'next/head'
 
-const NotFound = () => {
+const NotFound = ({ latestArticles }) => {
   const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
   return (
     <Container>
@@ -46,3 +46,11 @@ const NotFound = () => {
 }
 
 export default NotFound
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      latestArticles: getLatestArticles(4)
+    }
+  }
+}

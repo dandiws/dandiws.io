@@ -2,24 +2,25 @@ import Head from 'next/head'
 import Container from 'components/Container'
 import ArticleList from 'components/ArticleList'
 import NextLink from 'next/link'
-import { latestArticles } from 'utils/articles'
 import ProjectList from 'components/ProjectList'
 import projects from 'utils/projects'
 import { Box, Flex, Heading, Link, Text, VStack } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import ExternalLink from 'components/ExternalLink'
 import { useColorModeValue } from '@chakra-ui/react'
+import { getLatestArticles } from 'utils/mdxUtils'
 
-export default function Home () {
+export default function Home ({ latestArticles }) {
   const btnBgc = useColorModeValue('gray.100', 'dark.100')
   return (
     <Container>
       <Head>
         <title>Dandi Wiratsangka</title>
+        <meta name="description" content="Dandi Wiratsangka's personal website" />
       </Head>
       <VStack spacing={40} align="start">
         <Box as="header" textAlign="left" py={16}>
-          <Heading as="h1" fontSize={['3.25rem', '5rem']} mb={3}>
+          <Heading as="h1" fontSize="3rem" mb={3}>
             Hello, I'm Dandi Wiratsangka
           </Heading>
           <Box color="gray.500">
@@ -51,4 +52,13 @@ export default function Home () {
       </VStack>
     </Container>
   )
+}
+
+export const getStaticProps = async () => {
+  const latestArticles = getLatestArticles(3)
+  return {
+    props: {
+      latestArticles
+    }
+  }
 }

@@ -3,7 +3,7 @@ const colors = {
     100: '#17181e',
     200: '#101215'
   },
-  accent: '#d14b4b'
+  accent: '#ff6060'
 }
 
 export default colors
