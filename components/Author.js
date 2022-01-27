@@ -1,55 +1,33 @@
-import { Flex, Box, Heading, Text } from '@chakra-ui/layout'
-import { useColorModeValue } from '@chakra-ui/color-mode'
 import SocialButtons from './SocialButtons'
-import Image from './Image'
+import Image from 'next/image'
 
 const BorderedAvatar = () => {
-  const bg = useColorModeValue('white', 'dark.200')
   return (
-    <Box
-      bgGradient="linear(to-l, #7928CA, accent)"
-      padding="2px"
-      borderRadius="50%"
-      mb={[8, 8, 0]}
-      w="60px"
-      h="60px"
-    >
+    <div className="overflow-hidden bg-gradient-to-l from-purple-400 to-accent-400 p-0.5 rounded-full mb-8 lg:mb-0 w-14 h-14">
       <Image
-        size="lg"
+        className="rounded-full bg-white dark:bg-gray-80"
         alt="Dandi Wiratsangka S"
         src="/images/avatar.jpg"
-        bg={bg}
-        borderColor={bg}
-        borderWidth={2}
         width={200}
         height={200}
-        borderRadius="50%"
       />
-    </Box>
+    </div>
   )
 }
+
 const Author = () => (
-  <Flex
-    align="center"
-    justify="space-between"
-    direction={['column', 'column', 'row']}
-  >
-    <Flex direction={['column', 'column', 'row']} align="center" mb={[8, 8, 0]}>
+  <div className="flex items-center justify-between flex-col lg:flex-row">
+    <div className="flex flex-col lg:flex-row items-center mb-8 lg:mb-0">
       <BorderedAvatar />
-      <Flex
-        ml={6}
-        textAlign={['center', 'center', 'left']}
-        justifyContent={['center', 'center', 'flex-start']}
-        flexDirection="column"
-      >
-        <Heading as="h2" size="md" mb={1}>
+      <div className="flex ml-6 text-center lg:text-left justify-center lg:justify-start flex-col">
+        <h2 className="mb-1 text-base font-semibold leading-5">
           Dandi Wiratsangka S
-        </Heading>
-        <Text color="gray.500">Software Engineer</Text>
-      </Flex>
-    </Flex>
+        </h2>
+        <p className="text-gray">Software Engineer</p>
+      </div>
+    </div>
     <SocialButtons />
-  </Flex>
+  </div>
 )
 
 export default Author

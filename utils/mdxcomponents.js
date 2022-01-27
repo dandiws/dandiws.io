@@ -1,27 +1,23 @@
 /* eslint-disable react/display-name */
-import { Text, Heading, OrderedList, UnorderedList, ListItem, Flex, Box } from '@chakra-ui/layout'
 import Blockquote from '../components/Blockquote'
 import ExternalLink from '../components/ExternalLink'
 import Author from '../components/Author'
-import Image from '../components/Image'
+import Image from 'next/image'
 
 const mdxcomponents = {
-  h1: (props) => <Heading {...props} as="h1" size="2xl" mb={5} />,
-  h2: (props) => <Heading {...props} as="h2" size="lg" mb={5} />,
-  h3: (props) => <Heading {...props} as="h3" size="md" mb={4} />,
-  h4: (props) => <Heading {...props} as="h4" size="sm" mb={4} />,
-  h5: (props) => <Heading {...props} as="h5" size="xs" mb={3} />,
-  h6: (props) => <Heading {...props} as="h6" size="xs" mb={3} />,
-  p: (props) => <Text {...props} mb={8} lineHeight="28px" />,
-  ul: (props) => <UnorderedList {...props} mb={8} />,
-  ol: (props) => <OrderedList {...props} mb={8} />,
+  h1: (props) => <h1 {...props} className="font-bold text-3xl mb-5" />,
+  h2: (props) => <h2 {...props} className="font-bold text-2xl mb-5" />,
+  h3: (props) => <h3 {...props} className="font-bold text-xl mb-5" />,
+  h4: (props) => <h4 {...props} className="font-bold text-lg mb-4" />,
+  h5: (props) => <h5 {...props} className="font-semibold text-base mb-4" />,
+  h6: (props) => <h6 {...props} className="font-semibold text-sm mb-3" />,
+  p: (props) => <p {...props} className="mb-8 leading-7" />,
+  ul: (props) => <ul {...props} className="mb-8" />,
+  ol: (props) => <ol {...props} className="mb-8" />,
   blockquote: (props) => <Blockquote mb={6} {...props} />,
-  li: ListItem,
   a: ExternalLink,
-  Flex,
   Image,
-  Author,
-  Box
+  Author
 }
 
 export default mdxcomponents

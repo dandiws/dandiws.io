@@ -3,69 +3,74 @@ import Sun from './icons/Sun'
 import Moon from './icons/Moon'
 import Hamburger from './icons/Hamburger'
 import Close from './icons/Close'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import DwLogo from './icons/DwLogo'
 import Container from './Container'
 import NavMenu from './NavMenu'
 import { useRouter } from 'next/router'
-import { Box, Flex, Link } from '@chakra-ui/layout'
-import { useColorMode } from '@chakra-ui/color-mode'
-import { IconButton } from '@chakra-ui/button'
+import { useTheme } from 'next-themes'
+import Link from './Link'
+import clsx from 'clsx'
 
 const Navbar = () => {
-  const [menuHidden, setMenuHidden] = useState(true)
-  const { colorMode, toggleColorMode } = useColorMode()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
   const router = useRouter()
 
   useEffect(() => {
-    setMenuHidden(true)
+    setMenuOpen(false)
   }, [router.asPath])
 
   const toggleMenu = () => {
-    setMenuHidden((current) => !current)
+    setMenuOpen((current) => !current)
   }
 
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }, [theme])
+
   return (
-    <Box py={4}>
+    <div
+      className={clsx('py-6', menuOpen && 'fixed inset-0 md:relative')}
+      py={4}
+    >
       <Container>
-        <Flex align="center" justify="space-between">
-          <Box>
+        <div className="flex items-center">
+          <div>
             <NextLink href="/">
               <Link>
-                <DwLogo
-                  transition="transform .2s ease-out"
-                  _hover={{
-                    transform: 'rotate(90deg)'
-                  }}
-                  boxSize={12}
-                />
+                <DwLogo className="cursor-pointer h-10 w-10" />
               </Link>
             </NextLink>
-          </Box>
-          <Flex align="center" color="gray.500">
-            <NavMenu mr={6} show={!menuHidden} />
-            <Flex>
-              <IconButton
+          </div>
+          <div
+            className="flex items-center text-gray ml-auto"
+            align="center"
+            color="gray.500"
+          >
+            <NavMenu show={menuOpen} />
+            <div className="flex space-x-2">
+              <button
                 aria-label="Toggle theme"
-                variant="unstyled"
-                icon={colorMode === 'dark' ? <Sun /> : <Moon />}
-                onClick={toggleColorMode}
-                transition="none"
-              />
-              <IconButton
-                aria-label={menuHidden ? 'Open navigation menu' : 'Close navigation menu'}
-                d={['block', 'none']}
-                variant="unstyled"
-                icon={menuHidden ? <Hamburger /> : <Close />}
+                onClick={toggleTheme}
+                className="icon-btn"
+              >
+                {theme === 'dark' ? <Sun /> : <Moon />}
+              </button>
+              <button
+                aria-label={
+                  menuOpen ? 'Close navigation menu' : 'Open navigation menu'
+                }
+                className="icon-btn block md:hidden z-10"
                 onClick={toggleMenu}
-                zIndex={10}
-                transition="none"
-              />
-            </Flex>
-          </Flex>
-        </Flex>
+              >
+                {menuOpen ? <Close /> : <Hamburger />}
+              </button>
+            </div>
+          </div>
+        </div>
       </Container>
-    </Box>
+    </div>
   )
 }
 

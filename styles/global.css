@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-base {
+  @apply bg-white dark:bg-dark-200;
+}
+
+body {
+  @apply bg-base;
+}
+
+.section-title {
+  @apply mb-8 text-2xl font-bold flex items-center;
+}
+
+.section-title::before {
+  content: "";
+  @apply inline-block h-px bg-gray-800 w-10 mr-4 -ml-14;
+}
+
+.postDetail {
+  @apply text-accent-400 font-mono text-sm;
+}
+
+.icon-btn {
+  @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors h-7 w-7 grid place-content-center rounded-md;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading;
+}
+
+blockquote p:last-child {
+  @apply m-0;
+}
+
+/* Remark code title */
+
+.remark-code-title {
+  @apply px-3 text-xs mt-1 py-2 inline-block bg-gray-50 dark:bg-dark-100 border border-white dark:border-dark-200 text-gray-800 dark:text-gray-400;
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.remark-code-title + code[class*="language-"],
+.remark-code-title + pre[class*="language-"] {
+  @apply mt-0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.5em;
+}
+
+.text-gray {
+  @apply text-gray-600 dark:text-gray-400;
+}

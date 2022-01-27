@@ -1,12 +1,7 @@
-import { Box } from '@chakra-ui/layout'
+import clsx from 'clsx'
 
 const Divider = ({ divider = '/', ...props }) => (
-  <Box
-    {...props}
-    _before={{
-      content: `'${divider}'`
-    }}
-  />
+  <div className={clsx('select-none mx-4 text-gray-700', props.className)}>{divider}</div>
 )
 
 export default Divider

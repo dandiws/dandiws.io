@@ -1,42 +1,45 @@
-import { IconButton } from '@chakra-ui/button'
-import { HStack, Link } from '@chakra-ui/layout'
+import Link from './Link'
 import Github from './icons/Github'
 import Instagram from './icons/Instagram'
 import Linkedin from './icons/Linkedin'
 import Mail from './icons/Mail'
 
 const SocialButtons = () => (
-  <HStack spacing={3}>
+  <div className="flex space-x-2 text-gray">
     <Link
       href="https://github.com/dandiws"
       isExternal
       aria-label="Github profile"
+      className="icon-btn"
     >
-      <IconButton as="span" icon={<Github />} />
+      <Github />
     </Link>
     <Link
       href="https://id.linkedin.com/in/dandi-wiratsangka-5300a9132"
       ml={3}
       isExternal
       aria-label="Linkedin profile"
+      className="icon-btn"
     >
-      <IconButton as="span" icon={<Linkedin />} />
+      <Linkedin />
     </Link>
     <Link
       href="https://instagram.com/dandiws"
       isExternal
       aria-label="Instagram profile"
+      className="icon-btn"
     >
-      <IconButton as="span" icon={<Instagram />} />
+      <Instagram />
     </Link>
     <Link
       href="mailto:dandiwiratsangka@gmail.com"
       isExternal
       aria-label="Email to dandiwiratsangka@gmail.com"
+      className="icon-btn"
     >
-      <IconButton as="span" icon={<Mail />} />
+      <Mail />
     </Link>
-  </HStack>
+  </div>
 )
 
 export default SocialButtons

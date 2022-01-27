@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Divider from '../components/Divider'
-import Container from '../components/Container'
 import Author from '../components/Author'
 import ViewCounter from '../components/ViewCounter'
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 import dayjs from 'dayjs'
 import { NextSeo } from 'next-seo'
 
@@ -16,7 +14,7 @@ const BlogPost = ({
   children
 }) => {
   return (
-    <Container maxW="container.md">
+    <div className="mx-auto px-8 max-w-screen-md">
       <NextSeo
         title={title}
         description={summary}
@@ -24,33 +22,29 @@ const BlogPost = ({
       <Head>
         <title>{title} - Dandi Wiratsangka</title>
       </Head>
-      <Flex
-        alignItems="center"
-        justify="center"
-        direction="column"
-        textAlign="center"
-        py={16}
+      <div
+        className="flex items-center justify-center flex-col text-center py-16"
       >
-        <Heading as="h1" fontSize={['2rem', '2.4rem', '3rem', '4rem']} mb={8}>
+        <h1 className="mb-8 font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
           {title}
-        </Heading>
-        <Box mb={10}>
-          <Flex wrap="nowrap">
-            <Text textStyle="postDetail">
+        </h1>
+        <div className="mb-10">
+          <div className="flex flex-nowrap">
+            <span className="postDetail">
               {dayjs(publishedAt).format('DD MMMM YYYY')}
-            </Text>
-            <Divider mx={[1, 1, 3]} color="gray.700" />
-            <Text textStyle="postDetail">{readingTime}</Text>
-            <Divider mx={[1, 1, 3]} color="gray.700" />
-            <Text textStyle="postDetail">
+            </span>
+            <Divider className="mx-2 md:mx-3" />
+            <span className="postDetail">{readingTime}</span>
+            <Divider className="mx-2 md:mx-3" />
+            <span className="postDetail">
               <ViewCounter slug={slug} />
-            </Text>
-          </Flex>
-        </Box>
-      </Flex>
-      <Box mb={20} as="main">{children}</Box>
+            </span>
+          </div>
+        </div>
+      </div>
+      <article className="mb-20">{children}</article>
       <Author />
-    </Container>
+    </div>
   )
 }
 

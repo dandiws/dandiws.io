@@ -1,24 +1,8 @@
-import { VStack, Box, Heading, Text } from '@chakra-ui/layout'
-import { useColorModeValue } from '@chakra-ui/color-mode'
-import { Input } from '@chakra-ui/input'
 import Container from '../components/Container'
 import { useCallback, useEffect, useState } from 'react'
 import ArticleList from '../components/ArticleList'
 import { getAllArticles } from 'utils/mdxUtils'
 import Head from 'next/head'
-
-const SearchInput = ({ searchQuery, onInputChange }) => {
-  const inputBg = useColorModeValue('gray.100', 'dark.100')
-
-  return (
-    <Input
-      value={searchQuery}
-      onChange={onInputChange}
-      placeholder="Search articles"
-      bg={inputBg}
-    />
-  )
-}
 
 export default function Blog ({ articles }) {
   const [searchQuery, setSearchQuery] = useState('')
@@ -43,25 +27,25 @@ export default function Blog ({ articles }) {
       <Head>
         <title>Blog - Dandi Wiratsangka</title>
       </Head>
-      <VStack spacing={10} align="start">
-        <Box>
-          <Heading as="h1" size="2xl" mb={3}>
+      <div className="space-y-10">
+        <header>
+          <h1 className="text-5xl mb-3">
             Blog
-          </Heading>
-          <Text maxW="lg" color="gray.500">
+          </h1>
+          <p className="text-gray max-w-lg">
             Here you can find my articles about tutorials, tips & trick,
             opinion, etc. I hope it help you in any way. Thank you for reading
             :)
-          </Text>
-        </Box>
-        <SearchInput searchQuery={searchQuery} onInputChange={onInputChange} />
-        <Box>
-          <Box textStyle="gray:sm" mb={3}>
+          </p>
+          <input className="mt-8 px-3 py-2 w-full rounded-md bg-gray-100 dark:bg-dark-100 outline-none focus:ring" type="search" placeholder="Search articles..." value={searchQuery} onChange={onInputChange} />
+        </header>
+        <main>
+          <div className="text-sm text-gray mb-3">
             Showing {filteredArticles.length} of {articles.length} articles
-          </Box>
+          </div>
           <ArticleList posts={filteredArticles} />
-        </Box>
-      </VStack>
+        </main>
+      </div>
     </Container>
   )
 }

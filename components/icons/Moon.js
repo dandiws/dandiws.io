@@ -1,7 +1,7 @@
-import Icon from '@chakra-ui/icon'
+import Icon from '../Icon'
 
 const Moon = (props) => (
-  <Icon {...props} viewBox="0 0 24 24">
+  <Icon viewBox="0 0 24 24" {...props}>
     <path fill="none" d="M0 0h24v24H0z" />
     <path
       fill="currentColor"
@@ -9,5 +9,4 @@ const Moon = (props) => (
     />
   </Icon>
 )
-
 export default Moon

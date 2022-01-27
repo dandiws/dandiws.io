@@ -1,59 +1,62 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
-import Image from './Image'
+import clsx from 'clsx'
+import Divider from './Divider'
+import Image from 'next/image'
 
 const ProjectItem = ({ project, reversed = false, ...props }) => {
   return (
-    <Flex
-      align="start"
-      flexDirection={{
-        base: 'column',
-        md: reversed ? 'row-reverse' : 'row'
-      }}
-      alignItems="center"
+    <div
+      className={clsx(
+        'flex items-center flex-col',
+        reversed ? 'md:flex-row-reverse' : 'md:flex-row'
+      )}
     >
-      <Box>
-        <Heading
-          _hover={(theme) => ({
-            cursor: 'pointer',
-            color: theme.colors.accent,
-            textDecoration: 'underline'
-          })}
-          as="h3"
-          size="md"
-          mb={4}
+      <div className="w-full">
+        <div className="flex mb-2">
+          {project.featured && (
+            <>
+              <span className="postDetail">
+                Featured project
+              </span>
+              <Divider mx={4} color="gray.700" />
+            </>
+          )}
+          <span className="postDetail">
+            {project.year}
+          </span>
+        </div>
+        <h3
+          className="cursor-pointer hover:text-accent-400 hover:underline text-xl mb-3"
         >
           <a href={project.url} target="__blank">
             {project.name}
           </a>
-        </Heading>
-        <Text textStyle="postDetail" mb={4}>
-          {project.year}
-        </Text>
-        <Text color="gray.500">{project.summary}</Text>
-      </Box>
-      <Box
-        ml={{
-          base: 0,
-          md: reversed ? 0 : 16
-        }}
-        mt={{
-          base: 16,
-          md: 0
-        }}
-        mr={{
-          base: 0,
-          md: reversed ? 16 : 0
-        }}
-      >
+        </h3>
+        <p className="text-gray mb-4">
+          {project.summary}
+        </p>
+        <div className="space-x-2">
+          {project.tags &&
+            project.tags.map((tag) => (
+              <span
+                className="bg-gray-200 dark:bg-gray-800 text-gray text-sm py-1 px-2 rounded-md  font-mono"
+                key={tag}
+              >
+                {tag}
+              </span>
+            ))}
+        </div>
+      </div>
+      <div className="mx-8 my-5" />
+      <div className="w-full">
         <Image
           width={900}
           height={600}
           src={project.image_url}
-          borderRadius="0.25rem"
+          className="rounded-sm"
           alt={project.name}
         />
-      </Box>
-    </Flex>
+      </div>
+    </div>
   )
 }
 

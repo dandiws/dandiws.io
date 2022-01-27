@@ -1,15 +1,15 @@
-import { Link } from '@chakra-ui/layout'
 import ExternalLinkIcon from './icons/ExternalLink'
 
 const ExternalLink = ({ children, ...props }) => (
-  <Link
-    _hover={{ color: 'red.400' }}
-    textDecor="underline"
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-accent-400 underline"
     {...props}
-    isExternal
+
   >
     {children} <ExternalLinkIcon />
-  </Link>
+  </a>
 )
 
 export default ExternalLink

@@ -1,4 +1,4 @@
-import Icon from '@chakra-ui/icon'
+import Icon from '../Icon'
 
 const Hamburger = (props) => (
   <Icon viewBox="0 0 24 24" {...props}>

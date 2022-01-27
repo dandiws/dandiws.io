@@ -4,28 +4,27 @@ title: "About Me"
 published_at: "2021-04-02"
 ---
 
-<Flex
-  mb={6}
->
-  
-  <Image
-    layout="fixed"
+<div className="flex flex-col md:flex-row">
+  <div>
+    <Image
     width={150}
     height={150}
     src="/images/avatar.jpg"
+    layout="fixed"
   />
-
-</Flex>
-
-Hello there!
-You've manage to reach this page, so I assume you want to know more about me 😀.
-So let me introduce my self.
-
-My name is Dandi Wiratsangka Sejati. I'm a software engineer and currently
-working at [glair](https://glair.ai).
-I graduated from Universitas Gadjah Mada with bachelor degree in Computer
-Science in 2020. Currently I live in my hometown Pemalang, Central Java,
-Indonesia.
+  </div>
+  <div className="my-3 mx-3" />
+  <div>
+    <p>
+    Hello there! You've manage to reach this page, so I assume you want to know more about me 😀. 
+    So let me introduce my self.
+  </p>
+  <p>
+    My name is Dandi Wiratsangka Sejati. I'm a software engineer and currently working at <a href="https://glair.ai">glair</a>.
+    I graduated from Universitas Gadjah Mada with bachelor degree in Computer 
+    Science in 2020. Currently I live in my hometown Pemalang, Central Java, Indonesia.
+  </p>
+  </div>
+</div>
 
 Want to know more about my experience? [Download Resume](/resume.pdf).
-

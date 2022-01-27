@@ -1,5 +1,5 @@
-import { Container } from '@chakra-ui/layout'
+const Container = (props) => (
+  <div className="max-w-screen-lg mx-auto px-8" {...props} />
+)
 
-const MyContainer = (props) => <Container maxW="container.lg" px={8} {...props} />
-
-export default MyContainer
+export default Container

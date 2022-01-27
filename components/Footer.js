@@ -1,36 +1,36 @@
 import Container from './Container'
 import NextLink from 'next/link'
+import Link from 'components/Link'
 import Divider from './Divider'
-import { useColorModeValue } from '@chakra-ui/color-mode'
-import { Box, Flex, Link, Text } from '@chakra-ui/layout'
+import CopyrightIcon from './icons/CopyrightIcon'
 
 const Footer = () => {
-  const linkColor = useColorModeValue('gray.700', 'gray.400')
   const thisYear = new Date().getFullYear()
   return (
-    <Box py={16} textStyle="gray:sm">
+    <footer className="py-16 text-gray text-sm">
       <Container>
-        <Flex justify="center" alignItems="center">
-          <Text>&copy; 2020 - {thisYear}</Text>
-          <Divider mx={4} color="gray.700" />
+        <div className="flex justify-center items-center">
+          <span className="flex items-center space-x-2">
+            <CopyrightIcon /> <span>2020 - {thisYear}</span>
+          </span>
+          <Divider />
           <Link
-            color={linkColor}
-            _hover={{ color: 'gray.300' }}
             href="https://github.com/dandiws/dandiws.io"
             title="Github Repository"
+            className="text-gray hover:text-gray-800 dark:hover:text-gray-300"
             isExternal
           >
             Github
           </Link>
-          <Divider mx={4} color="gray.700" />
+          <Divider />
           <NextLink href="/privacy">
-            <Link color={linkColor} _hover={{ color: 'gray.300' }}>
+            <Link className="cursor-pointer text-gray hover:text-gray-800 dark:hover:text-gray-300">
               Privacy Policy
             </Link>
           </NextLink>
-        </Flex>
+        </div>
       </Container>
-    </Box>
+    </footer>
   )
 }
 

@@ -1,16 +1,7 @@
-import { useColorModeValue } from '@chakra-ui/color-mode'
-import { Box } from '@chakra-ui/layout'
-
 const Blockquote = (props) => {
-  const bg = useColorModeValue('gray.100', 'dark.100')
   return (
-    <Box
-      bg={bg}
-      borderLeftWidth="5px"
-      borderLeftColor="accent"
-      py={3}
-      px={5}
-      as="blockquote"
+    <blockquote
+      className="bg-gray-100 dark:bg-gray-800 border-l-4 border-l-accent-400 py-3 px-5 "
       {...props}
     />
   )

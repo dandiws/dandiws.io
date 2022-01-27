@@ -1,18 +1,19 @@
+import { useMemo } from 'react'
 import Head from 'next/head'
 import Container from 'components/Container'
 import ArticleList from 'components/ArticleList'
 import NextLink from 'next/link'
 import ProjectList from 'components/ProjectList'
-import projects from 'utils/projects'
-import { Box, Flex, Heading, Link, Text, VStack } from '@chakra-ui/layout'
-import { Button } from '@chakra-ui/button'
+import { getFeaturedProjects, getNonFeaturedProjects } from 'utils/projects'
 import ExternalLink from 'components/ExternalLink'
-import { useColorModeValue } from '@chakra-ui/react'
 import { getLatestArticles } from 'utils/mdxUtils'
 import { NextSeo } from 'next-seo'
 
 export default function Home ({ latestArticles }) {
-  const btnBgc = useColorModeValue('gray.100', 'dark.100')
+  const featuredProjects = useMemo(getFeaturedProjects, [])
+  // eslint-disable-next-line no-unused-vars
+  const nonFeaturedProjects = useMemo(getNonFeaturedProjects, [])
+
   return (
     <Container>
       <Head>
@@ -22,38 +23,41 @@ export default function Home ({ latestArticles }) {
         title="Dandi Wiratsangka"
         description="Dandi Wiratsangka's personal website"
       />
-      <VStack spacing={40} align="start">
-        <Box as="header" textAlign="left" py={16}>
-          <Heading as="h1" fontSize={['3.25rem', '5rem']} mb={3}>
-            Hello, I'm Dandi Wiratsangka
-          </Heading>
-          <Box color="gray.500">
-            <Text>
-              I'm a software engineer at <ExternalLink href="https://glair.ai">glair</ExternalLink>.
-            </Text>
-            <Text>This is where i write articles about anything that might help someone. Hope you enjoy!</Text>
-          </Box>
-        </Box>
-        <Box as="section" width="100%">
-          <Heading as="h2" mb={8} size="lg" className="section-title">
-            Latest Articles
-          </Heading>
+      <div className="space-y-40">
+        <header className="py-16">
+          <div className="mb-4 text-accent-400 font-medium font-mono">
+            Hello, my name is
+          </div>
+          <h1 className="mb-3 text-3xl md:text-6xl font-semibold">
+            Dandi Wiratsangka
+          </h1>
+          <div className="text-gray leading-relaxed max-w-lg">
+            <p>
+              I'm a software engineer at{' '}
+              <ExternalLink href="https://glair.ai">glair</ExternalLink>.
+            </p>
+            <p>
+              I make web and mobile apps. This is where i write articles about anything that might help
+              someone. Hope you enjoy!
+            </p>
+          </div>
+        </header>
+        <section>
+          <h2 className="section-title">Latest Articles</h2>
           <ArticleList posts={latestArticles} />
-          <Flex justify="center" mt={8}>
-            <Link as={NextLink} href="/blog">
-              <Button as="a" cursor="pointer" bg={btnBgc} fontWeight={400} fontSize="0.85rem">
+          <div className="flex justify-center mt-8">
+            <NextLink href="/blog">
+              <button className="text-sm text-gray bg-gray-200 hover:bg-gray-300 dark:bg-gray-800  dark:hover:bg-gray-800/75 px-4 py-2 rounded-md">
                 Browse more
-              </Button>
-            </Link>
-          </Flex>
-        </Box>
-        <Box as="section">
-          <Heading as="h2" mb={12} size="lg" className="section-title">
-            Projects
-          </Heading>
-          <ProjectList projects={projects} />
-        </Box>
-      </VStack>
+              </button>
+            </NextLink>
+          </div>
+        </section>
+        <section>
+          <h2 className="section-title">Projects</h2>
+          <ProjectList projects={featuredProjects} />
+        </section>
+      </div>
     </Container>
   )
 }

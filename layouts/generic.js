@@ -1,24 +1,18 @@
 import Head from 'next/head'
-import { Box, Container, Heading } from '@chakra-ui/layout'
 import { NextSeo } from 'next-seo'
 
 const GenericPageLayout = ({ title, description, children }) => {
   return (
-    <Container maxW="container.md">
-      <NextSeo
-        title={title}
-        description={description}
-      />
+    <div className="mx-auto px-8 max-w-screen-md">
+      <NextSeo title={title} description={description} />
       <Head>
         <title>{title} - Dandi Wiratsangka</title>
       </Head>
-      <Box mb={10}>
-        <Heading as="h1" size="2xl">
-          {title}
-        </Heading>
-      </Box>
-      <Box mb={20}>{children}</Box>
-    </Container>
+      <header className="mb-10">
+        <h1 className="text-3xl font-bold">{title}</h1>
+      </header>
+      <main className="mb-20">{children}</main>
+    </div>
   )
 }
 

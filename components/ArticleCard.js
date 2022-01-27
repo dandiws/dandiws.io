@@ -1,42 +1,32 @@
-import { Heading, Flex, Box, Text } from '@chakra-ui/layout'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import Divider from './Divider'
 import ViewCounter from './ViewCounter'
 
 const ArticleCard = ({ post, ...props }) => {
-  const publishedAt = post.published_at && dayjs(post.published_at).format('DD MMMM YYYY')
+  const publishedAt =
+    post.published_at && dayjs(post.published_at).format('DD MMMM YYYY')
 
   return (
-    <Box {...props} rounded="md" py={3}>
-      <Flex mb={2}>
-        <Text textStyle="postDetail" as="span">
+    <div {...props} className="py-6">
+      <div className="flex mb-2">
+        <span className="postDetail">
           {publishedAt}
-        </Text>
+        </span>
         <Divider mx={4} color="gray.700" />
-        <Text textStyle="postDetail" as="span">
+        <span className="postDetail">
           <ViewCounter slug={post.slug} readOnly />
-        </Text>
-      </Flex>
-      <Box>
+        </span>
+      </div>
+      <div>
         <Link href={`/blog/${post.slug}`}>
-          <Heading
-            _hover={(theme) => ({
-              cursor: 'pointer',
-              color: theme.colors.accent,
-              textDecoration: 'underline'
-            })}
-            as="h2"
-            size="md"
-            mb={3}
-          >
+          <h2 className="cursor-pointer hover:text-accent-400 hover:underline mb-3 text-lg font-medium">
             {post.title}
-          </Heading>
+          </h2>
         </Link>
-
-        <Text color="gray.500">{post.summary}</Text>
-      </Box>
-    </Box>
+        <p className="text-gray">{post.summary}</p>
+      </div>
+    </div>
   )
 }
 
