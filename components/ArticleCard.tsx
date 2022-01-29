@@ -17,7 +17,7 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
         <span className="postDetail">
           {publishedAt}
         </span>
-        <Divider mx={4} color="gray.700" />
+        <Divider />
         <span className="postDetail">
           <ViewCounter slug={post.slug} readOnly />
         </span>

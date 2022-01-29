@@ -10,7 +10,8 @@ module.exports = {
     'standard',
     'standard-jsx',
     'standard-react',
-    'plugin:@next/next/recommended'
+    'plugin:@next/next/recommended',
+    'plugin:jsx-a11y/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {

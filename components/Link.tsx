@@ -7,14 +7,16 @@ export interface LinkProps {
 const Link = forwardRef<
   HTMLAnchorElement,
   PropsWithChildren<LinkProps> & HTMLProps<HTMLAnchorElement>
->(({ isExternal = false, ...props }, ref) => {
+>(({ isExternal = false, children, ...props }, ref) => {
   return (
     <a
       ref={ref}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       {...props}
-    />
+    >
+      {children}
+    </a>
   )
 })
 

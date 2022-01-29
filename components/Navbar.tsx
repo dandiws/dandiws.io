@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <div>
             <NextLink href="/" passHref>
-              <Link>
+              <Link aria-label="Home page">
                 <DwLogo className="cursor-pointer h-10 w-10" />
               </Link>
             </NextLink>
