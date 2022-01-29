@@ -37,12 +37,10 @@ export default function Home ({ latestArticles }: HomeProps) {
           <h1 className="mb-3 text-3xl md:text-6xl font-semibold">
             Dandi Wiratsangka
           </h1>
-          <div className="text-gray leading-relaxed max-w-lg">
+          <div className="text-gray leading-relaxed max-w-xl">
             <p>
               I'm a software engineer at{' '}
               <ExternalLink href="https://glair.ai">glair</ExternalLink>.
-            </p>
-            <p>
               I make web and mobile apps. This is where i write articles about anything that might help
               someone. Hope you enjoy!
             </p>

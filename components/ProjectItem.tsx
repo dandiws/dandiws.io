@@ -36,7 +36,7 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
           {project.tags &&
             project.tags.map((tag) => (
               <span
-                className="bg-gray-200 dark:bg-gray-800 text-gray text-sm py-1 px-2 rounded-md  font-mono"
+                className="bg-gray-200 dark:bg-gray-800 text-gray text-xs py-1 px-2 rounded-md  font-mono"
                 key={tag}
               >
                 {tag}

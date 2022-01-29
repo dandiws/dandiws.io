@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
@@ -18,6 +19,7 @@ module.exports = {
         }
       },
       fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
         heading: 'Lora, serif',
         mono: 'Space Mono, monospace'
       }
