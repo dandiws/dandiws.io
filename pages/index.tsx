@@ -12,7 +12,7 @@ import { GetStaticProps } from 'next'
 import { Post } from 'utils/types'
 
 interface HomeProps {
-  latestArticles: Post[]
+  latestArticles: Post[];
 }
 
 export default function Home ({ latestArticles }: HomeProps) {
@@ -40,9 +40,9 @@ export default function Home ({ latestArticles }: HomeProps) {
           <div className="text-gray leading-relaxed max-w-xl">
             <p>
               I'm a software engineer at{' '}
-              <ExternalLink href="https://glair.ai">glair</ExternalLink>.
-              I make web and mobile apps. This is where i write articles about anything that might help
-              someone. Hope you enjoy!
+              <ExternalLink href="https://glair.ai">glair</ExternalLink>. I make
+              web and mobile apps. This is where i write articles about anything
+              that might help someone. Hope you enjoy!
             </p>
           </div>
         </header>
@@ -60,6 +60,18 @@ export default function Home ({ latestArticles }: HomeProps) {
         <section>
           <h2 className="section-title">Projects</h2>
           <ProjectList projects={featuredProjects} />
+        </section>
+        <section className="flex flex-col text-center items-center leading-relaxed py-16">
+          <h2 className="text-3xl mb-3">Get in touch</h2>
+          <p className="text-gray">My inbox is always open for everyone!</p>
+          <div className="mt-4 flex justify-center">
+            <a
+              className="px-5 py-2 rounded-full border border-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+              href="mailto:dandiwiratsangka.com"
+            >
+              Contact Me
+            </a>
+          </div>
         </section>
       </div>
     </Container>
