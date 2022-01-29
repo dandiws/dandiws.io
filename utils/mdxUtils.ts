@@ -27,7 +27,7 @@ export const getAllArticles = (): Post[] => {
       ...matter.data,
       slug: slugDotMdx.replace('.mdx', '')
     }))
-    .sort((a, b) => b.published_at - a.published_at)
+    .sort((a, b) => b.publishedAt - a.publishedAt)
 }
 
 export const getLatestArticles = (n: number) => getAllArticles().slice(0, n)

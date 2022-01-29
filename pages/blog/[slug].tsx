@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
     props: {
       source: mdxSource,
       post: {
-        publishedAt: data.published_at,
+        publishedAt: data.publishedAt,
         slug: params.slug as string,
         summary: data.summary,
         title: data.title
