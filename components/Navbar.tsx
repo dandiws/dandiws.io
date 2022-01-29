@@ -10,7 +10,6 @@ import NavMenu from './NavMenu'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import Link from './Link'
-import clsx from 'clsx'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -21,6 +20,14 @@ const Navbar = () => {
     setMenuOpen(false)
   }, [router.asPath])
 
+  useEffect(() => {
+    if (menuOpen) {
+      document && (document.body.style.overflow = 'hidden')
+    } else {
+      document && (document.body.style.overflow = null)
+    }
+  }, [menuOpen])
+
   const toggleMenu = () => {
     setMenuOpen((current) => !current)
   }
@@ -30,11 +37,11 @@ const Navbar = () => {
   }, [theme])
 
   return (
-    <div className={clsx('py-6', menuOpen && 'fixed inset-0 md:relative')}>
+    <div className="py-6">
       <Container>
         <div className="flex items-center">
           <div>
-            <NextLink href="/">
+            <NextLink href="/" passHref>
               <Link>
                 <DwLogo className="cursor-pointer h-10 w-10" />
               </Link>

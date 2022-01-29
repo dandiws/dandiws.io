@@ -2,12 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-base {
-  @apply bg-white dark:bg-dark-200;
+@layer base {
+  body {
+    @apply bg-base;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  blockquote p:last-child {
+    @apply m-0;
+  }
+
+  :not(pre) > code {
+    @apply text-accent-400 text-[0.85em];
+  }
 }
 
-body {
-  @apply bg-base;
+@layer components {
+  .nav-mobile {
+    @apply flex z-10 items-center justify-center transition-transform mr-6 bg-white dark:bg-dark-200 fixed top-0 left-0 w-full h-screen flex-col text-xl translate-x-full;
+  }
+
+  .nav-desktop {
+    @apply bg-transparent relative top-auto left-auto w-auto h-auto flex-row text-base translate-x-0;
+  }
+
+  .nav-mobile.show {
+    @apply translate-x-0;
+  }
+}
+
+@layer utilities {
+  .bg-base {
+    @apply bg-white dark:bg-dark-200;
+  }
 }
 
 .section-title {
@@ -25,23 +60,6 @@ body {
 
 .icon-btn {
   @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors h-7 w-7 grid place-content-center rounded-md;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-heading;
-}
-
-blockquote p:last-child {
-  @apply m-0;
-}
-
-:not(pre) > code {
-  @apply text-accent-400 text-[0.85em]; 
 }
 
 /* Remark code title */

@@ -15,19 +15,9 @@ const NavLink = ({ href, children, ...props }: ComponentProps<typeof Link>) => (
 )
 
 const NavMenu = ({ show, ...props }) => {
-  const smallClass =
-    'bg-dark-200 fixed top-0 left-0 w-full h-screen flex-col text-xl'
-  const mediumClass =
-    'md:bg-transparent md:relative md:top-auto md:left-auto md:w-auto md:h-auto md:flex-row md:text-base '
-
   return (
     <nav
-      className={clsx(
-        'flex z-10 items-center justify-center transition-transform mr-6',
-        smallClass,
-        mediumClass,
-        [show ? 'translate-x-0' : 'translate-x-full', 'md:translate-x-0']
-      )}
+      className={clsx('nav-mobile md:nav-desktop', show && 'show')}
       {...props}
     >
       <NavLink href="/blog">Blog</NavLink>
