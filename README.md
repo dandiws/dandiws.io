@@ -36,7 +36,7 @@ or you can just deploy on [Vercel](https://vercel.com)
 
 ## Todo
 
-- [ ] Typescript
+- [x] Typescript
 - [ ] Animation
 - [ ] Smooth pages transition
 - [ ] Contact page/section
