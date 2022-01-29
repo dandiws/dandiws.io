@@ -24,7 +24,7 @@ body {
 }
 
 .icon-btn {
-  @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors h-7 w-7 grid place-content-center rounded-md;
+  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors h-7 w-7 grid place-content-center rounded-md;
 }
 
 h1,
@@ -38,6 +38,10 @@ h6 {
 
 blockquote p:last-child {
   @apply m-0;
+}
+
+:not(pre) > code {
+  @apply text-accent-400 text-[0.85em]; 
 }
 
 /* Remark code title */
