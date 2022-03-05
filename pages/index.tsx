@@ -10,6 +10,8 @@ import { getLatestArticles } from 'utils/mdxUtils'
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
 import { Post } from 'utils/types'
+import { motion } from 'framer-motion'
+import { fadeUpVariant } from 'utils/motions'
 
 interface HomeProps {
   latestArticles: Post[];
@@ -31,29 +33,65 @@ export default function Home ({ latestArticles }: HomeProps) {
       />
       <div className="space-y-40">
         <header className="py-16">
-          <div className="mb-4 text-accent-400 font-medium font-mono">
+          <motion.div
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.4
+            }}
+            className="mb-4 accent font-medium font-mono"
+          >
             Hello, my name is
-          </div>
-          <h1 className="mb-3 text-3xl md:text-6xl font-semibold">
+          </motion.div>
+          <motion.h1
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.4,
+              delay: 0.2
+            }}
+            className="mb-3 text-3xl md:text-6xl font-semibold"
+          >
             Dandi Wiratsangka
-          </h1>
-          <div className="text-gray leading-relaxed max-w-xl">
+          </motion.h1>
+          <motion.div
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.4,
+              delay: 0.4
+            }}
+            className="text-gray leading-relaxed max-w-xl"
+          >
             <p>
               I'm a software engineer at{' '}
               <ExternalLink href="https://glair.ai">glair</ExternalLink>. I make
               web and mobile apps. This is where i write articles about anything
               that might help someone. Hope you enjoy!
             </p>
-          </div>
+          </motion.div>
         </header>
         <section>
           <h2 className="section-title">Latest Articles</h2>
           <ArticleList posts={latestArticles} />
           <div className="flex justify-center mt-8">
             <NextLink href="/blog">
-              <button className="text-sm text-gray bg-gray-200 hover:bg-gray-300 dark:bg-gray-800  dark:hover:bg-gray-800/75 px-4 py-2 rounded-md">
+              <motion.button
+                variants={fadeUpVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="text-sm text-gray bg-gray-200 hover:bg-gray-300 dark:bg-gray-800  dark:hover:bg-gray-800/75 px-4 py-2 rounded-md"
+              >
                 Browse more
-              </button>
+              </motion.button>
             </NextLink>
           </div>
         </section>
@@ -61,7 +99,19 @@ export default function Home ({ latestArticles }: HomeProps) {
           <h2 className="section-title">Projects</h2>
           <ProjectList projects={featuredProjects} />
         </section>
-        <section className="flex flex-col text-center items-center leading-relaxed py-16">
+        <motion.section
+          initial={{
+            opacity: 0,
+            scale: 0.75
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1
+          }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="flex flex-col text-center items-center leading-relaxed py-16"
+        >
           <h2 className="text-3xl mb-3">Get in touch</h2>
           <p className="text-gray">My inbox is always open for everyone!</p>
           <div className="mt-4 flex justify-center">
@@ -72,7 +122,7 @@ export default function Home ({ latestArticles }: HomeProps) {
               Contact Me
             </a>
           </div>
-        </section>
+        </motion.section>
       </div>
     </Container>
   )

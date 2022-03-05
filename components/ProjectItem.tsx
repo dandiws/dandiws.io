@@ -2,6 +2,8 @@ import clsx from 'clsx'
 import Divider from './Divider'
 import Image from 'next/image'
 import { Project } from 'utils/types'
+import { motion } from 'framer-motion'
+import { fadeUpVariant } from 'utils/motions'
 
 export interface ProjectItemProps {
   project: Project;
@@ -16,7 +18,16 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
         reversed ? 'md:flex-row-reverse' : 'md:flex-row'
       )}
     >
-      <div className="w-full">
+      <motion.div
+        variants={fadeUpVariant}
+        initial="hidden"
+        whileInView="visible"
+        transition={{
+          duration: 0.4
+        }}
+        viewport={{ once: true }}
+        className="w-full"
+      >
         <div className="flex mb-2">
           {project.featured && (
             <>
@@ -26,7 +37,7 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
           )}
           <span className="postDetail">{project.year}</span>
         </div>
-        <h3 className="cursor-pointer hover:text-accent-400 hover:underline text-xl mb-3">
+        <h3 className="cursor-pointer hover:accent hover:underline text-xl mb-3">
           <a href={project.url} target="__blank">
             {project.name}
           </a>
@@ -43,9 +54,28 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
               </span>
             ))}
         </div>
-      </div>
+      </motion.div>
       <div className="mx-8 my-5" />
-      <div className="w-full">
+      <motion.div
+        variants={{
+          hidden: {
+            opacity: 0,
+            scale: 0.75
+          },
+          visible: {
+            opacity: 1,
+            scale: 1
+          }
+        }}
+        initial="hidden"
+        whileInView="visible"
+        transition={{
+          duration: 0.5,
+          ease: 'easeOut'
+        }}
+        viewport={{ once: true }}
+        className="w-full"
+      >
         <Image
           width={900}
           height={600}
@@ -53,7 +83,7 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
           className="rounded-sm"
           alt={project.name}
         />
-      </div>
+      </motion.div>
     </div>
   )
 }

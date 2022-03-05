@@ -1,12 +1,18 @@
 import Link from './Link'
 import NextLink from 'next/link'
 import clsx from 'clsx'
-import { ComponentProps } from 'react'
+import { ComponentProps, useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion'
+import { fadeDownVariant } from 'utils/motions'
 
-const NavLink = ({ href, children, ...props }: ComponentProps<typeof Link>) => (
+export const NavLink = ({
+  href,
+  children,
+  ...props
+}: ComponentProps<typeof Link>) => (
   <NextLink href={href} passHref>
     <Link
-      className="cursor-pointer mx-5 my-3 md:my-0 hover:text-accent-400"
+      className="cursor-pointer block mx-5 my-3 md:my-0 hover:accent"
       {...props}
     >
       {children}
@@ -14,15 +20,62 @@ const NavLink = ({ href, children, ...props }: ComponentProps<typeof Link>) => (
   </NextLink>
 )
 
-const NavMenu = ({ show, ...props }) => {
+export const NavMenu = () => (
+  <nav className="hidden md:flex md:nav-desktop">
+    <NavLink href="/blog">Blog</NavLink>
+    <NavLink href="/about">About</NavLink>
+    <NavLink href="/resume.pdf">Resume</NavLink>
+  </nav>
+)
+
+export const MobileNavMenu = ({ show, ...props }) => {
+  const controls = useAnimation()
+  const duration = 0.4
+
+  useEffect(() => {
+    if (show) controls.start('visible')
+    else controls.set('hidden')
+  }, [show])
+
   return (
     <nav
-      className={clsx('nav-mobile md:nav-desktop', show && 'show')}
+      className={clsx('nav-mobile md:hidden', show && 'show')}
       {...props}
     >
-      <NavLink href="/blog">Blog</NavLink>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="/resume.pdf">Resume</NavLink>
+      <motion.div
+        variants={fadeDownVariant}
+        initial="hidden"
+        animate={controls}
+        transition={{
+          duration,
+          delay: duration * 0.5
+        }}
+      >
+        <NavLink href="/blog">Blog</NavLink>
+      </motion.div>
+
+      <motion.div
+        variants={fadeDownVariant}
+        initial="hidden"
+        animate={controls}
+        transition={{
+          duration,
+          delay: 2 * 0.5 * duration
+        }}
+      >
+        <NavLink href="/about">About</NavLink>
+      </motion.div>
+      <motion.div
+        variants={fadeDownVariant}
+        initial="hidden"
+        animate={controls}
+        transition={{
+          duration,
+          delay: 3 * 0.5 * duration
+        }}
+      >
+        <NavLink href="/resume.pdf">Resume</NavLink>
+      </motion.div>
     </nav>
   )
 }

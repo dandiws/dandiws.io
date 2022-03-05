@@ -28,7 +28,7 @@ const NotFound = ({ suggestesArticles: latestArticles }: NotFoundProps) => {
           .
         </p>
       </div>
-      <div className="h-px w-full bg-gray-800 my-16" />
+      <div className="h-px w-full bg-gray-200 dark:bg-gray-800 my-16" />
       <div>
         <h2 className="mb-5 text-2xl">Latest Articles</h2>
         <ArticleList posts={latestArticles} />

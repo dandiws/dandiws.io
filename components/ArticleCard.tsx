@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { HTMLMotionProps, motion } from 'framer-motion'
 import Link from 'next/link'
 import { Post } from 'utils/types'
 import Divider from './Divider'
@@ -8,11 +9,11 @@ export interface ArticleCardProps {
   post: Post,
 }
 
-const ArticleCard = ({ post }: ArticleCardProps) => {
+const ArticleCard = ({ post, ...props }: ArticleCardProps & HTMLMotionProps<'div'>) => {
   const publishedAt = dayjs(post.publishedAt).format('DD MMMM YYYY')
 
   return (
-    <div className="py-6">
+    <motion.div className="py-6" {...props}>
       <div className="flex mb-2">
         <span className="postDetail">
           {publishedAt}
@@ -24,14 +25,14 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
       </div>
       <div>
 
-        <h2 className="cursor-pointer hover:text-accent-400 hover:underline mb-3 text-lg font-medium">
+        <h2 className="cursor-pointer hover:accent hover:underline mb-3 text-lg font-medium">
           <Link href={`/blog/${post.slug}`}>
             {post.title}
           </Link>
         </h2>
         <p className="text-gray">{post.summary}</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

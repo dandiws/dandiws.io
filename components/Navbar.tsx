@@ -6,15 +6,17 @@ import Close from './icons/Close'
 import { useState, useEffect, useCallback } from 'react'
 import DwLogo from './icons/DwLogo'
 import Container from './Container'
-import NavMenu from './NavMenu'
+import { NavMenu, MobileNavMenu } from './NavMenu'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import Link from './Link'
+import { useMounted } from 'lib/hooks/useMounted'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const router = useRouter()
+  const mounted = useMounted()
 
   useEffect(() => {
     setMenuOpen(false)
@@ -43,19 +45,20 @@ const Navbar = () => {
           <div>
             <NextLink href="/" passHref>
               <Link aria-label="Home page">
-                <DwLogo className="cursor-pointer h-10 w-10" />
+                <DwLogo className="cursor-pointer h-10 w-10 accent" />
               </Link>
             </NextLink>
           </div>
           <div className="flex items-center text-gray ml-auto">
-            <NavMenu show={menuOpen} />
+            <NavMenu />
+            <MobileNavMenu show={menuOpen} />
             <div className="flex space-x-2">
               <button
                 aria-label="Toggle theme"
                 onClick={toggleTheme}
                 className="icon-btn"
               >
-                {theme === 'dark' ? <Sun /> : <Moon />}
+                {mounted && theme === 'dark' ? <Sun /> : <Moon />}
               </button>
               <button
                 aria-label={

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-base;
+    @apply bg-base overflow-x-hidden relative scroll-smooth;
   }
 
   h1,
@@ -21,7 +21,7 @@
   }
 
   :not(pre) > code {
-    @apply text-accent-400 text-[0.85em];
+    @apply accent text-[0.85em];
   }
 }
 
@@ -31,7 +31,7 @@
   }
 
   .nav-desktop {
-    @apply bg-transparent relative top-auto left-auto w-auto h-auto flex-row text-base translate-x-0;
+    @apply flex items-center justify-center bg-transparent relative top-auto left-auto w-auto h-auto flex-row text-base translate-x-0;
   }
 
   .nav-mobile.show {
@@ -42,6 +42,10 @@
 @layer utilities {
   .bg-base {
     @apply bg-white dark:bg-dark-200;
+  }
+
+  .accent {
+    @apply text-red-600 dark:text-red-500;
   }
 }
 
@@ -55,7 +59,7 @@
 }
 
 .postDetail {
-  @apply text-accent-400 font-mono text-sm;
+  @apply accent font-mono text-sm;
 }
 
 .icon-btn {
