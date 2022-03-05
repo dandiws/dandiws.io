@@ -1,5 +1,6 @@
 import { createContext, FC, useContext, useEffect, useState } from 'react'
 
+const ACCENT_STORAGE_KEY = 'accent'
 const ACCENTS = ['green', 'red', 'blue', 'purple', 'yellow'] as const
 type AccentColor = typeof ACCENTS[number]
 const randomAccent = () => ACCENTS[Math.floor(Math.random() * ACCENTS.length)]
@@ -8,13 +9,15 @@ const useAccentContext = () => {
   const [accent, setAccent] = useState<AccentColor>()
 
   useEffect(() => {
-    const accent = (localStorage.getItem('accent') || randomAccent()) as AccentColor
+    let saved = localStorage.getItem(ACCENT_STORAGE_KEY) as AccentColor
+    saved = ACCENTS.includes(saved) ? saved : null
+    const accent = saved || randomAccent()
     setAccent(accent)
   }, [])
 
   useEffect(() => {
     if (accent) {
-      localStorage.setItem('accent', accent)
+      localStorage.setItem(ACCENT_STORAGE_KEY, accent)
       document.body.setAttribute('data-accent', accent)
     }
   }, [accent])
