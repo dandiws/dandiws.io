@@ -31,6 +31,7 @@ export const NavMenu = () => (
 export const MobileNavMenu = ({ show, ...props }) => {
   const controls = useAnimation()
   const duration = 0.4
+  const delayOffset = 0.2
 
   useEffect(() => {
     if (show) controls.start('visible')
@@ -48,7 +49,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
         animate={controls}
         transition={{
           duration,
-          delay: duration * 0.5
+          delay: duration * 0.5 + delayOffset
         }}
       >
         <NavLink href="/blog">Blog</NavLink>
@@ -60,7 +61,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
         animate={controls}
         transition={{
           duration,
-          delay: 2 * 0.5 * duration
+          delay: 2 * 0.5 * duration + delayOffset
         }}
       >
         <NavLink href="/about">About</NavLink>
@@ -71,7 +72,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
         animate={controls}
         transition={{
           duration,
-          delay: 3 * 0.5 * duration
+          delay: 3 * 0.5 * duration + delayOffset
         }}
       >
         <NavLink href="/resume.pdf">Resume</NavLink>
