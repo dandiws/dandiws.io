@@ -1,13 +1,15 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
+import SkipToContent from './SkipToContent'
 
 const Layout = ({ children }) => {
   return (
     <>
+      <SkipToContent />
       <Navbar />
-      <div className="py-16">
+      <main id="main" className="py-16">
         {children}
-      </div>
+      </main>
       <Footer />
     </>
   )
