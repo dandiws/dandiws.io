@@ -52,7 +52,7 @@ const Navbar = () => {
           <div className="flex items-center text-gray ml-auto">
             <NavMenu />
             <MobileNavMenu show={menuOpen} />
-            <div className="flex space-x-2">
+            <div className="flex space-x-2 ml-5">
               <button
                 aria-label="Toggle theme"
                 onClick={toggleTheme}
