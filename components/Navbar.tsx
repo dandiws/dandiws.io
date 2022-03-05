@@ -45,7 +45,7 @@ const Navbar = () => {
           <div>
             <NextLink href="/" passHref>
               <Link aria-label="Home page">
-                <DwLogo className="cursor-pointer h-10 w-10 accent" />
+                <DwLogo fgclassname="fill-white dark:fill-dark-200" className="cursor-pointer h-10 w-10 text-accent" />
               </Link>
             </NextLink>
           </div>

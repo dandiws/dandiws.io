@@ -3,6 +3,7 @@ import NextLink from 'next/link'
 import Link from 'components/Link'
 import Divider from './Divider'
 import CopyrightIcon from './icons/CopyrightIcon'
+import AccentButtons from './AccentButtons'
 
 const Footer = () => {
   const thisYear = new Date().getFullYear()
@@ -28,6 +29,8 @@ const Footer = () => {
               Privacy Policy
             </Link>
           </NextLink>
+          <Divider />
+          <AccentButtons />
         </div>
       </Container>
     </footer>

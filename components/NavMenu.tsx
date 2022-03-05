@@ -12,7 +12,7 @@ export const NavLink = ({
 }: ComponentProps<typeof Link>) => (
   <NextLink href={href} passHref>
     <Link
-      className="cursor-pointer block mx-5 my-3 md:my-0 hover:accent"
+      className="cursor-pointer block mx-5 my-3 md:my-0 hover:text-accent"
       {...props}
     >
       {children}

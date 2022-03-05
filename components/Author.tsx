@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const BorderedAvatar = () => {
   return (
-    <div className="overflow-hidden bg-gradient-to-l from-purple-400 to-accent-400 p-0.5 rounded-full mb-8 lg:mb-0 w-14 h-14">
+    <div className="overflow-hidden bg-gradient-to-l from-accent-light to-accent-dark p-0.5 rounded-full mb-8 lg:mb-0 w-14 h-14">
       <Image
         className="rounded-full bg-white dark:bg-gray-80"
         alt="Dandi Wiratsangka S"

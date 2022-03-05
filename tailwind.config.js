@@ -1,4 +1,3 @@
-const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
@@ -12,7 +11,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: colors.red,
+        accent: {
+          light: 'var(--accent-light)',
+          dark: 'var(--accent-dark)'
+        },
         dark: {
           100: '#17181e',
           200: '#101215'

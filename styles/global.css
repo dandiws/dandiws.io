@@ -3,6 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  [data-accent='red'] {
+    --accent-light: #dc2626;
+    --accent-dark: #ef4444;
+  }
+  
+  [data-accent='yellow'] {
+    --accent-light: #f59e0b;
+    --accent-dark: #eab308;
+  }
+  
+  [data-accent='blue'] {
+    --accent-light: #2563eb;
+    --accent-dark: #3b82f6;
+  }
+  
+  [data-accent='purple'] {
+    --accent-light: #9333ea;
+    --accent-dark: #a855f7;
+  }
+  
+  [data-accent='green'] {
+    --accent-light: #16a34a;
+    --accent-dark: #22c55e;
+  }
+  
   body {
     @apply bg-base overflow-x-hidden relative scroll-smooth;
   }
@@ -21,7 +46,7 @@
   }
 
   :not(pre) > code {
-    @apply accent text-[0.85em];
+    @apply text-accent text-[0.85em];
   }
 }
 
@@ -44,8 +69,12 @@
     @apply bg-white dark:bg-dark-200;
   }
 
-  .accent {
-    @apply text-red-600 dark:text-red-500;
+  .text-accent {
+    @apply text-accent-light dark:text-accent-dark;
+  }
+
+  .bg-accent {
+    @apply bg-accent-light dark:bg-accent-dark;
   }
 }
 
@@ -56,10 +85,10 @@
 .section-title::before {
   content: "";
   @apply inline-block h-px bg-gray-800 w-10 mr-4 -ml-14;
-}
+} 
 
 .postDetail {
-  @apply accent font-mono text-sm;
+  @apply text-accent font-mono text-sm;
 }
 
 .icon-btn {

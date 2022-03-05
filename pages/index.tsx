@@ -41,7 +41,7 @@ export default function Home ({ latestArticles }: HomeProps) {
             transition={{
               duration: 0.4
             }}
-            className="mb-4 accent font-medium font-mono"
+            className="mb-4 text-accent font-medium font-mono"
           >
             Hello, my name is
           </motion.div>
