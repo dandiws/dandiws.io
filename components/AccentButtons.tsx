@@ -12,10 +12,12 @@ const AccentButtons = () => {
   }, [accents, mounted])
 
   return (
-    <div className="space-x-1 flex items-center">
+    <div className="space-x-1 flex items-center h-4">
       {shuffled.map((color) => {
         return (
           <button
+            aria-label={`Toggle ${color} accent`}
+            title={color}
             data-accent={color}
             onClick={() => {
               console.log(color)
