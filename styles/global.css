@@ -38,7 +38,7 @@
   h4,
   h5,
   h6 {
-    @apply font-heading;
+    @apply font-heading font-bold;
   }
 
   blockquote p:last-child {

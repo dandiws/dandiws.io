@@ -25,7 +25,7 @@ const ArticleCard = ({ post, ...props }: ArticleCardProps & HTMLMotionProps<'div
       </div>
       <div>
 
-        <h2 className="cursor-pointer hover:text-accent hover:underline mb-3 text-lg font-medium">
+        <h2 className="cursor-pointer hover:text-accent hover:underline mb-3 text-xl">
           <Link href={`/blog/${post.slug}`}>
             {post.title}
           </Link>

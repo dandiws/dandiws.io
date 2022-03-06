@@ -42,7 +42,7 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
             {project.name}
           </a>
         </h3>
-        <p className="text-gray mb-4">{project.summary}</p>
+        <p className="text-gray mb-4">{project.longerSummary ?? project.summary}</p>
         <div className="space-x-2">
           {project.tags &&
             project.tags.map((tag) => (

@@ -22,7 +22,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        heading: 'Lora, serif',
+        heading: 'League Spartan',
         mono: 'Space Mono, monospace'
       }
     }

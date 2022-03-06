@@ -5,6 +5,13 @@ import { ComponentProps, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { fadeDownVariant } from 'utils/motions'
 
+const MENU_ITEMS: Array<[string, string]> = [
+  ['/blog', 'Blog'],
+  ['/about', 'About'],
+  ['/projects', 'Projects'],
+  ['/resume.pdf', 'Resume']
+]
+
 export const NavLink = ({
   href,
   children,
@@ -22,15 +29,17 @@ export const NavLink = ({
 
 export const NavMenu = () => (
   <nav className="hidden md:flex md:nav-desktop">
-    <NavLink href="/blog">Blog</NavLink>
-    <NavLink href="/about">About</NavLink>
-    <NavLink href="/resume.pdf">Resume</NavLink>
+    {MENU_ITEMS.map(([href, title]) => (
+      <NavLink key={href} href={href}>
+        {title}
+      </NavLink>
+    ))}
   </nav>
 )
 
 export const MobileNavMenu = ({ show, ...props }) => {
   const controls = useAnimation()
-  const duration = 0.4
+  const duration = 0.25
   const delayOffset = 0.2
 
   useEffect(() => {
@@ -39,44 +48,21 @@ export const MobileNavMenu = ({ show, ...props }) => {
   }, [show])
 
   return (
-    <nav
-      className={clsx('nav-mobile md:hidden', show && 'show')}
-      {...props}
-    >
-      <motion.div
-        variants={fadeDownVariant}
-        initial="hidden"
-        animate={controls}
-        transition={{
-          duration,
-          delay: duration * 0.5 + delayOffset
-        }}
-      >
-        <NavLink href="/blog">Blog</NavLink>
-      </motion.div>
-
-      <motion.div
-        variants={fadeDownVariant}
-        initial="hidden"
-        animate={controls}
-        transition={{
-          duration,
-          delay: 2 * 0.5 * duration + delayOffset
-        }}
-      >
-        <NavLink href="/about">About</NavLink>
-      </motion.div>
-      <motion.div
-        variants={fadeDownVariant}
-        initial="hidden"
-        animate={controls}
-        transition={{
-          duration,
-          delay: 3 * 0.5 * duration + delayOffset
-        }}
-      >
-        <NavLink href="/resume.pdf">Resume</NavLink>
-      </motion.div>
+    <nav className={clsx('nav-mobile md:hidden', show && 'show')} {...props}>
+      {MENU_ITEMS.map(([href, title], index) => (
+        <motion.div
+          key={href}
+          variants={fadeDownVariant}
+          initial="hidden"
+          animate={controls}
+          transition={{
+            duration,
+            delay: (index + 1) * duration * 0.5 + delayOffset
+          }}
+        >
+          <NavLink href={href}>{title}</NavLink>
+        </motion.div>
+      ))}
     </nav>
   )
 }

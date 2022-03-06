@@ -1,27 +1,23 @@
-import { useMemo } from 'react'
 import Head from 'next/head'
 import Container from 'components/Container'
 import ArticleList from 'components/ArticleList'
 import NextLink from 'next/link'
 import ProjectList from 'components/ProjectList'
-import { getFeaturedProjects, getNonFeaturedProjects } from 'utils/projects'
+import { getFeaturedProjects } from 'utils/projects'
 import ExternalLink from 'components/ExternalLink'
 import { getLatestArticles } from 'utils/mdxUtils'
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
-import { Post } from 'utils/types'
+import { Post, Project } from 'utils/types'
 import { motion } from 'framer-motion'
 import { fadeUpVariant } from 'utils/motions'
 
 interface HomeProps {
   latestArticles: Post[];
+  featuredProjects: Project[];
 }
 
-export default function Home ({ latestArticles }: HomeProps) {
-  const featuredProjects = useMemo(getFeaturedProjects, [])
-  // eslint-disable-next-line no-unused-vars
-  const nonFeaturedProjects = useMemo(getNonFeaturedProjects, [])
-
+export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
   return (
     <Container>
       <Head>
@@ -54,7 +50,7 @@ export default function Home ({ latestArticles }: HomeProps) {
               duration: 0.4,
               delay: 0.2
             }}
-            className="mb-3 text-3xl md:text-6xl font-semibold"
+            className="mb-3 text-3xl md:text-6xl"
           >
             Dandi Wiratsangka
           </motion.h1>
@@ -130,9 +126,11 @@ export default function Home ({ latestArticles }: HomeProps) {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const latestArticles = getLatestArticles(3)
+  const featuredProjects = getFeaturedProjects()
   return {
     props: {
-      latestArticles
+      latestArticles,
+      featuredProjects
     }
   }
 }
