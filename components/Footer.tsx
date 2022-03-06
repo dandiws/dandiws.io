@@ -28,6 +28,16 @@ const Footer = () => {
             </NextLink>
           </div>
           <div className="py-4 flex flex-col space-y-4">
+            <NextLink href="/projects" passHref>
+              <Link className="cursor-pointer text-gray hover:text-gray-800 dark:hover:text-gray-300">
+                Projects
+              </Link>
+            </NextLink>
+            <NextLink href="/privacy" passHref>
+              <Link className="cursor-pointer text-gray hover:text-gray-800 dark:hover:text-gray-300">
+                Privacy Policy
+              </Link>
+            </NextLink>
             <Link
               href="https://github.com/dandiws/dandiws.io"
               title="Github Repository"
@@ -36,11 +46,7 @@ const Footer = () => {
             >
               Github
             </Link>
-            <NextLink href="/privacy" passHref>
-              <Link className="cursor-pointer text-gray hover:text-gray-800 dark:hover:text-gray-300">
-                Privacy Policy
-              </Link>
-            </NextLink>
+
           </div>
         </div>
         <div className="flex justify-between py-4 mt-4">
