@@ -25,7 +25,7 @@ const AccentButtons = () => {
             }}
             key={color}
             className={clsx(
-              'cursor-default bg-accent rounded-full',
+              'cursor-default bg-accent rounded-full transition-all ',
               color === accent ? 'w-2 h-1' : 'w-1 h-1'
             )}
           />

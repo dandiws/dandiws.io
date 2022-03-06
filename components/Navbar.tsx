@@ -3,7 +3,7 @@ import Sun from './icons/Sun'
 import Moon from './icons/Moon'
 import Hamburger from './icons/Hamburger'
 import Close from './icons/Close'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import DwLogo from './icons/DwLogo'
 import Container from './Container'
 import { NavMenu, MobileNavMenu } from './NavMenu'
@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import Link from './Link'
 import { useMounted } from 'lib/hooks/useMounted'
+import Head from 'next/head'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -38,8 +39,13 @@ const Navbar = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }, [theme])
 
+  const themecolor = useMemo(() => theme === 'dark' ? '#101215' : '#ffffff', [theme])
+
   return (
     <div className="py-6">
+      <Head>
+        <meta name="theme-color" content={themecolor} />
+      </Head>
       <Container>
         <div className="flex items-center">
           <div>

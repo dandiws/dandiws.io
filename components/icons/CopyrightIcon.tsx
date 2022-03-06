@@ -1,7 +1,7 @@
 import Icon from '../Icon'
 
 const CopyrightIcon = (props) => (
-  <Icon viewBox="0 0 24 24" {...props}>
+  <Icon viewBox="0 0 24 24" aria-label="copyright" {...props}>
     <path fill="none" d="M0 0h24v24H0z" />
     <path
       fill="currentColor"

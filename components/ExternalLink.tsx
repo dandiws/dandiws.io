@@ -8,7 +8,7 @@ const ExternalLink = ({ children, ...props }: ComponentProps<'a'>) => (
     className="hover:text-accent underline"
     {...props}
   >
-    {children} <ExternalLinkIcon />
+    {children} <ExternalLinkIcon aria-hidden />
   </a>
 )
 
