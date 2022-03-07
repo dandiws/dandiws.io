@@ -28,8 +28,12 @@
     --accent-dark: #22c55e;
   }
   
+  html {
+    @apply scroll-smooth;
+  }
+  
   body {
-    @apply bg-base overflow-x-hidden relative scroll-smooth;
+    @apply bg-base overflow-x-hidden relative;
   }
 
   h1,

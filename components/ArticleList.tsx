@@ -28,7 +28,7 @@ const ArticleList = ({ posts }: ArticleListProps) => {
               delay: i * duration * 0.05
             }}
             viewport={{ once: true }}
-            key={post.slug + i}
+            key={post.slug}
             post={post}
           />
         )
