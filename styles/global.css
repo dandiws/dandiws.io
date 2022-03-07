@@ -112,3 +112,7 @@
 .text-gray {
   @apply text-gray-600 dark:text-gray-400;
 }
+
+.more-btn:hover .arrow {
+  @apply translate-x-2 transition-transform;
+}

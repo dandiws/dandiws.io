@@ -11,6 +11,7 @@ import { GetStaticProps } from 'next'
 import { Post, Project } from 'utils/types'
 import { motion } from 'framer-motion'
 import { fadeUpVariant } from 'utils/motions'
+import ArrowRightIcon from 'components/icons/ArrowRightIcon'
 
 interface HomeProps {
   latestArticles: Post[];
@@ -76,24 +77,40 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
         <section>
           <h2 className="section-title">Latest Articles</h2>
           <ArticleList posts={latestArticles} />
-          <div className="flex justify-center mt-8">
-            <NextLink href="/blog">
-              <motion.button
+          <div className="flex mt-8">
+            <NextLink href="/blog" passHref>
+              <motion.a
                 variants={fadeUpVariant}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="text-sm text-gray bg-gray-200 hover:bg-gray-300 dark:bg-gray-800  dark:hover:bg-gray-800/75 px-4 py-2 rounded-md"
+                className="more-btn text-sm flex flex-row text-gray hover:text-accent hover:underline underline-offset-2"
               >
-                Browse more
-              </motion.button>
+                Browse more articles
+                <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
+              </motion.a>
             </NextLink>
           </div>
         </section>
         <section>
           <h2 className="section-title">Projects</h2>
           <ProjectList projects={featuredProjects} />
+          <div className="flex mt-14">
+            <NextLink href="/projects" passHref>
+              <motion.a
+                variants={fadeUpVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="more-btn text-sm flex flex-row text-gray hover:text-accent hover:underline underline-offset-2"
+              >
+                See all projects
+                <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
+              </motion.a>
+            </NextLink>
+          </div>
         </section>
         <motion.section
           initial={{
