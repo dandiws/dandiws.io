@@ -1,9 +1,7 @@
-import Head from 'next/head'
 import Divider from '../components/Divider'
 import Author from '../components/Author'
 import ViewCounter from '../components/ViewCounter'
 import dayjs from 'dayjs'
-import { NextSeo } from 'next-seo'
 import { ReactNode } from 'react'
 
 export interface BlogPostProps {
@@ -25,10 +23,6 @@ const BlogPost = ({
 }: BlogPostProps) => {
   return (
     <div className="mx-auto px-8 max-w-screen-md">
-      <NextSeo title={title} description={summary} />
-      <Head>
-        <title>{title} - Dandi Wiratsangka</title>
-      </Head>
       <div className="flex items-center justify-center flex-col text-center py-16">
         <h1 className="mb-8 font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
           {title}

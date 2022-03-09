@@ -15,4 +15,5 @@ export interface Post {
   publishedAt: string;
   summary: string;
   slug: string;
+  ogImage?: string
 }
