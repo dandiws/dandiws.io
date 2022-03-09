@@ -34,10 +34,6 @@ or you can just deploy on [Vercel](https://vercel.com)
 - **Styling** : [Tailwind CSS](https://tailwindcss.com/)
 - **Blog** : [MDX](https://mdxjs.com/) powered by [nex-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
 
-## Todo
+## Licence
 
-- [x] Typescript
-- [ ] Animation
-- [ ] Smooth pages transition
-- [ ] Contact page/section
-- [ ] Project archive page
+I'm keeping my personal website open sourced as learning materials. Please find it as inspiration and not a template. Sure you're free to use this for your personal website, but **with attribution**.
