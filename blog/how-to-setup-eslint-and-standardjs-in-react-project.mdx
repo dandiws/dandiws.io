@@ -1,27 +1,28 @@
 ---
 layout: 'blogpost'
 title: 'How to Setup ESLint with Standard.js style in React.js Project'
-published_at: '2021-04-02'
+publishedAt: '2021-04-02'
 summary: 'Step by step tutorial on how to setup Eslint and standard.js in your react.js project'
+ogImage: 'react'
 ---
 
 Consider you have a react.js project, and you want to setup ESLint with standard.js style guide. 
 Follow this step by step tutorial to setup ESLint and Standars.js like a pro.
 
 
-### 1. Install eslint and eslint plugin for react
+#### 1. Install eslint and eslint plugin for react
 
 ```bash
 yarn add -D eslint eslint-plugin-react
 ```
 
-### 2. Install eslint plugin for standard
+#### 2. Install eslint plugin for standard
 
 ```bash
 yarn add -D eslint-config-standard eslint-config-standard-jsx eslint-config-standard-react eslint-plugin-promise eslint-plugin-import eslint-plugin-node
 ```
 
-### 3. Create eslint configuration file
+#### 3. Create eslint configuration file
 
 Create `.eslintrc.js` in your project root directory and add this code
 
@@ -64,7 +65,7 @@ module.exports = {
 }
 ```
 
-### 4. Configuring .eslintignore file
+#### 4. Configuring .eslintignore file
 
 `.eslintignore` contains list of folders and files which will be ignored by eslint. Here is example of `.eslintignore` file:
 
@@ -74,7 +75,7 @@ public/
 dist/
 ```
 
-### 5. Add NPM script
+#### 5. Add NPM script
 
 To make life easier, we can create scripts to run eslint with npm/yarn command. add this scripts in your `package.json` file.
 
@@ -87,7 +88,7 @@ To make life easier, we can create scripts to run eslint with npm/yarn command. 
 }
 ```
 
-### 6. Bonus: Setup Eslint in Visual Studio Code
+#### 6. Bonus: Setup Eslint in Visual Studio Code
 
 If you are using Visual Studio Code, you may be want to setup ESLint extension to show error right in your text editor.
 First you need to install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).

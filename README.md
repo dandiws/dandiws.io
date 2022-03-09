@@ -1,30 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dandiws.io
 
-## Getting Started
+Personal website of [Dandi Wiratsangka](https://dandiws.vercel.app) built with [Next.js](https://nextjs.org/) and deployed on [Vercel](https://vercel.com/).
 
-First, run the development server:
+## Getting started
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1. Make sure you already have node v12 or above.
+1. Install dependencies
+    ```shell
+    yarn install
+    ```
+1. Start development server
+    ```shell
+    yarn dev
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Building and running for production
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. Run build command
+    ```shell
+    yarn build
+    ```
 
-## Learn More
+1. Start server
+    ```shell
+    yarn start
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+or you can just deploy on [Vercel](https://vercel.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Framework** : [Next.js](https://nextjs.org) 
+- **Styling** : [Tailwind CSS](https://tailwindcss.com/)
+- **Blog** : [MDX](https://mdxjs.com/) powered by [nex-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
 
-## Deploy on Vercel
+## Licence
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I'm keeping my personal website open sourced as learning materials. Please find it as inspiration and not a template. Sure you're free to use this for your personal website, but **with attribution**.

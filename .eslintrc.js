@@ -3,11 +3,15 @@ module.exports = {
     browser: true,
     es2021: true
   },
+  root: true,
+  parser: '@typescript-eslint/parser',
   extends: [
     'plugin:react/recommended',
     'standard',
     'standard-jsx',
-    'standard-react'
+    'standard-react',
+    'plugin:@next/next/recommended',
+    'plugin:jsx-a11y/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -16,9 +20,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: [
-    'react'
-  ],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'jsx-quotes': ['error', 'prefer-double'],
     'react/react-in-jsx-scope': 'off',

@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  [data-accent='red'] {
+    --accent-light: #dc2626;
+    --accent-dark: #ef4444;
+  }
+  
+  [data-accent='yellow'] {
+    --accent-light: #f59e0b;
+    --accent-dark: #facc15;
+  }
+  
+  [data-accent='blue'] {
+    --accent-light: #2563eb;
+    --accent-dark: #3b82f6;
+  }
+  
+  [data-accent='purple'] {
+    --accent-light: #9333ea;
+    --accent-dark: #a855f7;
+  }
+  
+  [data-accent='green'] {
+    --accent-light: #16a34a;
+    --accent-dark: #22c55e;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-base overflow-x-hidden relative;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold;
+  }
+
+  blockquote p:last-child {
+    @apply m-0;
+  }
+
+  :not(pre) > code {
+    @apply text-accent text-[0.85em];
+  }
+}
+
+@layer components {
+  .nav-mobile {
+    @apply flex z-10 items-center justify-center transition-transform duration-500 mr-6 bg-white dark:bg-dark-200 fixed top-0 left-0 w-full h-screen flex-col text-xl translate-x-full;
+  }
+
+  .nav-desktop {
+    @apply flex items-center justify-center bg-transparent relative top-auto left-auto w-auto h-auto flex-row text-base translate-x-0;
+  }
+
+  .nav-mobile.show {
+    @apply translate-x-0;
+  }
+}
+
+@layer utilities {
+  .bg-base {
+    @apply bg-white dark:bg-dark-200;
+  }
+
+  .text-accent {
+    @apply text-accent-light dark:text-accent-dark;
+  }
+
+  .bg-accent {
+    @apply bg-accent-light dark:bg-accent-dark;
+  }
+}
+
+.section-title {
+  @apply mb-8 text-2xl font-bold flex items-center;
+}
+
+.section-title::before {
+  content: "";
+  @apply inline-block h-px bg-gray-800 w-10 mr-4 -ml-14;
+} 
+
+.postDetail {
+  @apply text-accent font-mono text-sm;
+}
+
+.icon-btn {
+  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors h-7 w-7 grid place-content-center rounded-md;
+}
+
+/* Remark code title */
+
+.remark-code-title {
+  @apply px-3 text-xs mt-1 py-2 inline-block bg-gray-50 dark:bg-dark-100 border border-white dark:border-dark-200 text-gray-800 dark:text-gray-400;
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.remark-code-title + code[class*="language-"],
+.remark-code-title + pre[class*="language-"] {
+  @apply mt-0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.5em;
+}
+
+.text-gray {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.more-btn:hover .arrow {
+  @apply translate-x-2 transition-transform;
+}
