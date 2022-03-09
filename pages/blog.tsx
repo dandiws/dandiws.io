@@ -5,6 +5,8 @@ import { getAllArticles } from 'utils/mdxUtils'
 import Head from 'next/head'
 import { Post } from 'utils/types'
 import { GetStaticProps } from 'next'
+import { createOgImageUrl } from 'utils/og-image'
+import { NextSeo } from 'next-seo'
 
 export interface BlogProps {
   articles: Post[]
@@ -30,6 +32,12 @@ export default function Blog ({ articles }: BlogProps) {
 
   return (
     <Container>
+      <NextSeo openGraph={{
+        images: [{
+          url: createOgImageUrl('Dandi Wiratsangka\'s Blog')
+        }]
+      }}
+      />
       <Head>
         <title>Blog - Dandi Wiratsangka</title>
       </Head>

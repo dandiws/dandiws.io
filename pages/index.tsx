@@ -12,6 +12,7 @@ import { Post, Project } from 'utils/types'
 import { motion } from 'framer-motion'
 import { fadeUpVariant } from 'utils/motions'
 import ArrowRightIcon from 'components/icons/ArrowRightIcon'
+import { createOgImageUrl } from 'utils/og-image'
 
 interface HomeProps {
   latestArticles: Post[];
@@ -21,6 +22,12 @@ interface HomeProps {
 export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
   return (
     <Container>
+      <NextSeo openGraph={{
+        images: [{
+          url: createOgImageUrl('Dandi Wiratsangka', undefined, 150)
+        }]
+      }}
+      />
       <Head>
         <title>Dandi Wiratsangka</title>
       </Head>

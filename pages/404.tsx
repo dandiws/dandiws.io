@@ -5,6 +5,8 @@ import { getLatestArticles } from '../utils/mdxUtils'
 import Head from 'next/head'
 import { Post } from 'utils/types'
 import { GetStaticProps } from 'next'
+import { createOgImageUrl } from 'utils/og-image'
+import { NextSeo } from 'next-seo'
 
 export interface NotFoundProps {
   suggestesArticles: Post[]
@@ -13,6 +15,12 @@ export interface NotFoundProps {
 const NotFound = ({ suggestesArticles: latestArticles }: NotFoundProps) => {
   return (
     <Container>
+      <NextSeo openGraph={{
+        images: [{
+          url: createOgImageUrl('404', undefined, 200)
+        }]
+      }}
+      />
       <Head>
         <title>404 - Dandi Wiratsangka</title>
       </Head>

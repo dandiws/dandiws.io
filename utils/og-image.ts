@@ -1,9 +1,12 @@
 import { Post } from './types'
 
-export const getOgImageUrl = (post: Post, fontSize = 100) => {
-  if (post.ogImage) {
-    return `https://og-image-xi-seven.vercel.app/${post.title}.png?theme=light&md=0&fontSize=${fontSize}px&images=${post.ogImage}`
-  }
+export const createOgImageUrl = (title: string, icon?: string, fontSize = 100) => {
+  return [
+    `https://og-image-xi-seven.vercel.app/${title}.png?theme=light&md=0&fontSize=${fontSize}px`,
+    icon ? `&images=${icon}` : ''
+  ].join('')
+}
 
-  return ''
+export const createPostOgImageUrl = (post: Post, fontSize = 100) => {
+  return createOgImageUrl(post.title, post.ogImage, fontSize)
 }

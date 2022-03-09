@@ -6,6 +6,8 @@ import projects from 'utils/projects'
 import Link from 'components/Link'
 import Divider from 'components/Divider'
 import Github from 'components/icons/Github'
+import { NextSeo } from 'next-seo'
+import { createOgImageUrl } from 'utils/og-image'
 
 export interface ProjectsProps {
   projects: Project[];
@@ -14,6 +16,12 @@ export interface ProjectsProps {
 const Projects = ({ projects }: ProjectsProps) => {
   return (
     <Container>
+      <NextSeo openGraph={{
+        images: [{
+          url: createOgImageUrl('Dandi Wiratsangka\'s Projects')
+        }]
+      }}
+      />
       <Head>
         <title>Projects - Dandi Wiratsangka</title>
       </Head>

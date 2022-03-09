@@ -7,6 +7,8 @@ import { serialize } from 'next-mdx-remote/serialize'
 import remarkCodeTitles from 'remark-code-titles'
 import rehypeMdxPrism from 'mdx-prism'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { createOgImageUrl } from 'utils/og-image'
+import { NextSeo } from 'next-seo'
 
 export interface MdxLayoutProps {
   frontMatter: { [x: string]: any };
@@ -16,6 +18,12 @@ export interface MdxLayoutProps {
 export const MdxLayout = ({ frontMatter, source }: MdxLayoutProps) => {
   return (
     <GenericPageLayout title={frontMatter.title}>
+      <NextSeo openGraph={{
+        images: [{
+          url: createOgImageUrl(frontMatter.title)
+        }]
+      }}
+      />
       <MDXRemote {...source} />
     </GenericPageLayout>
   )

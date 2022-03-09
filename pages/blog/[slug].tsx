@@ -9,7 +9,7 @@ import rehypeMdxPrism from 'mdx-prism'
 import readingTime from 'reading-time'
 import { GetStaticProps } from 'next'
 import { Post } from 'utils/types'
-import { getOgImageUrl } from 'utils/og-image'
+import { createPostOgImageUrl } from 'utils/og-image'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import dayjs from 'dayjs'
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
         slug: params.slug as string,
         summary: data.summary,
         title: data.title,
-        ogImage: getOgImageUrl(data as Post)
+        ogImage: createPostOgImageUrl(data as Post)
       },
       readingTime: readingTime(content).text
     }
