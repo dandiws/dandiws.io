@@ -2,7 +2,7 @@ import Link from './Link'
 import NextLink from 'next/link'
 import clsx from 'clsx'
 import { ComponentProps, Fragment, useEffect, useMemo } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import { fadeDownVariant } from 'utils/motions'
 
 // [slug, title, isExternal?]
@@ -60,7 +60,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
   return (
     <nav className={clsx('nav-mobile md:hidden', show && 'show')} {...props}>
       {MENU_ITEMS.map(([href, title, isExternal], index) => (
-        <motion.div
+        <m.div
           key={href}
           variants={fadeDownVariant}
           initial="hidden"
@@ -71,7 +71,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
           }}
         >
           <NavLink href={href} isExternal={isExternal}>{title}</NavLink>
-        </motion.div>
+        </m.div>
       ))}
     </nav>
   )
