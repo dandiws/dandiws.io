@@ -9,7 +9,7 @@ import { getLatestArticles } from 'utils/mdxUtils'
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
 import { Post, Project } from 'utils/types'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { fadeUpVariant } from 'utils/motions'
 import ArrowRightIcon from 'components/icons/ArrowRightIcon'
 import { createOgImageUrl } from 'utils/og-image'
@@ -37,7 +37,7 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
       />
       <div className="space-y-40">
         <header className="py-16">
-          <motion.div
+          <m.div
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"
@@ -48,8 +48,8 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
             className="mb-4 text-accent font-medium font-mono"
           >
             Hello, my name is
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"
@@ -61,8 +61,8 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
             className="mb-3 text-3xl md:text-6xl"
           >
             Dandi Wiratsangka
-          </motion.h1>
-          <motion.div
+          </m.h1>
+          <m.div
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"
@@ -79,14 +79,14 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
               web and mobile apps. This is where i write articles about anything
               that might help someone. Hope you enjoy!
             </p>
-          </motion.div>
+          </m.div>
         </header>
         <section>
           <h2 className="section-title">Latest Articles</h2>
           <ArticleList posts={latestArticles} />
           <div className="flex mt-8">
             <NextLink href="/blog" passHref>
-              <motion.a
+              <m.a
                 variants={fadeUpVariant}
                 initial="hidden"
                 whileInView="visible"
@@ -96,7 +96,7 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
               >
                 Browse more articles
                 <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
-              </motion.a>
+              </m.a>
             </NextLink>
           </div>
         </section>
@@ -105,7 +105,7 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
           <ProjectList projects={featuredProjects} />
           <div className="flex mt-14">
             <NextLink href="/projects" passHref>
-              <motion.a
+              <m.a
                 variants={fadeUpVariant}
                 initial="hidden"
                 whileInView="visible"
@@ -115,11 +115,11 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
               >
                 See all projects
                 <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
-              </motion.a>
+              </m.a>
             </NextLink>
           </div>
         </section>
-        <motion.section
+        <m.section
           initial={{
             opacity: 0,
             scale: 0.75
@@ -142,7 +142,7 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
               Contact Me
             </a>
           </div>
-        </motion.section>
+        </m.section>
       </div>
     </Container>
   )

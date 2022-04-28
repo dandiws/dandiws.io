@@ -19,7 +19,7 @@ const Author = () => (
   <div className="flex items-center justify-between flex-col lg:flex-row">
     <div className="flex flex-col lg:flex-row items-center mb-8 lg:mb-0">
       <BorderedAvatar />
-      <div className="flex ml-6 text-center lg:text-left justify-center lg:justify-start flex-col">
+      <div className="flex lg:ml-6 text-center lg:text-left justify-center lg:justify-start flex-col">
         <h2 className="mb-1 text-base font-semibold leading-5">
           Dandi Wiratsangka S
         </h2>

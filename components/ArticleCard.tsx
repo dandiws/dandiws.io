@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { HTMLMotionProps, motion } from 'framer-motion'
+import { HTMLMotionProps, m } from 'framer-motion'
 import Link from 'next/link'
 import { Post } from 'utils/types'
 import Divider from './Divider'
@@ -13,7 +13,7 @@ const ArticleCard = ({ post, ...props }: ArticleCardProps & HTMLMotionProps<'div
   const publishedAt = dayjs(post.publishedAt).format('DD MMMM YYYY')
 
   return (
-    <motion.div className="py-6" {...props}>
+    <m.div className="py-6" {...props}>
       <div className="flex mb-2">
         <span className="postDetail">
           {publishedAt}
@@ -32,7 +32,7 @@ const ArticleCard = ({ post, ...props }: ArticleCardProps & HTMLMotionProps<'div
         </h2>
         <p className="text-gray">{post.summary}</p>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 

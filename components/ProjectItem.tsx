@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Divider from './Divider'
 import Image from 'next/image'
 import { Project } from 'utils/types'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { fadeUpVariant } from 'utils/motions'
 
 export interface ProjectItemProps {
@@ -18,7 +18,7 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
         reversed ? 'md:flex-row-reverse' : 'md:flex-row'
       )}
     >
-      <motion.div
+      <m.div
         variants={fadeUpVariant}
         initial="hidden"
         whileInView="visible"
@@ -54,9 +54,9 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
               </span>
             ))}
         </div>
-      </motion.div>
+      </m.div>
       <div className="mx-8 my-5" />
-      <motion.div
+      <m.div
         variants={{
           hidden: {
             opacity: 0,
@@ -83,7 +83,7 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
           className="rounded-sm"
           alt={project.name}
         />
-      </motion.div>
+      </m.div>
     </div>
   )
 }
