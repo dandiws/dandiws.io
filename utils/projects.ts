@@ -39,15 +39,31 @@ const projects: Project[] = [
     year: 2017,
     tags: ['Javascript', 'CSS'],
     githubUrl: 'https://github.com/dandiws/D-Fastfinger'
+  },
+  {
+    name: 'svelte-audio-player',
+    url: 'https://svelte-audio-player.vercel.app',
+    summary: 'Component that wraps html audio tag for building custom audio player.',
+    year: 2022,
+    githubUrl: 'https://github.com/dandiws/svelte-audio-player'
   }
 ]
 
+export const getAllProjects = (): Project[] => {
+  return projects.sort((a, b) => {
+    const byYear = b.year - a.year
+    if (byYear === 0) {
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+    }
+
+    return byYear
+  })
+}
+
 export const getFeaturedProjects = (): Project[] => {
-  return projects.filter((project) => project.featured)
+  return getAllProjects().filter((project) => project.featured)
 }
 
 export const getNonFeaturedProjects = (): Project[] => {
-  return projects.filter((project) => !project.featured)
+  return getAllProjects().filter((project) => !project.featured)
 }
-
-export default projects

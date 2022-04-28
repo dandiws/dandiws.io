@@ -2,7 +2,7 @@ import Container from 'components/Container'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { Project } from 'utils/types'
-import projects from 'utils/projects'
+import { getAllProjects } from 'utils/projects'
 import Link from 'components/Link'
 import Divider from 'components/Divider'
 import Github from 'components/icons/Github'
@@ -87,7 +87,7 @@ export default Projects
 export const getStaticProps: GetStaticProps<ProjectsProps> = () => {
   return {
     props: {
-      projects
+      projects: getAllProjects()
     }
   }
 }
