@@ -96,7 +96,7 @@
 }
 
 .icon-btn {
-  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors h-7 w-7 grid place-content-center rounded-md;
+  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-1 transition-colors h-7 w-7 grid place-content-center rounded-md;
 }
 
 /* Remark code title */
