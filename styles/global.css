@@ -33,7 +33,7 @@
   }
   
   body {
-    @apply bg-base overflow-x-hidden relative;
+    @apply bg-base text-black dark:text-white overflow-x-hidden relative;
   }
 
   h1,
