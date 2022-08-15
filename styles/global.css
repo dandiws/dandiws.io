@@ -70,7 +70,7 @@
 
 @layer utilities {
   .bg-base {
-    @apply bg-white dark:bg-dark-200;
+    @apply bg-white dark:bg-dark-200 transition-colors duration-300;
   }
 
   .text-accent {
