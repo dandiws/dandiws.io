@@ -1,17 +1,18 @@
-import NextLink from 'next/link'
-import Sun from './icons/Sun'
-import Moon from './icons/Moon'
-import Hamburger from './icons/Hamburger'
-import Close from './icons/Close'
-import { useState, useEffect, useCallback, useMemo } from 'react'
-import DwLogo from './icons/DwLogo'
-import Container from './Container'
-import { NavMenu, MobileNavMenu } from './NavMenu'
-import { useRouter } from 'next/router'
-import { useTheme } from 'next-themes'
-import Link from './Link'
+import { m } from 'framer-motion'
 import { useMounted } from 'lib/hooks/useMounted'
+import { useTheme } from 'next-themes'
 import Head from 'next/head'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import Container from './Container'
+import Close from './icons/Close'
+import DwLogo from './icons/DwLogo'
+import Hamburger from './icons/Hamburger'
+import Moon from './icons/Moon'
+import Sun from './icons/Sun'
+import Link from './Link'
+import { MobileNavMenu, NavMenu } from './NavMenu'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -32,14 +33,16 @@ const Navbar = () => {
   }, [menuOpen])
 
   const toggleMenu = () => {
-    setMenuOpen((current) => !current)
+    setMenuOpen(current => !current)
   }
 
   const toggleTheme = useCallback(() => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }, [theme])
 
-  const themecolor = useMemo(() => theme === 'dark' ? '#101215' : '#ffffff', [theme])
+  const themecolor = useMemo(() => (theme === 'dark' ? '#101215' : '#ffffff'), [
+    theme
+  ])
 
   return (
     <div className="py-6">
@@ -51,7 +54,10 @@ const Navbar = () => {
           <div>
             <NextLink href="/" passHref>
               <Link aria-label="Home page">
-                <DwLogo fgclassname="fill-white dark:fill-dark-200" className="cursor-pointer h-10 w-10 text-accent" />
+                <DwLogo
+                  fgclassname="fill-white dark:fill-dark-200"
+                  className="cursor-pointer h-10 w-10 text-accent"
+                />
               </Link>
             </NextLink>
           </div>
@@ -59,13 +65,39 @@ const Navbar = () => {
             <NavMenu />
             <MobileNavMenu show={menuOpen} />
             <div className="flex space-x-2 ml-5">
-              <button
-                aria-label="Toggle theme"
-                onClick={toggleTheme}
-                className="icon-btn"
-              >
-                {mounted && theme === 'dark' ? <Sun /> : <Moon />}
-              </button>
+              {mounted && (
+                <m.button
+                  layout
+                  aria-label="Toggle theme"
+                  onClick={toggleTheme}
+                  className="icon-btn relative overflow-hidden"
+                >
+                  <m.span
+                    className="absolute w-7 h-7 grid place-items-center"
+                    initial="hidden"
+                    variants={{
+                      hidden: { y: '100%', opacity: 0, rotate: 360 },
+                      visible: { y: 0, opacity: 1, rotate: 0 }
+                    }}
+                    animate={theme === 'light' ? 'visible' : 'hidden'}
+                    transition={{ stiffness: 50, type: 'spring' }}
+                  >
+                    <Sun />
+                  </m.span>
+                  <m.span
+                    initial="hidden"
+                    className="absolute w-7 h-7 grid place-items-center"
+                    variants={{
+                      hidden: { y: '100%', opacity: 0, rotate: 360 },
+                      visible: { y: 0, opacity: 1, rotate: 0 }
+                    }}
+                    animate={theme === 'dark' ? 'visible' : 'hidden'}
+                    transition={{ stiffness: 50, type: 'spring' }}
+                  >
+                    <Moon />
+                  </m.span>
+                </m.button>
+              )}
               <button
                 aria-label={
                   menuOpen ? 'Close navigation menu' : 'Open navigation menu'
