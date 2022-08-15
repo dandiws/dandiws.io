@@ -22,18 +22,17 @@ interface HomeProps {
 export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
   return (
     <Container>
-      <NextSeo openGraph={{
-        images: [{
-          url: createOgImageUrl('Dandi Wiratsangka', undefined, 150)
-        }]
-      }}
-      />
       <Head>
         <title>Dandi Wiratsangka</title>
       </Head>
       <NextSeo
         title="Dandi Wiratsangka"
         description="Dandi Wiratsangka's personal website"
+        openGraph={{
+          images: [{
+            url: createOgImageUrl('Dandi Wiratsangka', undefined, 150)
+          }]
+        }}
       />
       <div className="space-y-40">
         <header className="py-16">

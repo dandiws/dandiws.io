@@ -15,11 +15,14 @@ export interface NotFoundProps {
 const NotFound = ({ suggestesArticles: latestArticles }: NotFoundProps) => {
   return (
     <Container>
-      <NextSeo openGraph={{
-        images: [{
-          url: createOgImageUrl('404', undefined, 200)
-        }]
-      }}
+      <NextSeo
+        title="404 - Dandi Wiratsangka"
+        description="The page you're looking is not found"
+        openGraph={{
+          images: [{
+            url: createOgImageUrl('404', undefined, 200)
+          }]
+        }}
       />
       <Head>
         <title>404 - Dandi Wiratsangka</title>

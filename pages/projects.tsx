@@ -16,11 +16,14 @@ export interface ProjectsProps {
 const Projects = ({ projects }: ProjectsProps) => {
   return (
     <Container>
-      <NextSeo openGraph={{
-        images: [{
-          url: createOgImageUrl('Dandi Wiratsangka\'s Projects')
-        }]
-      }}
+      <NextSeo
+        title="Projects - Dandi Wiratsangka"
+        description="Things I've been working on"
+        openGraph={{
+          images: [{
+            url: createOgImageUrl('Dandi Wiratsangka\'s Projects')
+          }]
+        }}
       />
       <Head>
         <title>Projects - Dandi Wiratsangka</title>

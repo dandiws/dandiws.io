@@ -18,11 +18,14 @@ export interface MdxLayoutProps {
 export const MdxLayout = ({ frontMatter, source }: MdxLayoutProps) => {
   return (
     <GenericPageLayout title={frontMatter.title}>
-      <NextSeo openGraph={{
-        images: [{
-          url: createOgImageUrl(frontMatter.title)
-        }]
-      }}
+      <NextSeo
+        title={frontMatter.title}
+        description={frontMatter.description}
+        openGraph={{
+          images: [{
+            url: createOgImageUrl(frontMatter.title)
+          }]
+        }}
       />
       <MDXRemote {...source} />
     </GenericPageLayout>
