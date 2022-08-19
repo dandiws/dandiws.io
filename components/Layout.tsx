@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <>
       <SkipToContent />
       <Navbar />
-      <main id="main" className="py-16">
+      <main id="main">
         {children}
       </main>
       <Footer />
