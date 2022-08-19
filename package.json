@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "clsx": "^1.1.1",
+    "cmdk": "^0.1.19",
     "dayjs": "^1.9.1",
     "firebase-admin": "^9.6.0",
     "framer-motion": "^6.2.3",
