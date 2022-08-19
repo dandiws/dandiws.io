@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       colors: {
         accent: {
-          light: 'var(--accent-light)',
-          dark: 'var(--accent-dark)'
+          light: 'rgb(var(--accent-light) / <alpha-value>)',
+          dark: 'rgb(var(--accent-dark) / <alpha-value>)'
         },
         dark: {
           100: '#17181e',
@@ -22,8 +22,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        heading: 'League Spartan',
-        mono: 'Space Mono, monospace'
+        heading: 'Space Grotesk'
       }
     }
   },

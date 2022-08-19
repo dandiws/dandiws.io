@@ -11,8 +11,7 @@ const ArticleList = ({ posts }: ArticleListProps) => {
   return (
     <div
       className={clsx(
-        'grid grid-cols-1 gap-6 md:gap-12',
-        [posts.length >= 2 && 'lg:grid-cols-2'],
+        'grid grid-cols-1 md:grid-cols-2 gap-6',
         [posts.length >= 3 && 'xl:grid-cols-3']
       )}
     >
@@ -28,7 +27,7 @@ const ArticleList = ({ posts }: ArticleListProps) => {
               delay: i * duration * 0.05
             }}
             viewport={{ once: true }}
-            key={post.slug}
+            key={post.slug + i}
             post={post}
           />
         )

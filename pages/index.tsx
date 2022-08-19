@@ -44,7 +44,7 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
             transition={{
               duration: 0.4
             }}
-            className="mb-4 text-accent font-medium font-mono"
+            className="mb-4 text-accent font-medium"
           >
             Hello, my name is
           </m.div>

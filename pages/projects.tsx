@@ -47,7 +47,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                     </Link>
                   </h3>
                   <Divider />
-                  <span className="text-gray font-mono text-sm">
+                  <span className="text-gray text-sm">
                     {project.year}
                   </span>
                   {project.githubUrl && (
@@ -69,7 +69,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                   {project.tags &&
                     project.tags.map((tag) => (
                       <span
-                        className="bg-gray-200 dark:bg-gray-800 text-gray text-xs py-1 px-2 rounded-md  font-mono"
+                        className="bg-gray-200 dark:bg-gray-800 text-gray text-xs py-1 px-2 rounded-md "
                         key={tag}
                       >
                         {tag}
