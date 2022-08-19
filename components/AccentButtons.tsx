@@ -5,7 +5,7 @@ import { useMounted } from 'lib/hooks/useMounted'
 const shuffle = (arr: Array<any>) => arr.sort(() => Math.random() - 0.5)
 
 const AccentButtons = () => {
-  const { accents, accent, setAccent } = useAccent()
+  const { accents, setAccent } = useAccent()
   const mounted = useMounted()
   const shuffled = useMemo(() => {
     return mounted ? shuffle([...accents]) : []
@@ -25,8 +25,7 @@ const AccentButtons = () => {
             }}
             key={color}
             className={clsx(
-              'cursor-default bg-accent rounded-full transition-all ',
-              color === accent ? 'w-2 h-1' : 'w-1 h-1'
+              'cursor-pointer focus:outline-none bg-accent rounded-full w-1.5 h-1.5 transform hover:scale-125 transition-transform'
             )}
           />
         )
