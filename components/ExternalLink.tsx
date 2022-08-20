@@ -6,8 +6,7 @@ const ExternalLink = ({ children, ...props }: ComponentProps<'a'>) => (
     target="_blank"
     rel="noopener noreferrer"
     className="hover:text-accent underline"
-    {...props}
-  >
+    {...props}>
     {children} <ExternalLinkIcon aria-hidden />
   </a>
 )

@@ -3,11 +3,13 @@ import Footer from './Footer'
 import SkipToContent from './SkipToContent'
 import dynamic from 'next/dynamic'
 
-const isBigScreen = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 920px)').matches
+const isBigScreen = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(min-width: 920px)').matches
 const Cmdk = isBigScreen()
   ? dynamic(() => import('./Cmdk'), {
-    ssr: false
-  })
+      ssr: false
+    })
   : () => null
 
 const Layout = ({ children }) => {
@@ -15,9 +17,7 @@ const Layout = ({ children }) => {
     <>
       <SkipToContent />
       <Navbar />
-      <main id="main">
-        {children}
-      </main>
+      <main id="main">{children}</main>
       <Footer />
       <Cmdk />
     </>

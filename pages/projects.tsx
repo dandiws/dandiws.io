@@ -10,7 +10,7 @@ import { NextSeo } from 'next-seo'
 import { createOgImageUrl } from 'utils/og-image'
 
 export interface ProjectsProps {
-  projects: Project[];
+  projects: Project[]
 }
 
 const Projects = ({ projects }: ProjectsProps) => {
@@ -20,9 +20,11 @@ const Projects = ({ projects }: ProjectsProps) => {
         title="Projects - Dandi Wiratsangka"
         description="Things I've been working on"
         openGraph={{
-          images: [{
-            url: createOgImageUrl('Dandi Wiratsangka\'s Projects')
-          }]
+          images: [
+            {
+              url: createOgImageUrl("Dandi Wiratsangka's Projects")
+            }
+          ]
         }}
       />
       <Head>
@@ -41,23 +43,19 @@ const Projects = ({ projects }: ProjectsProps) => {
                     <Link
                       className="text-accent text-lg"
                       href={project.url}
-                      isExternal
-                    >
+                      isExternal>
                       {project.name}
                     </Link>
                   </h3>
                   <Divider />
-                  <span className="text-gray text-sm">
-                    {project.year}
-                  </span>
+                  <span className="text-gray text-sm">{project.year}</span>
                   {project.githubUrl && (
                     <>
                       <Divider />
                       <Link
                         className="text-gray"
                         href={project.githubUrl}
-                        aria-label="Github repository"
-                      >
+                        aria-label="Github repository">
                         <Github />
                       </Link>
                     </>
@@ -70,8 +68,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                     project.tags.map((tag) => (
                       <span
                         className="bg-gray-200 dark:bg-gray-800 text-gray text-xs py-1 px-2 rounded-md "
-                        key={tag}
-                      >
+                        key={tag}>
                         {tag}
                       </span>
                     ))}

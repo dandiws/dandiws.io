@@ -3,9 +3,9 @@ import { NextSeo } from 'next-seo'
 import { ReactNode } from 'react'
 
 export interface GenericPageLayoutProps {
-  title: string;
-  description?: string;
-  children: ReactNode;
+  title: string
+  description?: string
+  children: ReactNode
 }
 
 const GenericPageLayout = ({

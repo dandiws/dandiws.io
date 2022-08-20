@@ -2,7 +2,7 @@ import { Project } from 'utils/types'
 import ProjectItem from './ProjectItem'
 
 export interface ProjectListProps {
-  projects: Project[];
+  projects: Project[]
 }
 
 const ProjectList = ({ projects }: ProjectListProps) => {

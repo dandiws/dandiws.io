@@ -1,4 +1,3 @@
-import { m } from 'framer-motion'
 import { useMounted } from 'lib/hooks/useMounted'
 import { useTheme } from 'next-themes'
 import Head from 'next/head'
@@ -33,16 +32,17 @@ const Navbar = () => {
   }, [menuOpen])
 
   const toggleMenu = () => {
-    setMenuOpen(current => !current)
+    setMenuOpen((current) => !current)
   }
 
   const toggleTheme = useCallback(() => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }, [theme])
 
-  const themecolor = useMemo(() => (theme === 'dark' ? '#101215' : '#ffffff'), [
-    theme
-  ])
+  const themecolor = useMemo(
+    () => (theme === 'dark' ? '#101215' : '#ffffff'),
+    [theme]
+  )
 
   return (
     <div className="py-6">
@@ -68,34 +68,15 @@ const Navbar = () => {
               <button
                 aria-label="Toggle theme"
                 onClick={toggleTheme}
-                className="icon-btn h-7 w-7 relative overflow-hidden"
-              >
+                className="icon-btn h-7 w-7 relative overflow-hidden">
                 {mounted && (
                   <>
-                    <m.span
-                      className="absolute w-7 h-7 grid place-items-center"
-                      initial="hidden"
-                      variants={{
-                        hidden: { y: '100%', opacity: 0, rotate: 360 },
-                        visible: { y: 0, opacity: 1, rotate: 0 }
-                      }}
-                      animate={theme === 'light' ? 'visible' : 'hidden'}
-                      transition={{ stiffness: 50, type: 'spring' }}
-                    >
+                    <span className="absolute w-7 h-7 grid place-items-center">
                       <Sun />
-                    </m.span>
-                    <m.span
-                      initial="hidden"
-                      className="absolute w-7 h-7 grid place-items-center"
-                      variants={{
-                        hidden: { y: '100%', opacity: 0, rotate: 360 },
-                        visible: { y: 0, opacity: 1, rotate: 0 }
-                      }}
-                      animate={theme === 'dark' ? 'visible' : 'hidden'}
-                      transition={{ stiffness: 50, type: 'spring' }}
-                    >
+                    </span>
+                    <span className="absolute w-7 h-7 grid place-items-center">
                       <Moon />
-                    </m.span>
+                    </span>
                   </>
                 )}
               </button>
@@ -104,8 +85,7 @@ const Navbar = () => {
                   menuOpen ? 'Close navigation menu' : 'Open navigation menu'
                 }
                 className="icon-btn block md:hidden z-10"
-                onClick={toggleMenu}
-              >
+                onClick={toggleMenu}>
                 {menuOpen ? <Close /> : <Hamburger />}
               </button>
             </div>

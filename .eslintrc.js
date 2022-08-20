@@ -11,7 +11,8 @@ module.exports = {
     'standard-jsx',
     'standard-react',
     'plugin:@next/next/recommended',
-    'plugin:jsx-a11y/recommended'
+    'plugin:jsx-a11y/recommended',
+    'prettier-standard'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -25,10 +26,13 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'jsx-a11y/anchor-is-valid': ['error', {
-      components: ['Link'],
-      specialLink: ['hrefLeft', 'hrefRight'],
-      aspects: ['invalidHref', 'preferButton']
-    }]
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ]
   }
 }

@@ -6,9 +6,8 @@ summary: 'Step by step tutorial on how to setup Eslint and standard.js in your r
 ogImage: 'react'
 ---
 
-Consider you have a react.js project, and you want to setup ESLint with standard.js style guide. 
+Consider you have a react.js project, and you want to setup ESLint with standard.js style guide.
 Follow this step by step tutorial to setup ESLint and Standars.js like a pro.
-
 
 #### 1. Install eslint and eslint plugin for react
 
@@ -52,10 +51,8 @@ module.exports = {
 }
 ```
 
-
-> Note: `eslint-config-standard-jsx` by default will use single quote in jsx. 
+> Note: `eslint-config-standard-jsx` by default will use single quote in jsx.
 > I prefer to use double quote when writing jsx attribute, if you do so, add this rule to your `.eslintrc.js` file
-
 
 ```js:.eslintrc.js
 {
@@ -81,7 +78,7 @@ To make life easier, we can create scripts to run eslint with npm/yarn command. 
 
 ```json:package.json
 {
-  "scripts":{    
+  "scripts":{
     "lint": "eslint . --ext .js,.jsx",
     "lint:fix": "eslint . --fix --ext .js,.jsx"
   }
@@ -96,7 +93,7 @@ First you need to install [ESLint](https://marketplace.visualstudio.com/items?it
 Then add this code to your vscode `settings.json` . This will auto fix error when you save your file.
 
 ```json:.vscode/settings.json
-{  
+{
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }

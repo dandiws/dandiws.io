@@ -12,7 +12,7 @@ export interface BlogProps {
   articles: Post[]
 }
 
-export default function Blog ({ articles }: BlogProps) {
+export default function Blog({ articles }: BlogProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredArticles, setFilteredArticles] = useState(() => articles)
 
@@ -20,15 +20,16 @@ export default function Blog ({ articles }: BlogProps) {
     if (searchQuery === '') setFilteredArticles(() => articles)
 
     setFilteredArticles(() =>
-      articles.filter(article =>
+      articles.filter((article) =>
         article.title.toLowerCase().includes(searchQuery.toLowerCase().trim())
       )
     )
   }, [searchQuery])
 
-  const onInputChange = useCallback(e => setSearchQuery(e.target.value), [
-    setSearchQuery
-  ])
+  const onInputChange = useCallback(
+    (e) => setSearchQuery(e.target.value),
+    [setSearchQuery]
+  )
 
   return (
     <Container>

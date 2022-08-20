@@ -10,32 +10,28 @@ const SocialButtons = () => (
       href="https://github.com/dandiws"
       isExternal
       aria-label="Github profile"
-      className="icon-btn"
-    >
+      className="icon-btn">
       <Github />
     </Link>
     <Link
       href="https://id.linkedin.com/in/dandi-wiratsangka-5300a9132"
       isExternal
       aria-label="Linkedin profile"
-      className="icon-btn"
-    >
+      className="icon-btn">
       <Linkedin />
     </Link>
     <Link
-      href="https://instagram.com/dandiws"
+      href="https://instagracom/dandiws"
       isExternal
       aria-label="Instagram profile"
-      className="icon-btn"
-    >
+      className="icon-btn">
       <Instagram />
     </Link>
     <Link
       href="mailto:dandiwiratsangka@gmail.com"
       isExternal
       aria-label="Email to dandiwiratsangka@gmail.com"
-      className="icon-btn"
-    >
+      className="icon-btn">
       <Mail />
     </Link>
   </div>

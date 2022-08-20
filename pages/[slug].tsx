@@ -11,8 +11,8 @@ import { createOgImageUrl } from 'utils/og-image'
 import { NextSeo } from 'next-seo'
 
 export interface MdxLayoutProps {
-  frontMatter: { [x: string]: any };
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  frontMatter: { [x: string]: any }
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
 export const MdxLayout = ({ frontMatter, source }: MdxLayoutProps) => {
@@ -22,9 +22,11 @@ export const MdxLayout = ({ frontMatter, source }: MdxLayoutProps) => {
         title={frontMatter.title}
         description={frontMatter.description}
         openGraph={{
-          images: [{
-            url: createOgImageUrl(frontMatter.title)
-          }]
+          images: [
+            {
+              url: createOgImageUrl(frontMatter.title)
+            }
+          ]
         }}
       />
       <MDXRemote {...source} />

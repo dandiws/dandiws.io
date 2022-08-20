@@ -26,7 +26,7 @@ const Cmdk = () => {
     const down = (e: globalThis.KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
-        setOpen(open => !open)
+        setOpen((open) => !open)
       }
     }
 
@@ -53,7 +53,7 @@ const Cmdk = () => {
   }
 
   const pushToPage = (page: string) => {
-    setPages(pages => {
+    setPages((pages) => {
       const currentPage = pages[pages.length - 1]
       if (currentPage === page) {
         return pages
@@ -67,7 +67,7 @@ const Cmdk = () => {
   const handleToggleAccent = () => pushToPage('accents')
 
   const backToPreviousPage = () => {
-    setPages(pages => pages.slice(0, -1))
+    setPages((pages) => pages.slice(0, -1))
     setSearch('')
   }
 
@@ -110,8 +110,7 @@ const Cmdk = () => {
     <Command.Dialog
       open={open}
       onOpenChange={setOpen}
-      onKeyDown={handleKeydown}
-    >
+      onKeyDown={handleKeydown}>
       <div cmdk-header="">
         <Command.Input
           value={search}
@@ -128,12 +127,11 @@ const Cmdk = () => {
         {!page && (
           <>
             <Command.Group heading="Navigation">
-              {CMDK_MENU_ITEMS.map(menu => (
+              {CMDK_MENU_ITEMS.map((menu) => (
                 <Command.Item
                   key={menu.name + menu.href}
                   value={menu.name}
-                  onSelect={handleMenuSelect(menu)}
-                >
+                  onSelect={handleMenuSelect(menu)}>
                   {menu.name}
                 </Command.Item>
               ))}
@@ -163,8 +161,7 @@ const Cmdk = () => {
                   href: 'https://github.com/dandiws/dandiws.io',
                   name: 'Github Source Code',
                   isExternal: true
-                })}
-              >
+                })}>
                 <Github />
                 <span className="ml-2">Source code</span>
               </Command.Item>
@@ -173,45 +170,40 @@ const Cmdk = () => {
         )}
         {page === 'accents' && (
           <>
-            {accents.map(color => (
+            {accents.map((color) => (
               <Command.Item
                 key={color}
                 value={color}
-                onSelect={() => setAccent(color)}
-              >
-                {accent === color
-                  ? (
-                    <svg
-                      data-accent={color}
-                      className="text-accent h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path
-                        fill="currentColor"
-                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.997-6l7.07-7.071-1.414-1.414-5.656 5.657-2.829-2.829-1.414 1.414L11.003 16z"
-                      />
-                    </svg>
-                    )
-                  : (
-                    <svg
-                      data-accent={color}
-                      className="text-accent h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path
-                        fill="currentColor"
-                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
-                      />
-                    </svg>
-                    )}
+                onSelect={() => setAccent(color)}>
+                {accent === color ? (
+                  <svg
+                    data-accent={color}
+                    className="text-accent h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      fill="currentColor"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.997-6l7.07-7.071-1.414-1.414-5.656 5.657-2.829-2.829-1.414 1.414L11.003 16z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    data-accent={color}
+                    className="text-accent h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      fill="currentColor"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+                    />
+                  </svg>
+                )}
                 <span className="ml-2">{color}</span>
               </Command.Item>
             ))}

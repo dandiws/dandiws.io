@@ -19,9 +19,11 @@ const NotFound = ({ suggestesArticles: latestArticles }: NotFoundProps) => {
         title="404 - Dandi Wiratsangka"
         description="The page you're looking is not found"
         openGraph={{
-          images: [{
-            url: createOgImageUrl('404', undefined, 200)
-          }]
+          images: [
+            {
+              url: createOgImageUrl('404', undefined, 200)
+            }
+          ]
         }}
       />
       <Head>

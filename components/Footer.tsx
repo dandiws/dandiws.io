@@ -42,16 +42,15 @@ const Footer = () => {
               href="https://github.com/dandiws/dandiws.io"
               title="Github Repository"
               className="text-gray hover:text-gray-800 dark:hover:text-gray-300"
-              isExternal
-            >
+              isExternal>
               Github
             </Link>
-
           </div>
         </div>
         <div className="flex justify-between py-4 mt-4">
           <span className="flex items-center space-x-2">
-            <CopyrightIcon /> <span>Dandi W.S.</span> <span>2020 - {thisYear}</span>
+            <CopyrightIcon /> <span>Dandi W.S.</span>{' '}
+            <span>2020 - {thisYear}</span>
           </span>
           <AccentButtons />
         </div>

@@ -1,7 +1,7 @@
 import { forwardRef, HTMLProps, PropsWithChildren } from 'react'
 
 export interface LinkProps {
-  isExternal?: boolean;
+  isExternal?: boolean
 }
 
 const Link = forwardRef<
@@ -13,8 +13,7 @@ const Link = forwardRef<
       ref={ref}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      {...props}
-    >
+      {...props}>
       {children}
     </a>
   )
