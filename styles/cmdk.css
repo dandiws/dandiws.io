@@ -1,0 +1,71 @@
+
+[cmdk-overlay] {
+  @apply fixed bg-black/80 inset-0;
+}
+
+[cmdk-dialog] {
+  @apply fixed max-w-screen-sm px-8 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 focus:outline-none;
+}
+
+[cmdk-root] {
+  @apply bg-base rounded-md w-full overflow-hidden;
+}
+
+[cmdk-header] {
+  @apply flex items-center pr-4;
+}
+
+[cmdk-input] {
+  @apply border-0 w-full text-sm p-4 outline-none bg-transparent;
+  
+  &::placeholder {
+    @apply text-gray;
+  }
+}
+
+[cmdk-esc] {
+  @apply font-heading text-[10px] text-gray bg-base-2 py-1 px-2 rounded-md focus:outline-none focus:ring-1 focus:ring-accent-light/50;
+}
+
+[cmdk-item] {
+  @apply p-2 text-sm text-slate-700 
+    dark:text-slate-300 cursor-pointer 
+    select-none rounded-md transition-colors
+    flex items-center;
+
+  &[aria-selected='true'],
+  &:active  {
+    @apply bg-slate-200/75 dark:bg-gray-700/40;
+  }
+
+  &[aria-disabled='true'] {
+    @apply text-gray;
+    cursor: not-allowed;
+  }
+
+  & kbd {
+    @apply font-mono tracking-tight text-xs ml-auto;
+  }
+}
+
+[cmdk-list] {
+  @apply px-3 mb-3;
+  height: min(300px, var(--cmdk-list-height));
+  max-height: 400px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  transition: 100ms ease;
+  transition-property: height;
+
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+  }
+}
+
+[cmdk-group-heading] {
+  @apply select-none p-2 text-xs text-gray;
+}
+
+[cmdk-empty] {
+  @apply text-gray text-center p-8 text-sm select-none;
+}

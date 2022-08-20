@@ -5,17 +5,7 @@ import { ComponentProps, Fragment, useEffect, useMemo } from 'react'
 import { m, useAnimation } from 'framer-motion'
 import { fadeDownVariant } from 'utils/motions'
 import { useRouter } from 'next/router'
-
-// [slug, title, isExternal?]
-type MenuItem = [string, string] | [string, string, true]
-
-const MENU_ITEMS: MenuItem[] = [
-  ['/', 'Home'],
-  ['/blog', 'Blog'],
-  ['/about', 'About'],
-  ['/projects', 'Projects'],
-  ['/resume.pdf', 'Resume', true]
-]
+import { MENU_ITEMS } from 'contants/menu'
 
 export interface NavLinkProps extends ComponentProps<typeof Link> {
   activeClassName?: string;
@@ -50,14 +40,14 @@ export const NavLink = ({
 
 export const NavMenu = () => (
   <nav className="hidden md:flex md:nav-desktop">
-    {MENU_ITEMS.map(([href, title, isExternal]) => (
+    {MENU_ITEMS.map(({ href, name, isExternal }) => (
       <NavLink
         key={href}
         href={href}
         isExternal={isExternal}
         activeClassName="text-accent"
       >
-        {title}
+        {name}
       </NavLink>
     ))}
   </nav>
@@ -75,7 +65,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
 
   return (
     <nav className={clsx('nav-mobile md:hidden', show && 'show')} {...props}>
-      {MENU_ITEMS.map(([href, title, isExternal], index) => (
+      {MENU_ITEMS.map(({ href, name, isExternal }, index) => (
         <m.div
           key={href}
           variants={fadeDownVariant}
@@ -86,7 +76,7 @@ export const MobileNavMenu = ({ show, ...props }) => {
             delay: (index + 1) * duration * 0.5 + delayOffset
           }}
         >
-          <NavLink href={href} isExternal={isExternal} activeClassName="text-accent">{title}</NavLink>
+          <NavLink href={href} isExternal={isExternal} activeClassName="text-accent">{name}</NavLink>
         </m.div>
       ))}
     </nav>

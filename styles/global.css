@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+@import './prism.css';
+@import './cmdk.css';
+
+@import "tailwindcss/utilities";
+
 
 @layer base {
   [data-accent='red'] {
@@ -66,6 +71,27 @@
   .nav-mobile.show {
     @apply translate-x-0;
   }
+
+  .section-title {
+    @apply mb-8 text-2xl font-bold flex items-center;
+  }
+  
+  .section-title::before {
+    content: "";
+    @apply inline-block h-px bg-gray-300 dark:bg-gray-800 w-10 mr-4 -ml-14;
+  } 
+  
+  .postDetail {
+    @apply text-accent text-sm;
+  }
+  
+  .icon-btn {
+    @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-1 transition-colors h-7 w-7 grid place-content-center rounded-md;
+  }
+
+  .more-btn:hover .arrow {
+    @apply translate-x-2 transition-transform;
+  }
 }
 
 @layer utilities {
@@ -84,27 +110,14 @@
   .bg-accent {
     @apply bg-accent-light dark:bg-accent-dark;
   }
-}
 
-.section-title {
-  @apply mb-8 text-2xl font-bold flex items-center;
-}
-
-.section-title::before {
-  content: "";
-  @apply inline-block h-px bg-gray-300 dark:bg-gray-800 w-10 mr-4 -ml-14;
-} 
-
-.postDetail {
-  @apply text-accent text-sm;
-}
-
-.icon-btn {
-  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-1 transition-colors h-7 w-7 grid place-content-center rounded-md;
+  .text-gray {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+  
 }
 
 /* Remark code title */
-
 .remark-code-title {
   @apply px-3 text-xs mt-1 py-2 inline-block bg-gray-50 dark:bg-dark-100 border border-white dark:border-dark-200 text-gray-800 dark:text-gray-400;
   border-radius: 0.5em 0.5em 0 0;
@@ -115,12 +128,4 @@
   @apply mt-0;
   border-top-left-radius: 0;
   border-top-right-radius: 0.5em;
-}
-
-.text-gray {
-  @apply text-gray-600 dark:text-gray-400;
-}
-
-.more-btn:hover .arrow {
-  @apply translate-x-2 transition-transform;
 }
