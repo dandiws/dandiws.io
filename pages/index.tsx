@@ -135,12 +135,15 @@ export default function Home ({ latestArticles, featuredProjects }: HomeProps) {
           <h2 className="text-3xl mb-3">Get in touch</h2>
           <p className="text-gray">My inbox is always open for everyone!</p>
           <div className="mt-4 flex justify-center">
-            <a
-              className="px-8 font-heading py-2 rounded-full ring-1 text-accent ring-accent-light dark:ring-accent-dark hover:bg-accent hover:text-white transition-colors duration-300"
+            <m.a
+              whileTap={{
+                scale: 0.91
+              }}
+              className="px-8 inline-flex font-heading py-2 rounded-full ring-1 text-accent ring-accent-light dark:ring-accent-dark hover:bg-accent hover:text-white transition-colors duration-300"
               href="mailto:dandiwiratsangka.com"
             >
               Contact Me
-            </a>
+            </m.a>
           </div>
         </m.div>
       </Section>

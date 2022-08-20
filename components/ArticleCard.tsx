@@ -18,7 +18,7 @@ const ArticleCard = ({
   return (
     <Link href={`/blog/${post.slug}`} passHref>
       <m.a
-        className="p-6 bg-base-2 transition-shadow duration-200 hover:ring-2 hover:ring-accent-light/50 focus:outline-none focus:ring-2 focus:ring-accent-light/50 cursor-pointer rounded-md"
+        className="p-6 bg-base-2 transition-shadow duration-200 hover:ring-2 focus:ring-2 ring-offset-4 ring-offset-white dark:ring-offset-dark-200 ring-accent-light/50 focus:outline-none cursor-pointer rounded-md"
         {...props}
       >
 

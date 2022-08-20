@@ -65,39 +65,40 @@ const Navbar = () => {
             <NavMenu />
             <MobileNavMenu show={menuOpen} />
             <div className="flex space-x-2 ml-5">
-              {mounted && (
-                <m.button
-                  layout
-                  aria-label="Toggle theme"
-                  onClick={toggleTheme}
-                  className="icon-btn relative overflow-hidden"
-                >
-                  <m.span
-                    className="absolute w-7 h-7 grid place-items-center"
-                    initial="hidden"
-                    variants={{
-                      hidden: { y: '100%', opacity: 0, rotate: 360 },
-                      visible: { y: 0, opacity: 1, rotate: 0 }
-                    }}
-                    animate={theme === 'light' ? 'visible' : 'hidden'}
-                    transition={{ stiffness: 50, type: 'spring' }}
-                  >
-                    <Sun />
-                  </m.span>
-                  <m.span
-                    initial="hidden"
-                    className="absolute w-7 h-7 grid place-items-center"
-                    variants={{
-                      hidden: { y: '100%', opacity: 0, rotate: 360 },
-                      visible: { y: 0, opacity: 1, rotate: 0 }
-                    }}
-                    animate={theme === 'dark' ? 'visible' : 'hidden'}
-                    transition={{ stiffness: 50, type: 'spring' }}
-                  >
-                    <Moon />
-                  </m.span>
-                </m.button>
-              )}
+              <button
+                aria-label="Toggle theme"
+                onClick={toggleTheme}
+                className="icon-btn h-7 w-7 relative overflow-hidden"
+              >
+                {mounted && (
+                  <>
+                    <m.span
+                      className="absolute w-7 h-7 grid place-items-center"
+                      initial="hidden"
+                      variants={{
+                        hidden: { y: '100%', opacity: 0, rotate: 360 },
+                        visible: { y: 0, opacity: 1, rotate: 0 }
+                      }}
+                      animate={theme === 'light' ? 'visible' : 'hidden'}
+                      transition={{ stiffness: 50, type: 'spring' }}
+                    >
+                      <Sun />
+                    </m.span>
+                    <m.span
+                      initial="hidden"
+                      className="absolute w-7 h-7 grid place-items-center"
+                      variants={{
+                        hidden: { y: '100%', opacity: 0, rotate: 360 },
+                        visible: { y: 0, opacity: 1, rotate: 0 }
+                      }}
+                      animate={theme === 'dark' ? 'visible' : 'hidden'}
+                      transition={{ stiffness: 50, type: 'spring' }}
+                    >
+                      <Moon />
+                    </m.span>
+                  </>
+                )}
+              </button>
               <button
                 aria-label={
                   menuOpen ? 'Close navigation menu' : 'Open navigation menu'
