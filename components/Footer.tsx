@@ -7,7 +7,7 @@ import AccentButtons from './AccentButtons'
 const Footer = () => {
   const thisYear = new Date().getFullYear()
   return (
-    <footer className="text-gray text-sm">
+    <footer className="text-gray text-sm mt-8">
       <Container className="py-8 border-t border-gray-200 dark:border-dark-100">
         <div className="grid grid-cols-2">
           <div className="py-4 flex flex-col space-y-4">
