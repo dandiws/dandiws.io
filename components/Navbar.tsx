@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { useMounted } from 'lib/hooks/useMounted'
 import { useTheme } from 'next-themes'
 import Head from 'next/head'
@@ -69,16 +70,20 @@ const Navbar = () => {
                 aria-label="Toggle theme"
                 onClick={toggleTheme}
                 className="icon-btn h-7 w-7 relative overflow-hidden">
-                {mounted && (
-                  <>
-                    <span className="absolute w-7 h-7 grid place-items-center">
-                      <Sun />
-                    </span>
-                    <span className="absolute w-7 h-7 grid place-items-center">
-                      <Moon />
-                    </span>
-                  </>
-                )}
+                <span
+                  className={clsx(
+                    'absolute w-7 h-7 grid place-items-center transition-transform origin-bottom-right duration-300',
+                    mounted && theme === 'light' ? 'rotate-0' : 'rotate-180'
+                  )}>
+                  <Sun />
+                </span>
+                <span
+                  className={clsx(
+                    'absolute w-7 h-7 grid place-items-center transition-transform origin-bottom-left duration-300',
+                    mounted && theme === 'dark' ? 'rotate-0' : '-rotate-180'
+                  )}>
+                  <Moon />
+                </span>
               </button>
               <button
                 aria-label={

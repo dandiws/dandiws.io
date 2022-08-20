@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
+/** @type {import('tailwindcss').Config} **/
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -23,10 +24,28 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         heading: 'Space Grotesk'
+      },
+      animation: {
+        slideUp: 'slideUp .6s cubic-bezier(0.4, 0, 0.2, 1) 500ms forwards'
+      },
+      keyframes: {
+        slideUp: {
+          '0%': {
+            transform: ' translateY(100%)',
+            opacity: 0
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: 1
+          }
+        }
       }
     }
   },
-  plugins: [require('tailwind-scrollbar')],
+  plugins: [
+    require('tailwind-scrollbar'),
+    require('tailwindcss-animation-delay')
+  ],
   scrollbar: ['dark', 'rounded'],
   darkMode: 'class'
 }

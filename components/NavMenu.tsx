@@ -57,7 +57,15 @@ export const MobileNavMenu = ({ show, ...props }) => {
   return (
     <nav className={clsx('nav-mobile md:hidden', show && 'show')} {...props}>
       {MENU_ITEMS.map(({ href, name, isExternal }, index) => (
-        <div key={href}>
+        <div
+          key={href}
+          className={clsx(
+            'opacity-0 translate-y-full',
+            show && 'animate-slideUp'
+          )}
+          style={{
+            animationDelay: `${(index + 1) * 100}ms`
+          }}>
           <NavLink
             href={href}
             isExternal={isExternal}
