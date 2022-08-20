@@ -1,6 +1,7 @@
 import { Command } from 'cmdk'
 import { CMDK_MENU_ITEMS, MenuItem } from 'contants/menu'
 import { useAccent } from 'lib/accent-provider'
+import { useCmdkState } from 'lib/cmdk-provider'
 import { useTheme } from 'next-themes'
 import Router from 'next/router'
 import { KeyboardEvent, useCallback, useEffect, useMemo, useState } from 'react'
@@ -10,7 +11,7 @@ import Sun from './icons/Sun'
 
 const Cmdk = () => {
   const [search, setSearch] = useState('')
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useCmdkState()
   const { theme, setTheme } = useTheme()
   const { accents, accent, setAccent } = useAccent()
   const [pages, setPages] = useState([])
