@@ -1,5 +1,5 @@
 import SocialButtons from './SocialButtons'
-import Image from 'next/image'
+import Image from 'next/future/image'
 
 const BorderedAvatar = () => {
   return (

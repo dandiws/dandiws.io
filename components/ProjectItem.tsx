@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Divider from './Divider'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { Project } from 'utils/types'
 
 export interface ProjectItemProps {

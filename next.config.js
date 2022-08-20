@@ -15,6 +15,7 @@ module.exports = withBundleAnalyzer(
       dest: 'public',
       disable: process.env.NODE_ENV === 'development'
     },
-    swcMinify: true
+    swcMinify: true,
+    experimental: { images: { allowFutureImage: true } }
   })
 )

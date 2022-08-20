@@ -3,7 +3,7 @@
 import Blockquote from './Blockquote'
 import ExternalLink from './ExternalLink'
 import Author from './Author'
-import Image from 'next/image'
+import Image from 'next/future/image'
 
 const mdxcomponents = {
   h1: (props) => <h1 {...props} className="font-bold text-3xl mb-5" />,
