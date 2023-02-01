@@ -1,5 +1,5 @@
 import SocialButtons from './SocialButtons'
-import Image from 'next/image'
+import Image from 'next/future/image'
 
 const BorderedAvatar = () => {
   return (
@@ -20,7 +20,7 @@ const Author = () => (
     <div className="flex flex-col lg:flex-row items-center mb-8 lg:mb-0">
       <BorderedAvatar />
       <div className="flex lg:ml-6 text-center lg:text-left justify-center lg:justify-start flex-col">
-        <h2 className="mb-1 text-base font-semibold leading-5">
+        <h2 className="mb-1 text-base font-medium leading-5">
           Dandi Wiratsangka S
         </h2>
         <p className="text-gray">Software Engineer</p>

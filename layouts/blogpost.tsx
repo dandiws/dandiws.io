@@ -5,12 +5,12 @@ import dayjs from 'dayjs'
 import { ReactNode } from 'react'
 
 export interface BlogPostProps {
-  title: string;
-  publishedAt: string;
-  summary: string;
-  readingTime: string;
-  slug: string;
-  children: ReactNode;
+  title: string
+  publishedAt: string
+  summary: string
+  readingTime: string
+  slug: string
+  children: ReactNode
 }
 
 const BlogPost = ({

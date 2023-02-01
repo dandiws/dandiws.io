@@ -1,6 +1,10 @@
 import { Post } from './types'
 
-export const createOgImageUrl = (title: string, icon?: string, fontSize = 100) => {
+export const createOgImageUrl = (
+  title: string,
+  icon?: string,
+  fontSize = 100
+) => {
   return [
     `https://og-image-xi-seven.vercel.app/${title}.png?theme=light&md=0&fontSize=${fontSize}px`,
     icon ? `&images=${icon}` : ''

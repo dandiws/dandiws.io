@@ -14,8 +14,10 @@ const projects: Project[] = [
     name: 'Typefaster',
     url: 'https://typefaster.vercel.app',
     imageUrl: '/images/typefaster.png',
-    summary: 'Typefaster is a clean and minimal typing test built with React and Theme UI',
-    longerSummary: 'Typefaster is a clean and minimal typing test built with React and Theme UI. It has several feature such as multi-language support and color themes.',
+    summary:
+      'Typefaster is a clean and minimal typing test built with React and Theme UI',
+    longerSummary:
+      'Typefaster is a clean and minimal typing test built with React and Theme UI. It has several feature such as multi-language support and color themes.',
     year: 2020,
     featured: true,
     tags: ['React', 'Theme UI'],
@@ -25,8 +27,10 @@ const projects: Project[] = [
     name: 'Dandiws.io',
     url: 'https://github.com/dandiws/dandiws.io',
     imageUrl: '/images/dandiwsio.png',
-    summary: 'Dandiws.io is my personal website built with Next.js and deployed on vercel.',
-    longerSummary: 'Dandiws.io is my personal website built with Next.js and deployed on vercel. The source code is available on github.',
+    summary:
+      'Dandiws.io is my personal website built with Next.js and deployed on vercel.',
+    longerSummary:
+      'Dandiws.io is my personal website built with Next.js and deployed on vercel. The source code is available on github.',
     year: 2020,
     featured: true,
     tags: ['React', 'Next.js', 'MDX', 'Chakra UI'],
@@ -43,7 +47,8 @@ const projects: Project[] = [
   {
     name: 'svelte-audio-player',
     url: 'https://svelte-audio-player.vercel.app',
-    summary: 'Component that wraps html audio tag for building custom audio player.',
+    summary:
+      'Component that wraps html audio tag for building custom audio player.',
     year: 2022,
     githubUrl: 'https://github.com/dandiws/svelte-audio-player'
   }

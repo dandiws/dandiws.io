@@ -1,38 +1,35 @@
 import dayjs from 'dayjs'
-import { HTMLMotionProps, m } from 'framer-motion'
+
 import Link from 'next/link'
 import { Post } from 'utils/types'
 import Divider from './Divider'
 import ViewCounter from './ViewCounter'
 
 export interface ArticleCardProps {
-  post: Post,
+  post: Post
 }
 
-const ArticleCard = ({ post, ...props }: ArticleCardProps & HTMLMotionProps<'div'>) => {
+const ArticleCard = ({ post, ...props }: ArticleCardProps) => {
   const publishedAt = dayjs(post.publishedAt).format('DD MMMM YYYY')
 
   return (
-    <m.div className="py-6" {...props}>
-      <div className="flex mb-2">
-        <span className="postDetail">
-          {publishedAt}
-        </span>
-        <Divider />
-        <span className="postDetail">
-          <ViewCounter slug={post.slug} readOnly />
-        </span>
-      </div>
-      <div>
-
-        <h2 className="cursor-pointer hover:text-accent hover:underline mb-3 text-xl">
-          <Link href={`/blog/${post.slug}`}>
-            {post.title}
-          </Link>
-        </h2>
-        <p className="text-gray">{post.summary}</p>
-      </div>
-    </m.div>
+    <Link href={`/blog/${post.slug}`} passHref>
+      <a
+        className="p-6 bg-base-2 transition-shadow duration-200 hover:ring-2 focus:ring-2 ring-offset-4 ring-offset-white dark:ring-offset-dark-200 ring-accent-light/50 focus:outline-none cursor-pointer rounded-md"
+        {...props}>
+        <div className="flex mb-2">
+          <span className="postDetail">{publishedAt}</span>
+          <Divider />
+          <span className="postDetail">
+            <ViewCounter slug={post.slug} readOnly />
+          </span>
+        </div>
+        <div>
+          <h2 className="mb-3 text-lg">{post.title}</h2>
+          <p className="text-gray">{post.summary}</p>
+        </div>
+      </a>
+    </Link>
   )
 }
 

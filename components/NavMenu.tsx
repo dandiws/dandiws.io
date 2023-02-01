@@ -1,36 +1,38 @@
-import Link from './Link'
-import NextLink from 'next/link'
 import clsx from 'clsx'
-import { ComponentProps, Fragment, useEffect, useMemo } from 'react'
-import { m, useAnimation } from 'framer-motion'
-import { fadeDownVariant } from 'utils/motions'
+import { MENU_ITEMS } from 'contants/menu'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import { ComponentProps, Fragment, useMemo } from 'react'
+import Link from './Link'
 
-// [slug, title, isExternal?]
-type MenuItem = [string, string] | [string, string, true]
-
-const MENU_ITEMS: MenuItem[] = [
-  ['/blog', 'Blog'],
-  ['/about', 'About'],
-  ['/projects', 'Projects'],
-  ['/resume.pdf', 'Resume', true]
-]
+export interface NavLinkProps extends ComponentProps<typeof Link> {
+  activeClassName?: string
+}
 
 export const NavLink = ({
   href,
   children,
+  activeClassName,
   ...props
-}: ComponentProps<typeof Link>) => {
+}: NavLinkProps) => {
+  const { asPath } = useRouter()
+
+  const active = useMemo(() => asPath === href, [asPath])
+
   const [Root, rootProps] = useMemo(() => {
-    return props.isExternal ? [Fragment, null] : [NextLink, { href, passHref: true }]
+    return props.isExternal
+      ? [Fragment, null]
+      : [NextLink, { href, passHref: true, activeClassNam: 'active' }]
   }, [props.isExternal])
 
   return (
     <Root {...rootProps}>
       <Link
-        className="cursor-pointer block mx-5 my-3 md:my-0 hover:text-accent"
+        className={`cursor-pointer block mx-5 my-3 md:my-0 hover:text-accent ${
+          active && activeClassName ? activeClassName : ''
+        }`}
         href={href}
-        {...props}
-      >
+        {...props}>
         {children}
       </Link>
     </Root>
@@ -39,39 +41,38 @@ export const NavLink = ({
 
 export const NavMenu = () => (
   <nav className="hidden md:flex md:nav-desktop">
-    {MENU_ITEMS.map(([href, title, isExternal]) => (
-      <NavLink key={href} href={href} isExternal={isExternal}>
-        {title}
+    {MENU_ITEMS.map(({ href, name, isExternal }) => (
+      <NavLink
+        key={href}
+        href={href}
+        isExternal={isExternal}
+        activeClassName="text-accent">
+        {name}
       </NavLink>
     ))}
   </nav>
 )
 
 export const MobileNavMenu = ({ show, ...props }) => {
-  const controls = useAnimation()
-  const duration = 0.25
-  const delayOffset = 0.2
-
-  useEffect(() => {
-    if (show) controls.start('visible')
-    else controls.set('hidden')
-  }, [show])
-
   return (
     <nav className={clsx('nav-mobile md:hidden', show && 'show')} {...props}>
-      {MENU_ITEMS.map(([href, title, isExternal], index) => (
-        <m.div
+      {MENU_ITEMS.map(({ href, name, isExternal }, index) => (
+        <div
           key={href}
-          variants={fadeDownVariant}
-          initial="hidden"
-          animate={controls}
-          transition={{
-            duration,
-            delay: (index + 1) * duration * 0.5 + delayOffset
-          }}
-        >
-          <NavLink href={href} isExternal={isExternal}>{title}</NavLink>
-        </m.div>
+          className={clsx(
+            'opacity-0 translate-y-full',
+            show && 'animate-slideUp'
+          )}
+          style={{
+            animationDelay: `${(index + 1) * 100}ms`
+          }}>
+          <NavLink
+            href={href}
+            isExternal={isExternal}
+            activeClassName="text-accent">
+            {name}
+          </NavLink>
+        </div>
       ))}
     </nav>
   )

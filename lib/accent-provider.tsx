@@ -37,9 +37,7 @@ export const AccentProvider: FC = ({ children }) => {
   const context = useAccentContext()
 
   return (
-    <AccentContext.Provider value={context}>
-      {children}
-    </AccentContext.Provider>
+    <AccentContext.Provider value={context}>{children}</AccentContext.Provider>
   )
 }
 

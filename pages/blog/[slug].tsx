@@ -15,16 +15,18 @@ import { NextSeo } from 'next-seo'
 import dayjs from 'dayjs'
 
 export interface BlogPostProps {
-  post: Post;
-  readingTime: string;
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  post: Post
+  readingTime: string
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
 const BlogPost = ({ source, post, readingTime }: BlogPostProps) => {
   return (
     <BlogPostLayout {...post} readingTime={readingTime}>
       <NextSeo
-        title={post.title} description={post.summary} openGraph={{
+        title={post.title}
+        description={post.summary}
+        openGraph={{
           title: post.title,
           description: post.summary,
           type: 'article',
@@ -32,9 +34,11 @@ const BlogPost = ({ source, post, readingTime }: BlogPostProps) => {
             publishedTime: dayjs(post.publishedAt).toISOString(),
             authors: ['https://github.com/dandiws']
           },
-          images: [{
-            url: post.ogImage
-          }]
+          images: [
+            {
+              url: post.ogImage
+            }
+          ]
         }}
       />
       <Head>

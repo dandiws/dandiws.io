@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import useSWR from 'swr'
 
-async function fetcher (...args: Parameters<typeof fetch>) {
+async function fetcher(...args: Parameters<typeof fetch>) {
   const res = await fetch(...args)
   return res.json()
 }
 
 interface ViewCounterProps {
-  slug: string,
+  slug: string
   readOnly?: boolean
 }
 
