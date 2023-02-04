@@ -4,11 +4,11 @@ import ArrowRightIcon from 'components/icons/ArrowRightIcon'
 import Link from 'components/Link'
 import ProjectList from 'components/ProjectList'
 import Section from 'components/Section'
-import { getLatestArticles } from 'utils/mdxUtils'
+import { allPosts } from 'contentlayer/generated'
 import { getFeaturedProjects } from 'utils/projects'
 
 export default function Page() {
-  const latestArticles = getLatestArticles(3)
+  const latestArticles = allPosts.slice(0, 3)
   const featuredProjects = getFeaturedProjects()
 
   return (

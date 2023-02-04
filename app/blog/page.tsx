@@ -1,10 +1,10 @@
 import BlogArticles from 'app/blog/BlogArticles'
-import { getAllArticles } from 'utils/mdxUtils'
+import { allPosts } from 'contentlayer/generated'
 import { BlogProvider } from './BlogContext'
 import BlogSearch from './BlogSearch'
 
 export default function Page() {
-  const articles = getAllArticles()
+  const articles = allPosts
 
   return (
     <BlogProvider articles={articles}>

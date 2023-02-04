@@ -1,8 +1,8 @@
 'use client'
 
+import { Post } from 'contentlayer/generated'
 import { useSearchParams } from 'next/navigation'
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { Post } from 'utils/types'
 
 const BlogContext = createContext(null)
 
