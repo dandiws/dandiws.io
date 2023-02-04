@@ -1,3 +1,5 @@
+'use client'
+
 import { useAccent } from 'lib/accent-provider'
 import { useMemo } from 'react'
 import clsx from 'clsx'

@@ -2,20 +2,19 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
-const withPWA = require('next-pwa')
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development'
+})
 
-// @ts-check
+const { withContentlayer } = require('next-contentlayer')
 
-/**
- * @type {import('next').NextConfig}
- **/
-module.exports = withBundleAnalyzer(
-  withPWA({
-    pwa: {
-      dest: 'public',
-      disable: process.env.NODE_ENV === 'development'
-    },
-    swcMinify: true,
-    experimental: { images: { allowFutureImage: true } }
-  })
-)
+/** @type import('next').NextConfig */
+const nextConfig = {
+  swcMinify: true,
+  experimental: {
+    appDir: true
+  }
+}
+
+module.exports = withBundleAnalyzer(withPWA(withContentlayer(nextConfig)))

@@ -5,7 +5,7 @@ import { Post } from './types'
 
 // POSTS_PATH is useful when you want to get the path to a specific file
 export const POSTS_PATH = path.join(process.cwd(), 'blog')
-export const PAGES_PATH = path.join(process.cwd(), 'pages')
+// export const PAGES_PATH = path.join(process.cwd(), 'pages')
 
 // postFilePaths is the list of all mdx files inside the POSTS_PATH directory
 export const postFilePaths = fs
@@ -13,9 +13,9 @@ export const postFilePaths = fs
   .filter((path) => /\.mdx?$/.test(path))
 
 // pageFilePaths is the list of all mdx files inside the PAGES_PATH directory
-export const pageFilePaths = fs
-  .readdirSync(PAGES_PATH)
-  .filter((path) => /\.mdx?$/.test(path))
+// export const pageFilePaths = fs
+//   .readdirSync(PAGES_PATH)
+//   .filter((path) => /\.mdx?$/.test(path))
 
 export const getAllArticles = (): Post[] => {
   return postFilePaths

@@ -1,40 +1,18 @@
 import ArticleList from 'components/ArticleList'
-import Container from 'components/Container'
 import ExternalLink from 'components/ExternalLink'
 import ArrowRightIcon from 'components/icons/ArrowRightIcon'
+import Link from 'components/Link'
 import ProjectList from 'components/ProjectList'
 import Section from 'components/Section'
-import { GetStaticProps } from 'next'
-import { NextSeo } from 'next-seo'
-import Head from 'next/head'
-import NextLink from 'next/link'
 import { getLatestArticles } from 'utils/mdxUtils'
-import { createOgImageUrl } from 'utils/og-image'
 import { getFeaturedProjects } from 'utils/projects'
-import { Post, Project } from 'utils/types'
 
-interface HomeProps {
-  latestArticles: Post[]
-  featuredProjects: Project[]
-}
+export default function Page() {
+  const latestArticles = getLatestArticles(3)
+  const featuredProjects = getFeaturedProjects()
 
-export default function Home({ latestArticles, featuredProjects }: HomeProps) {
   return (
-    <Container>
-      <Head>
-        <title>Dandi Wiratsangka</title>
-      </Head>
-      <NextSeo
-        title="Dandi Wiratsangka"
-        description="Dandi Wiratsangka's personal website"
-        openGraph={{
-          images: [
-            {
-              url: createOgImageUrl('Dandi Wiratsangka', undefined, 150)
-            }
-          ]
-        }}
-      />
+    <>
       <header className="py-32">
         <div className="mb-4 text-accent font-medium">Hello, my name is</div>
         <h1 className="mb-3 text-3xl md:text-6xl">Dandi Wiratsangka</h1>
@@ -51,24 +29,24 @@ export default function Home({ latestArticles, featuredProjects }: HomeProps) {
         <h2 className="section-title">Latest Articles</h2>
         <ArticleList posts={latestArticles} />
         <div className="flex mt-8">
-          <NextLink href="/blog" passHref>
-            <a className="more-btn text-sm flex flex-row text-gray hover:text-accent hover:underline underline-offset-2">
-              Browse more articles
-              <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
-            </a>
-          </NextLink>
+          <Link
+            href="/blog"
+            className="more-btn text-sm flex flex-row text-gray hover:text-accent hover:underline underline-offset-2">
+            Browse more articles
+            <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
+          </Link>
         </div>
       </Section>
       <Section>
         <h2 className="section-title">Projects</h2>
         <ProjectList projects={featuredProjects} />
         <div className="flex mt-14">
-          <NextLink href="/projects" passHref>
-            <a className="more-btn text-sm flex flex-row text-gray hover:text-accent hover:underline underline-offset-2">
-              See all projects
-              <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
-            </a>
-          </NextLink>
+          <Link
+            href="/projects"
+            className="more-btn text-sm flex flex-row text-gray hover:text-accent hover:underline underline-offset-2">
+            See all projects
+            <ArrowRightIcon aria-hidden className="arrow self-center ml-1" />
+          </Link>
         </div>
       </Section>
       <Section>
@@ -85,17 +63,6 @@ export default function Home({ latestArticles, featuredProjects }: HomeProps) {
         </div>
       </Section>
       <div className="mt-20" />
-    </Container>
+    </>
   )
-}
-
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const latestArticles = getLatestArticles(3)
-  const featuredProjects = getFeaturedProjects()
-  return {
-    props: {
-      latestArticles,
-      featuredProjects
-    }
-  }
 }

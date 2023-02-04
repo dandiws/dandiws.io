@@ -1,3 +1,5 @@
+'use client'
+
 import { Command } from 'cmdk'
 import { CMDK_MENU_ITEMS, MenuItem } from 'contants/menu'
 import { useAccent } from 'lib/accent-provider'

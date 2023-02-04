@@ -1,24 +1,38 @@
-import { forwardRef, HTMLProps, PropsWithChildren } from 'react'
+import NextLink from 'next/link'
+import { ComponentPropsWithRef } from 'react'
 
 export interface LinkProps {
   isExternal?: boolean
 }
 
-const Link = forwardRef<
-  HTMLAnchorElement,
-  PropsWithChildren<LinkProps> & HTMLProps<HTMLAnchorElement>
->(({ isExternal = false, children, ...props }, ref) => {
+// const Link = forwardRef<
+//   HTMLAnchorElement,
+//   PropsWithChildren<LinkProps> & HTMLProps<HTMLAnchorElement>
+// >(({ isExternal = false, children, ...props }, ref) => {
+//   return (
+//     <a
+//       ref={ref}
+//       target={isExternal ? '_blank' : undefined}
+//       rel={isExternal ? 'noopener noreferrer' : undefined}
+//       {...props}>
+//       {children}
+//     </a>
+//   )
+// })
+
+// Link.displayName = 'Link'
+
+function Link({
+  isExternal,
+  ...props
+}: ComponentPropsWithRef<typeof NextLink> & LinkProps) {
   return (
-    <a
-      ref={ref}
+    <NextLink
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      {...props}>
-      {children}
-    </a>
+      {...props}
+    />
   )
-})
-
-Link.displayName = 'Link'
+}
 
 export default Link
