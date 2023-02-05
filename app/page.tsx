@@ -6,6 +6,7 @@ import ProjectList from 'components/ProjectList'
 import Section from 'components/Section'
 import { allPosts } from 'contentlayer/generated'
 import { getFeaturedProjects } from 'utils/projects'
+import Balancer from 'react-wrap-balancer'
 
 export default function Page() {
   const latestArticles = allPosts.slice(0, 3)
@@ -15,15 +16,16 @@ export default function Page() {
     <>
       <header className="py-32">
         <div className="mb-4 text-accent font-medium">Hello, my name is</div>
-        <h1 className="mb-3 text-3xl md:text-6xl">Dandi Wiratsangka</h1>
-        <div className="text-gray leading-relaxed max-w-xl">
-          <p>
-            I'm a software engineer at{' '}
-            <ExternalLink href="https://glair.ai">glair</ExternalLink>. I make
-            web and mobile apps. This is where i write articles about anything
-            that might help someone. Hope you enjoy!
+        <h1 className="mb-6 text-4xl md:text-6xl">Dandi Wiratsangka</h1>
+        <Balancer className="text-slate-500 text-base md:text-xl">
+          <p className="leading-relaxed max-w-screen-md">
+            Tech enthusiast and a software engineer at{' '}
+            <ExternalLink href="https://glair.ai">glair.ai</ExternalLink>.
+            Constantly striving to create impactful web and mobile solutions.
+            This is my space to share my musings and insights on the world of
+            tech.
           </p>
-        </div>
+        </Balancer>
       </header>
       <Section>
         <h2 className="section-title">Latest Articles</h2>

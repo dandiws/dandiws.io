@@ -6,7 +6,10 @@ import Author from './Author'
 import Image from 'next/image'
 import { Code } from 'bright'
 
-Code.theme = 'github-dark-dimmed'
+Code.theme = {
+  light: 'material-lighter',
+  dark: 'github-dark-dimmed'
+}
 
 const mdxcomponents = {
   blockquote: (props) => <Blockquote mb={6} {...props} />,

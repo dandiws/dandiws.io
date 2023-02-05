@@ -4,7 +4,10 @@ import { Post } from 'contentlayer/generated'
 import { useSearchParams } from 'next/navigation'
 import { createContext, PropsWithChildren, useContext } from 'react'
 
-const BlogContext = createContext(null)
+const BlogContext = createContext<{
+  articles: Post[]
+  filteredArticles: Post[]
+}>(null)
 
 export function BlogProvider({
   children,
@@ -19,7 +22,7 @@ export function BlogProvider({
     : articles
 
   return (
-    <BlogContext.Provider value={{ articles: filteredArticles }}>
+    <BlogContext.Provider value={{ articles, filteredArticles }}>
       {children}
     </BlogContext.Provider>
   )

@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import Icon from '../Icon'
 
 const ExternalLink = (props: ComponentProps<typeof Icon>) => (
-  <Icon viewBox="0 0 24 24" {...props}>
+  <Icon viewBox="0 0 24 24" width={24} height={24} {...props}>
     <path fill="none" d="M0 0h24v24H0z" />
     <path
       fill="currentColor"

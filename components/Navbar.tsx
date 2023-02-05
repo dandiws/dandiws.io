@@ -14,7 +14,7 @@ const Navbar = () => {
             <NextLink href="/" aria-label="Home page">
               <DwLogo
                 fgclassname="fill-white dark:fill-dark-200"
-                className="cursor-pointer h-10 w-10 text-accent"
+                className="cursor-pointer h-[36px] w-[36px] text-accent"
               />
             </NextLink>
             <CmdkSearchButton />

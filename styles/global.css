@@ -1,7 +1,6 @@
 @import 'tailwindcss/base';
 
 @import 'tailwindcss/components';
-@import './prism.css';
 @import './cmdk.css';
 
 @import 'tailwindcss/utilities';
@@ -127,7 +126,7 @@
   }
 
   .bg-base-2 {
-    @apply bg-slate-50 dark:bg-dark-100;
+    @apply bg-gray-100 dark:bg-dark-100;
   }
 
   .text-accent {
@@ -143,15 +142,15 @@
   }
 }
 
-/* Remark code title */
-.remark-code-title {
-  @apply px-3 text-xs mt-1 py-2 inline-block bg-gray-50 dark:bg-dark-100 border border-white dark:border-dark-200 text-gray-800 dark:text-gray-400;
+/* Rehype code title */
+.rehype-code-title {
+  @apply px-3 text-xs mt-[1em] py-2 inline-block border-b border-gray-200 dark:border-dark-200 text-gray bg-[#FAFAFA] dark:bg-[#22272e];
+  background: ;
   border-radius: 0.5em 0.5em 0 0;
 }
 
-.remark-code-title + code[class*='language-'],
-.remark-code-title + pre[class*='language-'] {
-  @apply mt-0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0.5em;
+.rehype-code-title + [data-bright-theme],
+.rehype-code-title + [data-bright-theme] + [data-bright-theme] {
+  margin-top: 0 !important;
+  border-top-left-radius: 0 !important;
 }

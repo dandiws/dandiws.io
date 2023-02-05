@@ -33,7 +33,7 @@ const projects: Project[] = [
       'Dandiws.io is my personal website built with Next.js and deployed on vercel. The source code is available on github.',
     year: 2020,
     featured: true,
-    tags: ['React', 'Next.js', 'MDX', 'Chakra UI'],
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Typescript'],
     githubUrl: 'https://github.com/dandiws/dandiws.io'
   },
   {
@@ -50,6 +50,7 @@ const projects: Project[] = [
     summary:
       'Component that wraps html audio tag for building custom audio player.',
     year: 2022,
+    tags: ['Svelte'],
     githubUrl: 'https://github.com/dandiws/svelte-audio-player'
   }
 ]

@@ -48,5 +48,5 @@ module.exports = {
     require('tailwindcss-animation-delay')
   ],
   scrollbar: ['dark', 'rounded'],
-  darkMode: 'class'
+  darkMode: ['class', '[data-theme="dark"]']
 }

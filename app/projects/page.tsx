@@ -8,8 +8,12 @@ export default function Page() {
 
   return (
     <>
-      <header className="py-12">
+      <header className="py-12 mb-6">
         <h1 className="text-4xl mb-3 leading-normal">Projects</h1>
+        <p className="text-slate-500">
+          Curated array of personal software engineering projects crafted during
+          my leisure hours
+        </p>
       </header>
       <div className="space-y-12">
         {projects.map((project) => {

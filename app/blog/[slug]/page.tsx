@@ -5,6 +5,7 @@ import ViewCounter from 'components/ViewCounter'
 import { allPosts } from 'contentlayer/generated'
 import dayjs from 'dayjs'
 import { notFound } from 'next/navigation'
+import Balancer from 'react-wrap-balancer'
 
 async function getArticleBySlug(slug: string) {
   return allPosts.find((post) => post.slug === slug)
@@ -19,16 +20,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <div className="mx-auto px-8 max-w-screen-md">
       <div className="flex items-center justify-center flex-col text-center py-16">
-        <h1 className="mb-8 font-bold text-2xl md:text-4xl lg:text-4xl">
-          {post.title}
-        </h1>
+        <Balancer>
+          <h1 className="mb-8 font-bold text-2xl md:text-4xl lg:text-4xl">
+            {post.title}
+          </h1>
+        </Balancer>
         <div className="mb-10">
           <div className="flex flex-nowrap">
             <span className="postDetail">
               {dayjs(post.publishedAt).format('DD MMMM YYYY')}
             </span>
             <Divider className="mx-2 md:mx-3" />
-            <span className="postDetail">{post.readingTime.words}</span>
+            <span className="postDetail">{post.readingTime}</span>
             <Divider className="mx-2 md:mx-3" />
             <span className="postDetail">
               <ViewCounter slug={params.slug} />

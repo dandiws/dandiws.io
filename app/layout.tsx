@@ -1,4 +1,4 @@
-import { Inter, Space_Grotesk } from '@next/font/google'
+import { Inter, Space_Grotesk as SpaceGrotesk } from '@next/font/google'
 import clsx from 'clsx'
 import CmdkLazy from 'components/CmdkLazy'
 import Container from 'components/Container'
@@ -16,7 +16,7 @@ const inter = Inter({
   subsets: ['latin']
 })
 
-const spaceGrotek = Space_Grotesk({
+const spaceGrotek = SpaceGrotesk({
   weight: '700',
   variable: '--font-space-grotesk',
   subsets: ['latin']
@@ -24,7 +24,7 @@ const spaceGrotek = Space_Grotesk({
 
 export default function RootLayout({ children }: PropsWithChildren<{}>) {
   return (
-    <ServerThemeProvider attribute="class">
+    <ServerThemeProvider disableTransitionOnChange>
       <html lang="en" className={clsx(inter.variable, spaceGrotek.variable)}>
         <head />
         <body>

@@ -10,7 +10,10 @@ import rehypeCodeTitles from 'rehype-code-titles'
 
 const computedFields: ComputedFields = {
   slug: { type: 'string', resolve: (doc) => doc._raw.flattenedPath },
-  readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) }
+  readingTime: {
+    type: 'string',
+    resolve: (doc) => readingTime(doc.body.raw).text
+  }
 }
 
 const Post = defineDocumentType(() => ({
