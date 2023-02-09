@@ -13,9 +13,8 @@ export default function Page() {
             width={200}
             height={200}
             src="/images/avatar.jpg"
-            layout="fixed"
             alt="Picture of Dandi Wiratsangka"
-            className="rounded-md aspect-square w-[230px] flex-shrink-0 self-start filter saturate-0"
+            className="rounded-md mx-auto aspect-square w-[160px] md:w-[230px] flex-shrink-0 self-start filter saturate-0"
           />
           <div>
             <p>
@@ -39,4 +38,9 @@ export default function Page() {
       </article>
     </>
   )
+}
+
+export const metadata = {
+  title: 'About Me - Dandi Wiratsangka',
+  description: 'A brief summary of who I am'
 }

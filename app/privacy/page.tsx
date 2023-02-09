@@ -15,3 +15,7 @@ export default function Page() {
     </>
   )
 }
+
+export const metadata = {
+  title: 'Privacy Policy - Dandi Wiratsangka'
+}

@@ -24,7 +24,7 @@ const spaceGrotek = SpaceGrotesk({
 
 export default function RootLayout({ children }: PropsWithChildren<{}>) {
   return (
-    <ServerThemeProvider disableTransitionOnChange>
+    <ServerThemeProvider disableTransitionOnChange defaultTheme="dark">
       <html lang="en" className={clsx(inter.variable, spaceGrotek.variable)}>
         <head />
         <body>

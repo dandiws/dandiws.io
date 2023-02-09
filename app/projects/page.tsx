@@ -65,3 +65,9 @@ export default function Page() {
     </>
   )
 }
+
+export const metadata = {
+  title: 'Projects - Dandi Wiratsangka',
+  description:
+    'Curated array of personal software engineering projects crafted during my leisure hours'
+}

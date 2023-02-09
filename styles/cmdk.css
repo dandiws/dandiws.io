@@ -29,8 +29,7 @@
 [cmdk-item] {
   @apply p-2 text-sm text-slate-700 
     dark:text-slate-300 cursor-pointer 
-    select-none rounded-md transition-colors
-    flex items-center;
+    select-none rounded-md flex items-center;
 
   &[aria-selected='true'],
   &:active {

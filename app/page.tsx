@@ -17,15 +17,17 @@ export default function Page() {
       <header className="py-32">
         <div className="mb-4 text-accent font-medium">Hello, my name is</div>
         <h1 className="mb-6 text-4xl md:text-6xl">Dandi Wiratsangka</h1>
-        <Balancer className="text-slate-500 text-base md:text-xl">
+        <div className="text-slate-500 text-base md:text-xl">
           <p className="leading-relaxed max-w-screen-md">
-            Tech enthusiast and a software engineer at{' '}
-            <ExternalLink href="https://glair.ai">glair.ai</ExternalLink>.
-            Constantly striving to create impactful web and mobile solutions.
-            This is my space to share my musings and insights on the world of
-            tech.
+            <Balancer>
+              Tech enthusiast and a software engineer at{' '}
+              <ExternalLink href="https://glair.ai">glair.ai</ExternalLink>.
+              Constantly striving to create impactful web and mobile solutions.
+              This is my space to share my musings and insights on the world of
+              tech.
+            </Balancer>
           </p>
-        </Balancer>
+        </div>
       </header>
       <Section>
         <h2 className="section-title">Latest Articles</h2>
@@ -57,7 +59,7 @@ export default function Page() {
           <p className="text-gray">My inbox is always open for everyone!</p>
           <div className="mt-4 flex justify-center">
             <a
-              className="px-8 inline-flex font-heading py-2 rounded-full ring-1 text-accent ring-accent-light dark:ring-accent-dark hover:bg-accent hover:text-white transition-colors duration-300"
+              className="px-8 inline-flex font-heading py-2 rounded-full ring-1 text-accent ring-accent-light dark:ring-accent-dark hover:bg-accent hover:text-white"
               href="mailto:dandiwiratsangka.com">
               Contact Me
             </a>

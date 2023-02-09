@@ -63,7 +63,8 @@ export const MobileNavMenu = (props) => {
             <NavLink
               href={href}
               isExternal={isExternal}
-              activeClassName="text-accent">
+              activeClassName="text-accent"
+              onClick={toggleMenu}>
               {name}
             </NavLink>
           </div>

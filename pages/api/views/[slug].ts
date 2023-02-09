@@ -1,9 +1,16 @@
-import db from 'lib/firebase'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { db } from 'lib/firebase'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const slug = req.query.slug as string
+  if (process.env.NODE_ENV === 'development') {
+    return res.status(200).json({ total: 999 })
+  }
 
+  if (!db) {
+    throw new Error('Firebase has not been initialized')
+  }
+
+  const slug = req.query.slug as string
   if (req.method === 'POST') {
     const ref = db.ref('views').child(slug)
     const { snapshot } = await ref.transaction((currentViews) => {
@@ -25,4 +32,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(200).json({ total: views })
   }
+
+  return res.status(200).json({ total: 1998 })
 }

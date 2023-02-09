@@ -26,8 +26,9 @@ function Link({
   isExternal,
   ...props
 }: ComponentPropsWithRef<typeof NextLink> & LinkProps) {
+  const Component = (isExternal ? 'a' : NextLink) as any
   return (
-    <NextLink
+    <Component
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       {...props}

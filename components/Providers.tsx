@@ -8,7 +8,7 @@ import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'
 
 export default function Providers({ children }: PropsWithChildren<{}>) {
   return (
-    <ThemeProvider disableTransitionOnChange>
+    <ThemeProvider disableTransitionOnChange defaultTheme="dark">
       <ReactWrapBalancerProvider>
         <AccentProvider>
           <CmdkProvider>{children}</CmdkProvider>

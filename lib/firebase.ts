@@ -11,8 +11,7 @@ if (!admin.apps.length) {
       databaseURL: process.env.FIREBASE_DATABASE_URL
     })
   } catch (error) {
-    console.log('error')
+    console.log(error)
   }
 }
-
-export default admin.database()
+export const db = admin.apps.length ? admin.database() : null
