@@ -3,10 +3,11 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} **/
 module.exports = {
   content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './layouts/**/*.{js,ts,jsx,tsx}',
-    './blog/**/*.mdx}',
+    './blog/**/*.mdx',
     './utils/mdxcomponents.js'
   ],
   theme: {
@@ -22,8 +23,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        heading: 'Space Grotesk'
+        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+        heading: 'var(--font-space-grotesk)'
       },
       animation: {
         slideUp: 'slideUp .6s cubic-bezier(0.4, 0, 0.2, 1) 500ms forwards'
@@ -47,5 +48,5 @@ module.exports = {
     require('tailwindcss-animation-delay')
   ],
   scrollbar: ['dark', 'rounded'],
-  darkMode: 'class'
+  darkMode: ['class', '[data-theme="dark"]']
 }

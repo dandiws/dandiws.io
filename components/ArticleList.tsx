@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Post } from 'utils/types'
+import { Post } from 'contentlayer/generated'
 import ArticleCard from './ArticleCard'
 
 export interface ArticleListProps {

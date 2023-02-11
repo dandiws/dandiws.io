@@ -1,4 +1,10 @@
-import { createContext, FC, useContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState
+} from 'react'
 
 const ACCENT_STORAGE_KEY = 'accent'
 const ACCENTS = ['green', 'red', 'blue', 'purple', 'yellow'] as const
@@ -33,7 +39,7 @@ type AccentContextType = ReturnType<typeof useAccentContext>
 
 export const AccentContext = createContext<AccentContextType>(null as any)
 
-export const AccentProvider: FC = ({ children }) => {
+export const AccentProvider = ({ children }: PropsWithChildren<{}>) => {
   const context = useAccentContext()
 
   return (

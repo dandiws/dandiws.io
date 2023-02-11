@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Divider from './Divider'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { Project } from 'utils/types'
 
 export interface ProjectItemProps {
@@ -26,7 +26,12 @@ const ProjectItem = ({ project, reversed = false }: ProjectItemProps) => {
           <span className="postDetail">{project.year}</span>
         </div>
         <h3 className="cursor-pointer hover:text-accent hover:underline text-xl mb-3">
-          <a href={project.url} target="__blank">
+          <a
+            className={clsx({
+              typing: project.name.toLowerCase() === 'typefaster'
+            })}
+            href={project.url}
+            target="__blank">
             {project.name}
           </a>
         </h3>

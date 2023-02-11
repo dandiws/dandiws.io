@@ -1,10 +1,6 @@
-import React, {
-  createContext,
-  PropsWithChildren,
-  useCallback,
-  useContext,
-  useState
-} from 'react'
+'use client'
+
+import React, { createContext, useContext, useState } from 'react'
 
 const CmdkContext =
   createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>(

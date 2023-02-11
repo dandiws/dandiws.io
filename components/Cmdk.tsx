@@ -1,15 +1,18 @@
+'use client'
+
 import { Command } from 'cmdk'
 import { CMDK_MENU_ITEMS, MenuItem } from 'contants/menu'
 import { useAccent } from 'lib/accent-provider'
 import { useCmdkState } from 'lib/cmdk-provider'
 import { useTheme } from 'next-themes'
-import Router from 'next/router'
+import { useRouter } from 'next/navigation'
 import { KeyboardEvent, useCallback, useEffect, useMemo, useState } from 'react'
 import Github from './icons/Github'
 import Moon from './icons/Moon'
 import Sun from './icons/Sun'
 
 const Cmdk = () => {
+  const router = useRouter()
   const [search, setSearch] = useState('')
   const [open, setOpen] = useCmdkState()
   const { theme, setTheme } = useTheme()
@@ -38,11 +41,11 @@ const Cmdk = () => {
   const handleMenuSelect = useCallback(
     (menu: MenuItem) => () => {
       if (menu.isExternal) {
-        return window.open(menu.href)
+        window.open(menu.href)
       } else {
-        Router.push(menu.href)
+        router.push(menu.href)
+        setOpen(false)
       }
-      setOpen(false)
       setSearch('')
     },
     []
