@@ -3,7 +3,14 @@
 import Search from 'components/icons/Search'
 import { Spinner } from 'components/icons/Spinner'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { ChangeEvent, useCallback, useTransition } from 'react'
+import {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useTransition
+} from 'react'
+import debounce from 'lodash.debounce'
 
 export default function BlogSearch({
   shownCount,
@@ -27,6 +34,14 @@ export default function BlogSearch({
     })
   }, [])
 
+  const debouncedChangeHandler = useMemo(() => debounce(handleChange, 200), [])
+
+  useEffect(() => {
+    return () => {
+      debouncedChangeHandler.cancel()
+    }
+  }, [])
+
   return (
     <div className="flex flex-col md:flex-row-reverse md:items-center justify-between my-8 gap-4">
       <div className="relative w-full md:max-w-xs">
@@ -34,7 +49,7 @@ export default function BlogSearch({
           className="px-3 h-10 w-full rounded-md bg-gray-100 dark:bg-gray-800 outline-none focus:ring pr-10"
           type="search"
           placeholder="Search articles..."
-          onChange={handleChange}
+          onChange={debouncedChangeHandler}
           defaultValue={searchTerm}
         />
         <span className="grid place-items-center h-10 w-10 absolute top-0 right-0 text-slate-500">

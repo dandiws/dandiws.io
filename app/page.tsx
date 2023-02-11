@@ -70,3 +70,26 @@ export default function Page() {
     </>
   )
 }
+
+const ogImage =
+  'api/og?background=https://images.unsplash.com/photo-1552688468-d87e6f7a58f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
+
+export const metadata = {
+  title: 'Dandi Wiratsangka',
+  description: `Dandi Wiratsangka's personal website`,
+  openGraph: {
+    title: 'Dandi Wiratsangka' as any,
+    type: 'website',
+    url: 'https://dandiws.my.id',
+    description: `Dandi Wiratsangka's personal website`,
+    images: [
+      {
+        url: ogImage
+      }
+    ]
+  },
+  twitter: {
+    images: ogImage,
+    card: 'summary_large_image'
+  }
+}

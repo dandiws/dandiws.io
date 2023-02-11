@@ -154,3 +154,29 @@
   margin-top: 0 !important;
   border-top-left-radius: 0 !important;
 }
+
+.typing {
+  @apply border-r-2 border-r-accent-light dark:border-r-accent-dark pr-[3px];
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    @apply border-accent-light dark:border-accent-dark;
+  }
+}

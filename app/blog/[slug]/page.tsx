@@ -54,25 +54,31 @@ export async function generateMetadata({
   params
 }: WithParams): Promise<Metadata> {
   const post = await getArticleBySlug(params.slug)
+  const ogImage = `https://dandiws.my.id/api/og?slug=${params.slug}`
 
   return {
     title: post.title,
     description: post.summary,
     twitter: {
       title: post.title,
-      card: 'summary',
+      card: 'summary_large_image',
       creator: '@dandews',
       description: post.summary,
-      images: {
-        url: post.image,
-        secureUrl: post.image
-      }
+      images: ogImage
     },
     openGraph: {
+      title: {
+        absolute: post.title
+      },
       description: post.summary,
-      images: {
-        url: post.image
-      }
+      publishedTime: post.publishedAt,
+      type: 'article',
+      url: `https://dandiws.my.id/blog/${params.slug}`,
+      images: [
+        {
+          url: ogImage
+        }
+      ]
     }
   }
 }

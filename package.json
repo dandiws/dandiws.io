@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@next/font": "^13.1.6",
+    "@vercel/og": "^0.1.0",
     "bright": "^0.6.0",
     "clsx": "^1.1.1",
     "cmdk": "^0.1.19",

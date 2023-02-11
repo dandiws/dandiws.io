@@ -17,10 +17,10 @@ const Navbar = () => {
                 className="cursor-pointer h-[36px] w-[36px] text-accent"
               />
             </NextLink>
-            <CmdkSearchButton />
+            <NavMenu />
           </div>
           <div className="flex items-center text-gray ml-auto">
-            <NavMenu />
+            <CmdkSearchButton />
             <ThemeToggler />
             <MobileNavMenu />
           </div>

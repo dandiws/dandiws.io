@@ -28,7 +28,7 @@ export const NavLink = ({ activeClassName, ...props }: NavLinkProps) => {
 }
 
 export const NavMenu = () => (
-  <nav className="hidden md:flex md:nav-desktop">
+  <nav className="hidden text-gray md:flex md:nav-desktop ml-4">
     {MENU_ITEMS.map(({ href, name, isExternal }) => (
       <NavLink
         key={href}
