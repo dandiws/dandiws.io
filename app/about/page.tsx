@@ -40,7 +40,21 @@ export default function Page() {
   )
 }
 
+const ogImage =
+  'https://dandiws.my.id/api/og?background=https://images.unsplash.com/photo-1552688468-d87e6f7a58f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80&title=About%20Me'
+
 export const metadata = {
   title: 'About Me - Dandi Wiratsangka',
-  description: 'A brief summary of who I am'
+  description: `A brief summary of who I am`,
+  openGraph: {
+    images: [
+      {
+        url: ogImage
+      }
+    ]
+  },
+  twitter: {
+    images: ogImage,
+    card: 'summary_large_image'
+  }
 }
