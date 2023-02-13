@@ -10,10 +10,9 @@ export function useMultiTheme() {
     setTheme: setOriginalTheme,
     ...rest
   } = useTheme()
-  const [theme, accent] = originalTheme.split('-') as [
-    PrimaryTheme,
-    AccentTheme
-  ]
+  const [theme, accent] = (
+    originalTheme ? originalTheme.split('-') : ['', '']
+  ) as [PrimaryTheme, AccentTheme]
 
   const setTheme = useCallback((theme: PrimaryTheme) => {
     setOriginalTheme([theme, accent].join('-'))
