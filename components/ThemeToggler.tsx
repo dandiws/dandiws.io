@@ -2,18 +2,13 @@
 
 import clsx from 'clsx'
 import { useMounted } from 'lib/hooks/useMounted'
-import { useTheme } from 'next-themes'
-import { useCallback } from 'react'
+import { useMultiTheme } from 'lib/hooks/useMultiTheme'
 import Moon from './icons/Moon'
 import Sun from './icons/Sun'
 
 export default function ThemeToggler() {
-  const { theme, setTheme } = useTheme()
+  const { theme, toggleTheme } = useMultiTheme()
   const mounted = useMounted()
-
-  const toggleTheme = useCallback(() => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }, [theme])
 
   return (
     <div className="flex space-x-2 mx-5 md:mr-0">

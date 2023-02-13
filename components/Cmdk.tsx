@@ -2,8 +2,8 @@
 
 import { Command } from 'cmdk'
 import { CMDK_MENU_ITEMS, MenuItem } from 'contants/menu'
-import { useAccent } from 'lib/accent-provider'
 import { useCmdkState } from 'lib/cmdk-provider'
+import { useMultiTheme } from 'lib/hooks/useMultiTheme'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { KeyboardEvent, useCallback, useEffect, useMemo, useState } from 'react'
@@ -16,7 +16,7 @@ const Cmdk = () => {
   const [search, setSearch] = useState('')
   const [open, setOpen] = useCmdkState()
   const { theme, setTheme } = useTheme()
-  const { accents, accent, setAccent } = useAccent()
+  const { accents, accent, setAccent } = useMultiTheme()
   const [pages, setPages] = useState([])
   const page = pages[pages.length - 1]
   const placeholder = useMemo(() => {

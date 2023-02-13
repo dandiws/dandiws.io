@@ -1,21 +1,14 @@
 'use client'
 
-import { useAccent } from 'lib/accent-provider'
-import { useMemo } from 'react'
 import clsx from 'clsx'
-import { useMounted } from 'lib/hooks/useMounted'
-const shuffle = (arr: Array<any>) => arr.sort(() => Math.random() - 0.5)
+import { useMultiTheme } from 'lib/hooks/useMultiTheme'
 
 const AccentButtons = () => {
-  const { accents, setAccent } = useAccent()
-  const mounted = useMounted()
-  const shuffled = useMemo(() => {
-    return mounted ? shuffle([...accents]) : []
-  }, [accents, mounted])
+  const { accents, setAccent } = useMultiTheme()
 
   return (
     <div className="space-x-1 flex items-center h-4">
-      {shuffled.map((color) => {
+      {accents.map((color) => {
         return (
           <button
             aria-label={`Toggle ${color} accent`}

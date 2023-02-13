@@ -6,27 +6,32 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
-  [data-accent='red'] {
+  [data-accent='red'],
+  [data-theme$='red'] {
     --accent-light: 220 38 38;
     --accent-dark: 239 68 68;
   }
 
-  [data-accent='yellow'] {
+  [data-accent='yellow'],
+  [data-theme$='yellow'] {
     --accent-light: 245 158 11;
     --accent-dark: 250 204 21;
   }
 
-  [data-accent='blue'] {
+  [data-accent='blue'],
+  [data-theme$='blue'] {
     --accent-light: 37 99 235;
     --accent-dark: 59 130 246;
   }
 
-  [data-accent='purple'] {
+  [data-accent='purple'],
+  [data-theme$='purple'] {
     --accent-light: 147 51 234;
     --accent-dark: 168 85 247;
   }
 
-  [data-accent='green'] {
+  [data-accent='green'],
+  [data-theme$='green'] {
     --accent-light: 22 163 74;
     --accent-dark: 34 197 94;
   }

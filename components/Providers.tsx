@@ -1,18 +1,22 @@
 'use client'
 
-import { AccentProvider } from 'lib/accent-provider'
 import { CmdkProvider } from 'lib/cmdk-provider'
 import { ThemeProvider } from 'next-themes'
 import { PropsWithChildren } from 'react'
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer'
 
-export default function Providers({ children }: PropsWithChildren<{}>) {
+export default function Providers({
+  children,
+  themes,
+  defaultTheme
+}: PropsWithChildren<{ themes: string[]; defaultTheme: string }>) {
   return (
-    <ThemeProvider disableTransitionOnChange defaultTheme="dark">
+    <ThemeProvider
+      disableTransitionOnChange
+      defaultTheme={defaultTheme}
+      themes={themes}>
       <ReactWrapBalancerProvider>
-        <AccentProvider>
-          <CmdkProvider>{children}</CmdkProvider>
-        </AccentProvider>
+        <CmdkProvider>{children}</CmdkProvider>
       </ReactWrapBalancerProvider>
     </ThemeProvider>
   )

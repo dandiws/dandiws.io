@@ -6,6 +6,7 @@ import Footer from 'components/Footer'
 import Navbar from 'components/Navbar'
 import Providers from 'components/Providers'
 import SkipToContent from 'components/SkipToContent'
+import { getRandomTheme, NextThemes } from 'contants/themes'
 import { ServerThemeProvider } from 'next-themes'
 import { PropsWithChildren } from 'react'
 import '../styles/global.css'
@@ -22,13 +23,18 @@ const spaceGrotek = SpaceGrotesk({
   subsets: ['latin']
 })
 
+const randomDarkAccentTheme = getRandomTheme()
+
 export default function RootLayout({ children }: PropsWithChildren<{}>) {
   return (
-    <ServerThemeProvider disableTransitionOnChange defaultTheme="dark">
+    <ServerThemeProvider
+      disableTransitionOnChange
+      defaultTheme={randomDarkAccentTheme}
+      themes={NextThemes}>
       <html lang="en" className={clsx(inter.variable, spaceGrotek.variable)}>
         <head />
         <body>
-          <Providers>
+          <Providers themes={NextThemes} defaultTheme={randomDarkAccentTheme}>
             <SkipToContent />
             <Navbar />
             <main id="main">
