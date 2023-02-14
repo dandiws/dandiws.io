@@ -28,7 +28,7 @@ export const metadata = {
   openGraph: {
     images: ogImageUrl,
     title: 'Privacy Policy - Dandi Wiratsangka' as any,
-    type: 'article'
+    type: 'website'
   },
   twitter: {
     title: 'Privacy Policy - Dandi Wiratsangka',
