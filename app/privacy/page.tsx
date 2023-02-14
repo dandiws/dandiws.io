@@ -26,9 +26,12 @@ const ogImageUrl = createOgImageUrl({
 export const metadata = {
   title: 'Privacy Policy - Dandi Wiratsangka',
   openGraph: {
-    images: ogImageUrl
+    images: ogImageUrl,
+    title: 'Privacy Policy - Dandi Wiratsangka' as any,
+    type: 'article'
   },
   twitter: {
+    title: 'Privacy Policy - Dandi Wiratsangka',
     images: ogImageUrl,
     card: 'summary_large_image'
   }

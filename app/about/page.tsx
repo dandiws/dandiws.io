@@ -50,10 +50,15 @@ export const metadata = {
   title: 'About Me - Dandi Wiratsangka',
   description: `A brief summary of who I am`,
   openGraph: {
-    images: ogImageUrl
+    images: ogImageUrl,
+    title: 'About Me - Dandi Wiratsangka' as any,
+    type: 'article',
+    description: `A brief summary of who I am`
   },
   twitter: {
     images: ogImageUrl,
-    card: 'summary_large_image'
+    card: 'summary_large_image',
+    title: 'About Me - Dandi Wiratsangka',
+    description: `A brief summary of who I am`
   }
 }

@@ -77,9 +77,16 @@ export const metadata = {
   description:
     'Curated array of personal software engineering projects crafted during my leisure hours',
   openGraph: {
-    images: ogImageUrl
+    title: 'Projects - Dandi Wiratsangka' as any,
+    description:
+      'Curated array of personal software engineering projects crafted during my leisure hours',
+    images: ogImageUrl,
+    type: 'website'
   },
   twitter: {
+    title: 'Projects - Dandi Wiratsangka',
+    description:
+      'Curated array of personal software engineering projects crafted during my leisure hours',
     images: ogImageUrl,
     card: 'summary_large_image'
   }

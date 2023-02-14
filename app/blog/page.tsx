@@ -42,9 +42,16 @@ export const metadata = {
   description:
     'Here you can find my articles about tutorials, tips & trick, opinion, etc. I hope it help you in any way. Thank you for reading :)',
   openGraph: {
-    images: ogImageUrl
+    title: 'Blog - Dandi Wiratsangka' as any,
+    description:
+      'Here you can find my articles about tutorials, tips & trick, opinion, etc. I hope it help you in any way. Thank you for reading :)',
+    images: ogImageUrl,
+    type: 'website'
   },
   twitter: {
+    title: 'Blog - Dandi Wiratsangka',
+    description:
+      'Here you can find my articles about tutorials, tips & trick, opinion, etc. I hope it help you in any way. Thank you for reading :)',
     images: ogImageUrl,
     card: 'summary_large_image'
   }

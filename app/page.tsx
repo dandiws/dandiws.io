@@ -89,6 +89,9 @@ export const metadata = {
   },
   twitter: {
     images: ogImageUrl,
-    card: 'summary_large_image'
+    card: 'summary_large_image',
+    title: 'Dandi Wiratsangka',
+    description: `Dandi Wiratsangka's personal website`,
+    creator: '@dandews'
   }
 }
