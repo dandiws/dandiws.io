@@ -52,7 +52,7 @@ export const metadata = {
   openGraph: {
     images: ogImageUrl,
     title: 'About Me - Dandi Wiratsangka' as any,
-    type: 'article',
+    type: 'website',
     description: `A brief summary of who I am`
   },
   twitter: {
