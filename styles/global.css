@@ -6,6 +6,26 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+  [data-theme^='dark'] {
+    & div[data-bright-theme='github-dark-dimmed'] {
+      display: block !important;
+    }
+
+    & div[data-bright-theme='material-lighter'] {
+      display: none !important;
+    }
+  }
+
+  [data-theme^='light'] {
+    & div[data-bright-theme='material-lighter'] {
+      display: block !important;
+    }
+
+    & div[data-bright-theme='github-dark-dimmed'] {
+      display: none !important;
+    }
+  }
+
   [data-accent='red'],
   [data-theme$='red'] {
     --accent-light: 220 38 38;
@@ -41,7 +61,7 @@
   }
 
   body {
-    @apply bg-base text-gray-800 dark:text-white overflow-x-hidden relative;
+    @apply bg-base text-slate-800 dark:text-white overflow-x-hidden relative;
   }
 
   h1,
@@ -59,6 +79,10 @@
 
   :not(pre) > code {
     @apply text-accent text-[0.85em];
+  }
+
+  .article {
+    @apply text-gray-700 dark:text-white;
   }
 
   .article h1 {
@@ -127,11 +151,11 @@
 
 @layer utilities {
   .bg-base {
-    @apply bg-white dark:bg-dark-200;
+    @apply bg-slate-50 dark:bg-dark-200;
   }
 
   .bg-base-2 {
-    @apply bg-gray-100 dark:bg-dark-100;
+    @apply bg-white dark:bg-dark-100;
   }
 
   .text-accent {

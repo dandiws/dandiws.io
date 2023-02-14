@@ -15,7 +15,7 @@ const ArticleCard = ({ post, ...props }: ArticleCardProps) => {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="overflow-hidden bg-base-2 transition-shadow duration-200 hover:ring-2 focus:ring-2 ring-offset-4 ring-offset-white dark:ring-offset-dark-200 ring-accent-light/50 focus:outline-none cursor-pointer rounded-md"
+      className="overflow-hidden bg-base-2 shadow-lg shadow-slate-300/10 transition-shadow duration-200 hover:ring-2 focus:ring-2 ring-offset-4 ring-offset-white dark:ring-offset-dark-200 ring-accent-light/50 focus:outline-none cursor-pointer rounded-md"
       {...props}>
       <Image
         width={468}
