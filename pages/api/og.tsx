@@ -4,6 +4,7 @@ import { ImageResponse } from '@vercel/og'
 import { allPosts } from 'contentlayer/generated'
 import dayjs from 'dayjs'
 import { NextRequest } from 'next/server'
+import { parseOgImageUrl } from 'utils/og'
 
 export const config = {
   runtime: 'edge'
@@ -12,17 +13,14 @@ export const config = {
 export default function handler(req: NextRequest) {
   try {
     const { searchParams, origin } = new URL(req.url)
-
     const hasSlug = searchParams.has('slug')
     const post = hasSlug
       ? allPosts.find((post) => post.slug === searchParams.get('slug'))
       : null
-    const title = post
-      ? post.title
-      : searchParams.get('title') || 'Dandi Wiratsangka'
-    const background = post
-      ? `${origin}${post.image}`
-      : searchParams.get('background')
+    const { background: _background, title: _title } = parseOgImageUrl(req.url)
+
+    const title = post ? post.title : _title || 'Dandi Wiratsangka'
+    const background = post ? `${origin}${post.image}` : _background
 
     return new ImageResponse(
       (

@@ -1,3 +1,5 @@
+import { createOgImageUrl } from 'utils/og'
+
 export default function Page() {
   return (
     <>
@@ -16,20 +18,18 @@ export default function Page() {
   )
 }
 
-const ogImage =
-  'https://dandiws.my.id/api/og?background=https://images.unsplash.com/photo-1552688468-d87e6f7a58f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80&title=Privacy%20Policy'
+const ogImageUrl = createOgImageUrl({
+  background: 'https://images.unsplash.com/photo-1552688468-d87e6f7a58f2',
+  title: 'Privacy Policy'
+})
 
 export const metadata = {
   title: 'Privacy Policy - Dandi Wiratsangka',
   openGraph: {
-    images: [
-      {
-        url: ogImage
-      }
-    ]
+    images: ogImageUrl
   },
   twitter: {
-    images: ogImage,
+    images: ogImageUrl,
     card: 'summary_large_image'
   }
 }

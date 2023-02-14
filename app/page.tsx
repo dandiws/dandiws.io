@@ -7,6 +7,7 @@ import Section from 'components/Section'
 import { allPosts } from 'contentlayer/generated'
 import { getFeaturedProjects } from 'utils/projects'
 import Balancer from 'react-wrap-balancer'
+import { createOgImageUrl } from 'utils/og'
 
 export default function Page() {
   const latestArticles = allPosts.slice(0, 3)
@@ -71,8 +72,10 @@ export default function Page() {
   )
 }
 
-const ogImage =
-  'https://dandiws.my.id/api/og?background=https://images.unsplash.com/photo-1552688468-d87e6f7a58f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
+const ogImageUrl = createOgImageUrl({
+  background: 'https://images.unsplash.com/photo-1552688468-d87e6f7a58f2',
+  title: 'Dandi Wiratsangka'
+})
 
 export const metadata = {
   title: 'Dandi Wiratsangka',
@@ -82,14 +85,10 @@ export const metadata = {
     type: 'website',
     url: 'https://dandiws.my.id',
     description: `Dandi Wiratsangka's personal website`,
-    images: [
-      {
-        url: ogImage
-      }
-    ]
+    images: ogImageUrl
   },
   twitter: {
-    images: ogImage,
+    images: ogImageUrl,
     card: 'summary_large_image'
   }
 }
