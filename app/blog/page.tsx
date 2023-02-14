@@ -33,7 +33,7 @@ export default function Page({
 }
 
 const ogImageUrl = createOgImageUrl({
-  background: 'https://images.unsplash.com/photo-1552688468-d87e6f7a58f2',
+  background: '/images/space.jpeg',
   title: 'Blog'
 })
 

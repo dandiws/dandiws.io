@@ -20,13 +20,17 @@ export default function handler(req: NextRequest) {
     const { background: _background, title: _title } = parseOgImageUrl(req.url)
 
     const title = post ? post.title : _title || 'Dandi Wiratsangka'
-    const background = post ? `${origin}${post.image}` : _background
+    const background = post
+      ? `${origin}${post.image}`
+      : _background.startsWith('/')
+      ? `${origin}${_background}`
+      : _background
 
     return new ImageResponse(
       (
-        <div tw="flex relative h-full">
+        <div tw="flex relative w-full h-full">
           {!!background && (
-            <img tw="absolute w-full " src={background} alt="Background" />
+            <img tw="absolute w-full" src={background} alt="Background" />
           )}
           <div tw="relative p-16 flex flex-col h-full items-center justify-center w-full bg-black bg-opacity-90">
             <h2 tw="flex text-center leading-snug text-5xl font-bold tracking-tight text-white">
