@@ -93,7 +93,7 @@ export default function Page() {
                   className={clsx(
                     'relative  select-none',
                     'z-[1] dark:z-0',
-                    'scale-110 translate-y-1/4',
+                    'scale-110 translate-y-1/4 dark:scale-100 dark:translate-y-0',
                     'lg:-translate-x-[12%] lg:translate-y-[16%] lg:dark:translate-x-0 lg:dark:translate-y-0',
                     'shadow-[5px_-5px_10px_-3px] shadow-accent-light/20 dark:shadow-dark-200/50'
                   )}
@@ -106,7 +106,8 @@ export default function Page() {
                   className={clsx(
                     'absolute top-0 select-none',
                     'z-0 dark:z-[1]',
-                    'dark:-translate-x-[60px] dark:translate-y-[60px] translate-x-0 translate-y-0',
+                    'scale-100 translate-y-0 dark:scale-110 dark:translate-y-1/4',
+                    'lg:dark:-translate-x-[12%] lg:dark:translate-y-[16%] lg:translate-x-0 lg:translate-y-0',
                     'shadow-[5px_-5px_10px_-3px] shadow-accent-light/20 dark:shadow-dark-200/50'
                   )}
                   alt={dandiwsio.name}
