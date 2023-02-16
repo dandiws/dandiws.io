@@ -4,6 +4,8 @@ import Balancer from 'react-wrap-balancer'
 import { createOgImageUrl } from 'utils/og'
 import BlogSearch from './BlogSearch'
 
+export const dynamic = 'force-dynamic'
+
 export default function Page({
   searchParams
 }: {
