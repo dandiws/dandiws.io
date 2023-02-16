@@ -4,7 +4,6 @@ import { Command } from 'cmdk'
 import { CMDK_MENU_ITEMS, MenuItem } from 'contants/menu'
 import { useCmdkState } from 'lib/cmdk-provider'
 import { useMultiTheme } from 'lib/hooks/useMultiTheme'
-import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { KeyboardEvent, useCallback, useEffect, useMemo, useState } from 'react'
 import Github from './icons/Github'
@@ -15,8 +14,7 @@ const Cmdk = () => {
   const router = useRouter()
   const [search, setSearch] = useState('')
   const [open, setOpen] = useCmdkState()
-  const { theme, setTheme } = useTheme()
-  const { accents, accent, setAccent } = useMultiTheme()
+  const { accents, accent, setAccent, theme, setTheme } = useMultiTheme()
   const [pages, setPages] = useState([])
   const page = pages[pages.length - 1]
   const placeholder = useMemo(() => {

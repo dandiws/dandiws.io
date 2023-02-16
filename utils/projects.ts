@@ -1,6 +1,6 @@
 import { Project } from './types'
 
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     name: 'Snake Game',
     url: 'https://github.com/dandiws/snake-game',
@@ -24,13 +24,13 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/dandiws/typefaster'
   },
   {
-    name: 'Dandiws.io',
+    name: 'dandiws.my.id',
     url: 'https://github.com/dandiws/dandiws.io',
     imageUrl: '/images/dandiwsio.png',
     summary:
-      'Dandiws.io is my personal website built with Next.js and deployed on vercel.',
+      'dandiws.my.id is my personal website built with Next.js and deployed on vercel.',
     longerSummary:
-      'Dandiws.io is my personal website built with Next.js and deployed on vercel. The source code is available on github.',
+      'dandiws.my.id is my personal website built with Next.js and deployed on vercel. The source code is available on github.',
     year: 2020,
     featured: true,
     tags: ['React', 'Next.js', 'Tailwind CSS', 'Typescript'],

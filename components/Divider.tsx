@@ -6,7 +6,7 @@ export interface DividerProps {
 }
 
 const Divider = ({
-  divider = '/',
+  divider = '•',
   ...props
 }: ComponentProps<'div'> & DividerProps) => (
   <div

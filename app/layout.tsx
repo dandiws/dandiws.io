@@ -1,4 +1,5 @@
-import { Inter, Space_Grotesk as SpaceGrotesk } from '@next/font/google'
+import { Manrope } from '@next/font/google'
+import localFont from '@next/font/local'
 import clsx from 'clsx'
 import CmdkLazy from 'components/CmdkLazy'
 import Container from 'components/Container'
@@ -11,16 +12,24 @@ import { ServerThemeProvider } from 'next-themes'
 import { PropsWithChildren } from 'react'
 import '../styles/global.css'
 
-const inter = Inter({
-  weight: ['400', '700'],
-  variable: '--font-inter',
-  subsets: ['latin']
+const manrope = Manrope({
+  weight: ['400', '800'],
+  variable: '--font-manrope',
+  subsets: ['latin'],
+  display: 'swap',
+  style: 'normal'
 })
 
-const spaceGrotek = SpaceGrotesk({
-  weight: '700',
-  variable: '--font-space-grotesk',
-  subsets: ['latin']
+const satoshi = localFont({
+  variable: '--font-satoshi',
+  display: 'swap',
+  src: [
+    {
+      path: '../public/fonts/Satoshi-Bold.woff2',
+      weight: '700',
+      style: 'normal'
+    }
+  ]
 })
 
 const randomDarkAccentTheme = getRandomTheme()
@@ -31,7 +40,7 @@ export default function RootLayout({ children }: PropsWithChildren<{}>) {
       disableTransitionOnChange
       defaultTheme={randomDarkAccentTheme}
       themes={NextThemes}>
-      <html lang="en" className={clsx(inter.variable, spaceGrotek.variable)}>
+      <html lang="en" className={clsx(manrope.variable, satoshi.variable)}>
         <head />
         <body>
           <Providers themes={NextThemes} defaultTheme={randomDarkAccentTheme}>

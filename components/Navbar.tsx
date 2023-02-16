@@ -7,14 +7,14 @@ import ThemeToggler from './ThemeToggler'
 
 const Navbar = () => {
   return (
-    <div className="py-6">
+    <div className="py-10">
       <Container>
         <div className="flex items-center">
           <div className="flex items-center">
             <NextLink href="/" aria-label="Home page">
               <DwLogo
                 fgclassname="fill-white dark:fill-dark-200"
-                className="cursor-pointer h-[36px] w-[36px] text-accent"
+                className="cursor-pointer h-[36px] w-[36px]"
               />
             </NextLink>
             <NavMenu />

@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Code } from 'bright'
 
 Code.theme = {
-  light: 'material-lighter',
+  light: 'min-light',
   dark: 'github-dark-dimmed'
 }
 

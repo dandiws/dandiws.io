@@ -11,13 +11,14 @@
       display: block !important;
     }
 
-    & div[data-bright-theme='material-lighter'] {
+    & div[data-bright-theme='min-light'] {
       display: none !important;
     }
   }
 
   [data-theme^='light'] {
-    & div[data-bright-theme='material-lighter'] {
+    & div[data-bright-theme='min-light'] {
+      @apply shadow-sm;
       display: block !important;
     }
 
@@ -61,7 +62,7 @@
   }
 
   body {
-    @apply bg-base text-slate-800 dark:text-white overflow-x-hidden relative;
+    @apply bg-base text-slate-800 dark:text-white overflow-x-hidden relative font-sans;
   }
 
   h1,
@@ -82,7 +83,7 @@
   }
 
   .article {
-    @apply text-gray-700 dark:text-white;
+    @apply text-gray-700 dark:text-gray-300 font-sans;
   }
 
   .article h1 {
@@ -104,7 +105,7 @@
     @apply font-medium text-sm mb-3;
   }
   .article p {
-    @apply mb-8 leading-7;
+    @apply mb-8 leading-loose text-[1.0625rem];
   }
   .article ul {
     @apply mb-8;
@@ -128,12 +129,7 @@
   }
 
   .section-title {
-    @apply mb-8 text-2xl font-bold flex items-center;
-  }
-
-  .section-title::before {
-    content: '';
-    @apply inline-block h-px bg-gray-300 dark:bg-gray-800 w-10 mr-4 -ml-14;
+    @apply mb-8 text-lg font-bold text-gray flex items-center;
   }
 
   .postDetail {
@@ -173,7 +169,7 @@
 
 /* Rehype code title */
 .rehype-code-title {
-  @apply px-3 text-xs mt-[1em] py-2 inline-block border-b border-gray-200 dark:border-dark-200 text-gray bg-[#FAFAFA] dark:bg-[#22272e];
+  @apply px-3 text-xs mt-[1em] py-2 inline-block border-b border-gray-100 dark:border-dark-200 text-gray bg-white dark:bg-[#22272e];
   background: ;
   border-radius: 0.5em 0.5em 0 0;
 }

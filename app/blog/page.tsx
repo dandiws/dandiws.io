@@ -1,5 +1,6 @@
 import ArticleList from 'components/ArticleList'
 import { allPosts } from 'contentlayer/generated'
+import Balancer from 'react-wrap-balancer'
 import { createOgImageUrl } from 'utils/og'
 import BlogSearch from './BlogSearch'
 
@@ -16,18 +17,20 @@ export default function Page({
 
   return (
     <>
-      <header className="my-12">
+      <header className="mt-12 mb-32">
         <h1 className="text-4xl mb-3 leading-normal">Blog</h1>
-        <p className="text-slate-500 max-w-lg">
-          Here you can find my articles about tutorials, tips & trick, opinion,
-          etc. I hope it help you in any way. Thank you for reading :)
+        <p className="text-gray max-w-screen-md text-lg">
+          <Balancer>
+            Here you can find my articles about tutorials, tips & trick,
+            opinion, etc. I hope it help you in any way. Thank you for reading.
+          </Balancer>
         </p>
       </header>
       <BlogSearch
         shownCount={filteredPosts.length}
         totalCount={allPosts.length}
       />
-      <ArticleList posts={filteredPosts} />
+      <ArticleList posts={filteredPosts} cover />
     </>
   )
 }

@@ -19,8 +19,8 @@ export default async function Page({ params }: WithParams) {
 
   return (
     <div className="max-w-screen-md mx-auto">
-      <div className="flex items-center justify-center flex-col text-center py-16">
-        <h1 className="mb-8 font-bold text-2xl md:text-4xl lg:text-4xl">
+      <div className="flex items-center justify-center flex-col text-center py-32">
+        <h1 className="mb-8 font-bold text-3xl md:text-4xl lg:text-4xl">
           <Balancer>{post.title}</Balancer>
         </h1>
         <div className="mb-10">

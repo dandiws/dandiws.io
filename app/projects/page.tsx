@@ -1,6 +1,7 @@
 import ExternalLink from 'components/ExternalLink'
 import Github from 'components/icons/Github'
 import Link from 'components/Link'
+import Balancer from 'react-wrap-balancer'
 import { createOgImageUrl } from 'utils/og'
 import { getAllProjects } from 'utils/projects'
 
@@ -11,9 +12,11 @@ export default function Page() {
     <>
       <header className="py-12 mb-6">
         <h1 className="text-4xl mb-3 leading-normal">Projects</h1>
-        <p className="text-slate-500">
-          Curated array of personal software engineering projects crafted during
-          my leisure hours
+        <p className="text-gray max-w-screen-md text-lg">
+          <Balancer>
+            Curated array of personal software engineering projects crafted
+            during my leisure hours
+          </Balancer>
         </p>
       </header>
       <div className="space-y-12">

@@ -23,8 +23,21 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        heading: 'var(--font-space-grotesk)'
+        sans: ['var(--font-manrope)', ...defaultTheme.fontFamily.sans],
+        heading: 'var(--font-satoshi)',
+        satoshi: 'var(--font-satoshi)',
+        manrope: 'var(--font-manrope)'
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-radial-to-tr':
+          'radial-gradient(115% 90% at 0% 100%, var(--tw-gradient-stops))',
+        'gradient-radial-to-tl':
+          'radial-gradient(115% 90% at 100% 100%, var(--tw-gradient-stops))',
+        'gradient-radial-to-br':
+          'radial-gradient(90% 115% at 0% 0%, var(--tw-gradient-stops))',
+        'gradient-radial-to-bl':
+          'radial-gradient(90% 115% at 100% 0%, var(--tw-gradient-stops))'
       },
       animation: {
         slideUp: 'slideUp .6s cubic-bezier(0.4, 0, 0.2, 1) 500ms forwards'

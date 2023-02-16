@@ -12,14 +12,17 @@ export interface NavLinkProps extends ComponentProps<typeof Link> {
   activeClassName?: string
 }
 
-export const NavLink = ({ activeClassName, ...props }: NavLinkProps) => {
+export const NavLink = ({
+  activeClassName = 'text-gray-900 dark:text-white',
+  ...props
+}: NavLinkProps) => {
   const pathname = usePathname()
   const active = pathname === props.href
 
   return (
     <Link
       className={clsx(
-        `cursor-pointer block mx-5 my-3 md:my-0 hover:text-accent`,
+        `cursor-pointer block mx-5 my-3 md:my-0 hover:opacity-80`,
         active && activeClassName
       )}
       {...props}
@@ -28,13 +31,9 @@ export const NavLink = ({ activeClassName, ...props }: NavLinkProps) => {
 }
 
 export const NavMenu = () => (
-  <nav className="hidden text-gray md:flex md:nav-desktop ml-4">
+  <nav className="hidden text-gray-500 md:flex md:nav-desktop ml-4">
     {MENU_ITEMS.map(({ href, name, isExternal }) => (
-      <NavLink
-        key={href}
-        href={href}
-        isExternal={isExternal}
-        activeClassName="text-accent">
+      <NavLink key={href} href={href} isExternal={isExternal}>
         {name}
       </NavLink>
     ))}
@@ -60,11 +59,7 @@ export const MobileNavMenu = (props) => {
             style={{
               animationDelay: `${(index + 1) * 100}ms`
             }}>
-            <NavLink
-              href={href}
-              isExternal={isExternal}
-              activeClassName="text-accent"
-              onClick={toggleMenu}>
+            <NavLink href={href} isExternal={isExternal} onClick={toggleMenu}>
               {name}
             </NavLink>
           </div>

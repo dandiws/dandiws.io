@@ -1,9 +1,9 @@
 [cmdk-overlay] {
-  @apply fixed bg-black/80 inset-0;
+  @apply fixed bg-black/80 inset-0 z-[998];
 }
 
 [cmdk-dialog] {
-  @apply fixed max-w-screen-sm px-8 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 focus:outline-none;
+  @apply fixed max-w-screen-sm px-8 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 focus:outline-none z-[999];
 }
 
 [cmdk-root] {
