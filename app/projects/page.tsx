@@ -39,7 +39,7 @@ export default function Page() {
                   </Link>
                 )}
 
-                <p className="text-slate-400">{project.summary}</p>
+                <p className="text-gray">{project.summary}</p>
                 {project.tags && (
                   <div className="space-x-2 mt-3">
                     {project.tags.map((tag) => (

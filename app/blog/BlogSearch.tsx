@@ -46,7 +46,7 @@ export default function BlogSearch({
     <div className="flex flex-col md:flex-row-reverse md:items-center justify-between my-8 gap-4">
       <div className="relative w-full md:max-w-xs">
         <input
-          className="px-3 h-10 w-full rounded-md bg-gray-50 ring-1 ring-gray-300/80 dark:bg-gray-800 outline-none focus:ring pr-10"
+          className="px-3 h-10 w-full rounded-md bg-transparent ring-1 ring-gray-300/80 dark:ring-gray-500/30 outline-none focus:ring pr-10"
           type="search"
           placeholder="Search articles..."
           onChange={debouncedChangeHandler}
