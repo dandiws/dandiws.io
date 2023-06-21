@@ -202,6 +202,6 @@
     border-color: transparent;
   }
   50% {
-    @apply border-accent-light dark:border-accent-dark;
+    @apply border-accent-light;
   }
 }

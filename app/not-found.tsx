@@ -4,7 +4,7 @@ export default function NotFound() {
       <div className="text-center">
         <h1 className="text-[5rem] text-slate-500 slashed-zero">404</h1>
         <p className="text-slate-500">
-          The page you're looking for is not found
+          The page you&apos;re looking for is not found
         </p>
       </div>
     </div>

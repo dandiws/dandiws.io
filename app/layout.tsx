@@ -1,5 +1,3 @@
-import { Manrope } from '@next/font/google'
-import localFont from '@next/font/local'
 import clsx from 'clsx'
 import CmdkLazy from 'components/CmdkLazy'
 import Container from 'components/Container'
@@ -9,11 +7,12 @@ import Providers from 'components/Providers'
 import SkipToContent from 'components/SkipToContent'
 import { getRandomTheme, NextThemes } from 'contants/themes'
 import { ServerThemeProvider } from 'next-themes'
+import { Manrope } from 'next/font/google'
+import localFont from 'next/font/local'
 import { PropsWithChildren } from 'react'
 import '../styles/global.css'
 
 const manrope = Manrope({
-  weight: ['400', '800'],
   variable: '--font-manrope',
   subsets: ['latin'],
   display: 'swap',

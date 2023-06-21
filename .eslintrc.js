@@ -8,8 +8,6 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard',
-    'standard-jsx',
-    'standard-react',
     'plugin:@next/next/recommended',
     'plugin:jsx-a11y/recommended',
     'prettier-standard'
@@ -27,5 +25,13 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/no-unknown-property': 'off'
-  }
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off'
+      }
+    }
+  ]
 }

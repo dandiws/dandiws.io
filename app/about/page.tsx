@@ -19,12 +19,12 @@ export default function Page() {
           />
           <div>
             <p>
-              Hello there! You've manage to reach this page, so I assume you
-              want to know more about me 😀. So let me introduce my self.
+              Hello there! You&apos;ve manage to reach this page, so I assume
+              you want to know more about me 😀. So let me introduce my self.
             </p>
             <p>
-              My name is Dandi Wiratsangka Sejati. I'm a software engineer and
-              currently working at{' '}
+              My name is Dandi Wiratsangka Sejati. I&apos;m a software engineer
+              and currently working at{' '}
               <ExternalLink href="https://glair.ai">glair</ExternalLink>. I
               graduated from Universitas Gadjah Mada with bachelor degree in
               Computer Science in 2020. Currently I live in my hometown

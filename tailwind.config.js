@@ -52,6 +52,9 @@ module.exports = {
             transform: 'translateY(0)',
             opacity: 1
           }
+        },
+        'blink-caret': {
+          from: 'border-transparent'
         }
       }
     }
