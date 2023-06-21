@@ -33,7 +33,7 @@ or you can just deploy on [Vercel](https://vercel.com)
 
 - **Framework** : [Next.js](https://nextjs.org)
 - **Styling** : [Tailwind CSS](https://tailwindcss.com/)
-- **Blog** : [MDX](https://mdxjs.com/) powered by [nex-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
+- **Blog** : [MDX](https://mdxjs.com/) powered by [contentlayer](https://www.contentlayer.dev/)
 
 ## Licence
 
