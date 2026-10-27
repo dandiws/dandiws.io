@@ -1,0 +1,46 @@
+---
+import '../styles/portfolio.css'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Dandi Wiratsangka — Software Engineer',
+  description = 'Dandi Wiratsangka is a software engineer building reliable systems and thoughtful digital experiences.'
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0c0c0c" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://dandiws.my.id/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://dandiws.my.id/" />
+    <meta property="og:image" content="https://dandiws.my.id/images/space.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://dandiws.my.id/images/space.jpeg" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@300;400&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

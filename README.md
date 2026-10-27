@@ -1,40 +1,29 @@
 # Dandiws.io
 
-Personal website of [Dandi Wiratsangka](https://dandiws.vercel.app) built with [Next.js](https://nextjs.org/) and deployed on [Vercel](https://vercel.com/).
+Personal portfolio of [Dandi Wiratsangka](https://dandiws.my.id), built with [Astro](https://astro.build/) and deployed on Cloudflare Workers.
+
+## Requirements
+
+- Node.js 22.12 or later, managed with [fnm](https://github.com/Schniz/fnm)
+- Bun 1.4 or later
 
 ## Getting started
 
-1. Make sure you already have node v12 or above.
-1. Install dependencies
-   ```shell
-   yarn install
-   ```
-1. Start development server
-   ```shell
-   yarn dev
-   ```
+```shell
+fnm use
+bun install
+bun run dev
+```
 
-## Building and running for production
+## Production
 
-1. Run build command
+```shell
+bun run build
+bun run preview
+```
 
-   ```shell
-   yarn build
-   ```
+The site is a static, single-page portfolio. Astro renders the page, and a Solid island manages the interactive ASCII terrain. Deploy with `bun run deploy` after authenticating Wrangler with Cloudflare.
 
-1. Start server
-   ```shell
-   yarn start
-   ```
+## License
 
-or you can just deploy on [Vercel](https://vercel.com)
-
-## Tech stack
-
-- **Framework** : [Next.js](https://nextjs.org)
-- **Styling** : [Tailwind CSS](https://tailwindcss.com/)
-- **Blog** : [MDX](https://mdxjs.com/) powered by [contentlayer](https://www.contentlayer.dev/)
-
-## Licence
-
-I'm keeping my personal website open sourced as learning materials. Please find it as inspiration and not a template. Sure you're free to use this for your personal website, but **with attribution**.
+I'm keeping my personal website open sourced as learning materials. Please find it as inspiration and not a template. Sure you're free to use it for your personal website, but **with attribution**.

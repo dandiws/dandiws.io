@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Terrain from '../components/Terrain.tsx'
+
+const projects = [
+  {
+    year: '2022',
+    role: 'Personal project',
+    name: 'Svelte Audio Player',
+    url: 'https://svelte-audio-player.vercel.app',
+    repository: 'https://github.com/dandiws/svelte-audio-player',
+    summary: 'A reusable component that wraps the HTML audio element for custom audio players.',
+    stack: ['Svelte'],
+    outcome: 'A small audio player component for Svelte projects.'
+  },
+  {
+    year: '2021',
+    role: 'Personal project',
+    name: 'Snake Game',
+    url: 'https://github.com/dandiws/snake-game',
+    repository: 'https://github.com/dandiws/snake-game',
+    summary: 'A classic snake game implemented in React, Vue, and Svelte.',
+    stack: ['JavaScript', 'React', 'Vue', 'Svelte'],
+    outcome: 'Three front-end implementations of the same game.'
+  },
+  {
+    year: '2020',
+    role: 'Personal project',
+    name: 'Typefaster',
+    url: 'https://typefaster.vercel.app',
+    repository: 'https://github.com/dandiws/typefaster',
+    summary: 'A clean, minimal typing test built with React and Theme UI.',
+    stack: ['React', 'Theme UI'],
+    outcome: 'Includes multiple languages and color themes.'
+  },
+  {
+    year: '2020',
+    role: 'Personal project',
+    name: 'Dandiws.io',
+    url: 'https://github.com/dandiws/dandiws.io',
+    repository: 'https://github.com/dandiws/dandiws.io',
+    summary: 'The source repository for this personal portfolio.',
+    stack: ['Astro', 'TypeScript', 'CSS'],
+    outcome: 'A single-page portfolio built for the web.'
+  },
+  {
+    year: '2017',
+    role: 'Personal project',
+    name: 'D-Fastfinger',
+    url: 'https://d-fastfinger.vercel.app',
+    repository: 'https://github.com/dandiws/D-Fastfinger',
+    summary: 'A typing speed meter built with vanilla JavaScript and CSS.',
+    stack: ['JavaScript', 'CSS'],
+    outcome: 'A browser-based typing speed practice tool.'
+  }
+]
+
+const experience = [
+  {
+    dates: 'June 2021 — Present',
+    title: 'Software Development Engineer',
+    company: 'GDP Labs',
+    description: 'Developed and maintained an Ionic Angular SDK for Bank Mega’s mobile app and an iOS chat SDK for Halo BCA.'
+  },
+  {
+    dates: 'November 2019 — May 2021',
+    title: 'Backend Engineer',
+    company: 'Mechatronic Laboratory',
+    description: 'Built an e-KTP extractor and face verification system, Express.js services, and a React dashboard for a video call platform. Helped deploy services with Docker and Kubernetes.'
+  },
+  {
+    dates: 'April 2017',
+    title: 'Web Developer Intern',
+    company: 'Coass.id',
+    description: 'Assisted with developing and designing the Coass.id website using Django.'
+  }
+]
+
+const socials = [
+  { label: 'GitHub', href: 'https://github.com/dandiws' },
+  { label: 'LinkedIn', href: 'https://id.linkedin.com/in/dandi-wiratsangka-5300a9132' },
+  { label: 'Dribbble', href: 'https://dribbble.com/dandiws' },
+  { label: 'Résumé', href: '/resume.pdf' }
+]
+---
+
+<BaseLayout>
+  <nav id="nav" aria-label="Main navigation">
+    <a class="name" href="#top">Dandi Wiratsangka</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <canvas id="land" aria-hidden="true"></canvas>
+      <p class="hint mono" aria-hidden="true">bend the terrain · press to carve</p>
+      <div class="hero-content">
+        <p class="tag mono load">SOFTWARE ENGINEER · INDONESIA</p>
+        <h1><span class="load delay-one">Engineering</span><span class="load delay-two">with intention.</span></h1>
+        <div class="under load delay-three">
+          <p>I build reliable systems and thoughtful digital experiences.</p>
+          <div class="cta">
+            <a class="button main-button" href="#work">Explore my work</a>
+            <a class="button alt-button" href="#about">About me</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="mono note">Selected work</p>
+          <h2 id="work-title">Systems built to last, interfaces built to be understood.</h2>
+        </div>
+        <div class="projects">
+          {projects.map((project) => (
+            <article class="project">
+              <div>
+                <span class="mono muted">{project.year}</span>
+                <div class="mono project-role">{project.role}</div>
+              </div>
+              <div>
+                <h3><a href={project.url} target="_blank" rel="noreferrer">{project.name}</a></h3>
+                <p>{project.summary}</p>
+              </div>
+              <div class="project-side">
+                <div>
+                  <span class="mono label">Stack</span>
+                  <span class="muted">{project.stack.join(', ')}</span>
+                </div>
+                <div>
+                  <span class="mono label">Details</span>
+                  <span class="muted">{project.outcome}</span>
+                </div>
+                {project.repository !== project.url && (
+                  <a class="mono repo-link" href={project.repository} target="_blank" rel="noreferrer">View source ↗</a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <h2 class="mono note" id="about-title">About</h2>
+        <div class="about-inner">
+          <p class="about-lead">I enjoy taking a problem from “something’s not working” to a solution people can rely on.</p>
+          <div>
+            <div class="about-body">
+              <p>At GDP Labs, I work across backend, frontend, and mobile, collaborating with multiple teams on several projects. I’m responsible for keeping systems up and running, and turning complex problems into practical, dependable solutions.</p>
+              <p>I studied Computer Science at Universitas Gadjah Mada, graduating in 2020.</p>
+            </div>
+            <div class="facts mono">
+              <span>Based in <span class="muted">Yogyakarta, Indonesia</span></span>
+              <span>Currently <span class="muted">Software Development Engineer at GDP Labs</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="mono note">Experience</p>
+          <h2 id="experience-title">Where I’ve worked.</h2>
+        </div>
+        <div class="jobs">
+          {experience.map((job) => (
+            <article class="job">
+              <span class="mono muted">{job.dates}</span>
+              <h3>{job.title}<br /><span class="mono">{job.company}</span></h3>
+              <p>{job.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="terrain-band" aria-hidden="true"><canvas id="band"></canvas></div>
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Let’s build<em>something steady.</em></h2>
+        <a class="mail" href="mailto:dandiwiratsangka@gmail.com">dandiwiratsangka@gmail.com</a>
+        <div class="social mono">
+          {socials.map((social) => (
+            <a href={social.href} target={social.href.startsWith('http') ? '_blank' : undefined} rel={social.href.startsWith('http') ? 'noreferrer' : undefined}>
+              {social.label}{social.href.startsWith('http') && <span aria-hidden="true"> ↗</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mono">
+    <span>© {new Date().getFullYear()} Dandi Wiratsangka Sejati</span>
+    <span>Terrain generated live from text</span>
+  </footer>
+
+  <Terrain client:load />
+</BaseLayout>

@@ -1,0 +1,7 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data:; media-src 'self'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+  Referrer-Policy: origin-when-cross-origin
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-DNS-Prefetch-Control: on
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
