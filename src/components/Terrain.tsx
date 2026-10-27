@@ -8,7 +8,7 @@ type TerrainConfig = {
   scatter: { strength: number }
   gravity: { strength: number; radius: number; swirl: number; horizon: number; glow: number }
 }
-type TerrainApi = { size: () => void; refresh: () => void; poke: () => void }
+type TerrainApi = { size: () => void; refresh: () => void; poke: () => void; pulse: (clientX: number, clientY: number) => void; release: () => void }
 type TerrainOptions = { seedOffset: number; radiusScale: number; opacityScale: number }
 type Control = { p: string; l: string; min?: number; max?: number; step?: number; t?: 'text' | 'check'; exact?: number }
 type ControlGroup = [string, Control[]]
@@ -187,11 +187,20 @@ function Terrain(): JSX.Element {
 
     function handlePointerDown(event) {
       if (reducedMotion.matches) return
-      if (event.pointerType === 'mouse') pointer.down = true
+      if (event.pointerType !== 'mouse') return
+      if (event.target instanceof Element && event.target.closest('#panel, #tbtn')) return
+      pointer.x = event.clientX
+      pointer.y = event.clientY
+      pointer.on = true
+      pointer.time = performance.now()
+      pointer.down = true
+      terrainsList.forEach((terrain) => terrain.pulse(event.clientX, event.clientY))
     }
 
     function handlePointerUp(event) {
+      const wasDown = pointer.down
       pointer.down = false
+      if (wasDown) terrainsList.forEach((terrain) => terrain.release())
       if (event.pointerType !== 'mouse') {
         pointer.on = false
         poke()
@@ -282,6 +291,31 @@ function Terrain(): JSX.Element {
       let gravityX = 0
       let gravityY = 0
       let gravityAmount = 0
+      let brushScale = 1
+      let brushScaleFrom = 1
+      let brushScaleTo = 1
+      let brushScaleStartedAt = 0
+      let brushScaleDuration = 0
+      let brushAnimating = false
+      let pulseX = 0
+      let pulseY = 0
+      let pulseWaveSent = true
+
+      function animateBrushScale(scale: number, timestamp: number, duration: number): void {
+        brushScaleFrom = brushScale
+        brushScaleTo = scale
+        brushScaleStartedAt = timestamp
+        brushScaleDuration = duration
+        brushAnimating = true
+      }
+
+      function updateBrushScale(timestamp: number): number {
+        if (!brushAnimating) return brushScale
+        const progress = Math.min(1, (timestamp - brushScaleStartedAt) / brushScaleDuration)
+        brushScale = brushScaleFrom + (brushScaleTo - brushScaleFrom) * smooth(progress)
+        if (progress === 1) brushAnimating = false
+        return brushScale
+      }
 
       function stamp(x, y, radius, direction) {
         const amount = 0.075 * config.brush.strength
@@ -299,6 +333,47 @@ function Terrain(): JSX.Element {
               paint[index] = value > 0.8 ? 0.8 : value < -0.6 ? -0.6 : value
               waveVelocity[index] += direction * influence * influence * 0.03
               stampTime[index] = now
+            }
+          }
+        }
+      }
+
+      function pulse(clientX: number, clientY: number): void {
+        const bounds = canvas.getBoundingClientRect()
+        const x = clientX - bounds.left
+        const y = clientY - bounds.top
+        if (x < 0 || y < 0 || x > width || y > height) return
+        pulseX = x
+        pulseY = y
+        animateBrushScale(0.55, performance.now(), 120)
+        pulseWaveSent = false
+        busy = true
+        dirty = true
+        start()
+      }
+
+      function release(): void {
+        if (pulseWaveSent) return
+        animateBrushScale(1, performance.now(), 350)
+        sendPulseWave()
+        pulseWaveSent = true
+        busy = true
+        dirty = true
+        start()
+      }
+
+      function sendPulseWave(): void {
+        const radius = Math.max(cellWidth, cellHeight) * 2
+        const columnStart = Math.max(0, Math.floor((pulseX - radius) / cellWidth))
+        const columnEnd = Math.min(columns - 1, Math.ceil((pulseX + radius) / cellWidth))
+        const rowStart = Math.max(0, Math.floor((pulseY - radius) / cellHeight))
+        const rowEnd = Math.min(rows - 1, Math.ceil((pulseY + radius) / cellHeight))
+        for (let row = rowStart; row <= rowEnd; row++) {
+          for (let column = columnStart; column <= columnEnd; column++) {
+            const distance = Math.hypot(column * cellWidth + cellWidth / 2 - pulseX, row * cellHeight + cellHeight / 2 - pulseY)
+            if (distance < radius) {
+              const influence = 1 - distance / radius
+              waveVelocity[row * columns + column] += influence * influence * 0.24
             }
           }
         }
@@ -362,7 +437,8 @@ function Terrain(): JSX.Element {
         const brush = config.brush
         const terrain = config.terrain
         const bounds = canvas.getBoundingClientRect()
-        const radius = brush.radius * options.radiusScale * (smallScreen ? 0.8 : 1)
+        const pulseSize = updateBrushScale(timestamp)
+        const radius = brush.radius * options.radiusScale * (smallScreen ? 0.8 : 1) * pulseSize
         const radiusSquared = radius * radius
         const direction = pointer.down && pointer.on ? -1 : 1
         if (pointer.on) {
@@ -384,6 +460,7 @@ function Terrain(): JSX.Element {
           stampY = -9999
         }
         busy = false
+        if (brushAnimating) busy = true
 
         const gravity = config.gravity
         const gravityRadius = gravity.radius * (smallScreen ? 0.75 : 1)
@@ -613,7 +690,9 @@ function Terrain(): JSX.Element {
         poke() {
           dirty = true
           start()
-        }
+        },
+        pulse,
+        release
       }
       resize()
       const resizeObserver = new ResizeObserver(resize)
