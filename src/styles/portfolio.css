@@ -5,9 +5,11 @@
   --soft: #a4a4a0;
   --dim: #6c6c69;
   --line: #2a2a28;
-  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --serif: 'Young Serif', 'Instrument Serif', 'Times New Roman', serif;
   --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --body-size: 17px;
+  --body-leading: 1.6;
   --pad: clamp(20px, 4.5vw, 72px);
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -33,7 +35,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 400 17px/1.6 var(--sans);
+  font: 400 var(--body-size) / var(--body-leading) var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -171,7 +173,7 @@ nav .name {
 
 h1 {
   margin: 0;
-  font: 400 clamp(3.6rem, 12.4vw, 12.5rem) / 0.86 var(--serif);
+  font: 400 clamp(3.2rem, 9vw, 9rem) / 0.94 var(--serif);
   letter-spacing: -0.035em;
 }
 
@@ -286,7 +288,7 @@ h1 span + span {
 
 .section-head h2 {
   margin: 0;
-  font: 400 clamp(2.4rem, 5.5vw, 5rem) / 0.95 var(--serif);
+  font: 400 clamp(2rem, 4.5vw, 4rem) / 1.02 var(--serif);
   letter-spacing: -0.025em;
 }
 
@@ -308,8 +310,7 @@ h1 span + span {
 
 .project h3 {
   margin: 0;
-  font: 400 clamp(2rem, 4.2vw, 3.8rem) / 1 var(--serif);
-  letter-spacing: -0.02em;
+  font: 400 clamp(1.3rem, 2vw, 1.8rem) / 1.14 var(--serif);
   transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -362,7 +363,7 @@ h1 span + span {
 .about-lead {
   max-width: 22ch;
   margin: 0;
-  font: 400 clamp(1.7rem, 3.2vw, 2.9rem) / 1.12 var(--serif);
+  font: 400 clamp(1.5rem, 2.5vw, 2.2rem) / 1.16 var(--serif);
   letter-spacing: -0.015em;
 }
 
@@ -403,7 +404,7 @@ h1 span + span {
 
 .job h3 {
   margin: 0;
-  font: 400 clamp(1.5rem, 2.6vw, 2.2rem) / 1.1 var(--serif);
+  font: 400 clamp(1.3rem, 2vw, 1.8rem) / 1.14 var(--serif);
 }
 
 .job h3 .mono {
@@ -430,7 +431,7 @@ h1 span + span {
 
 .contact h2 {
   margin: 0 0 36px;
-  font: 400 clamp(3rem, 9vw, 9rem) / 0.88 var(--serif);
+  font: 400 clamp(2.4rem, 6.5vw, 6.5rem) / 0.96 var(--serif);
   letter-spacing: -0.035em;
 }
 

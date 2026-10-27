@@ -12,7 +12,6 @@ type TerrainApi = { size: () => void; refresh: () => void; poke: () => void }
 type TerrainOptions = { seedOffset: number; radiusScale: number; opacityScale: number }
 type Control = { p: string; l: string; min?: number; max?: number; step?: number; t?: 'text' | 'check'; exact?: number }
 type ControlGroup = [string, Control[]]
-
 const defaults: TerrainConfig = {
   terrain: { scale: 2.5, detail: 0, levels: 21, indexEvery: 5, seed: 19 },
   glyphs: {
