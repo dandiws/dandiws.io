@@ -10,11 +10,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "typecheck": "tsc --noEmit",
     "deploy": "bun run build && wrangler deploy"
   },
   "devDependencies": {
     "@astrojs/solid-js": "^7.1.1",
     "astro": "^6.0.0",
+    "typescript": "^7.0.2",
     "wrangler": "^4.153.0"
   },
   "dependencies": {

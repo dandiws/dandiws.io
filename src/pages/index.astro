@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Terrain from '../components/Terrain.jsx'
+import Terrain from '../components/Terrain.tsx'
 
 const projects = [
   {
@@ -40,7 +40,7 @@ const projects = [
     url: 'https://github.com/dandiws/dandiws.io',
     repository: 'https://github.com/dandiws/dandiws.io',
     summary: 'The source repository for this personal portfolio.',
-    stack: ['Astro', 'JavaScript', 'CSS'],
+    stack: ['Astro', 'TypeScript', 'CSS'],
     outcome: 'A single-page portfolio built for the web.'
   },
   {
@@ -59,7 +59,7 @@ const experience = [
   {
     dates: 'June 2021 — Present',
     title: 'Software Development Engineer',
-    company: 'GLAIR.ai · GDP Labs',
+    company: 'GDP Labs',
     description: 'Developed and maintained an Ionic Angular SDK for Bank Mega’s mobile app and an iOS chat SDK for Halo BCA.'
   },
   {
@@ -156,11 +156,11 @@ const socials = [
           <div>
             <div class="about-body">
               <p>I care about reliable systems and the people who depend on them: clear interfaces, honest trade-offs, and code that the next engineer can read without a guide.</p>
-              <p>I’m Dandi Wiratsangka Sejati, a software engineer from Pemalang, Central Java. I studied Computer Science at Universitas Gadjah Mada and graduated in 2020.</p>
+              <p>I’m Dandi Wiratsangka Sejati, a software engineer based in Yogyakarta, Indonesia. I studied Computer Science at Universitas Gadjah Mada and graduated in 2020.</p>
             </div>
             <div class="facts mono">
-              <span>Based in <span class="muted">Pemalang, Central Java, Indonesia</span></span>
-              <span>Currently <span class="muted">Software Development Engineer at GLAIR.ai</span></span>
+              <span>Based in <span class="muted">Yogyakarta, Indonesia</span></span>
+              <span>Currently <span class="muted">Software Development Engineer at GDP Labs</span></span>
             </div>
           </div>
         </div>

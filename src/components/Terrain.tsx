@@ -1,6 +1,19 @@
-import { createSignal, For, onMount } from 'solid-js'
+import { createSignal, For, onMount, type JSX } from 'solid-js'
 
-const defaults = {
+type TerrainConfig = {
+  terrain: { scale: number; detail: number; levels: number; indexEvery: number; seed: number }
+  glyphs: { fontSize: number; opacity: number; tone: number; stipple: number; shading: number; ramp: string; lines: string; indexChar: string; lowChar: string; summit: string }
+  brush: { radius: number; strength: number; fadeDelay: number; fadeSpeed: number; boldTrail: boolean }
+  ripple: { speed: number; damping: number }
+  scatter: { strength: number }
+  gravity: { strength: number; radius: number; swirl: number; horizon: number; glow: number }
+}
+type TerrainApi = { size: () => void; refresh: () => void; poke: () => void }
+type TerrainOptions = { seedOffset: number; radiusScale: number; opacityScale: number }
+type Control = { p: string; l: string; min?: number; max?: number; step?: number; t?: 'text' | 'check'; exact?: number }
+type ControlGroup = [string, Control[]]
+
+const defaults: TerrainConfig = {
   terrain: { scale: 2.5, detail: 0, levels: 21, indexEvery: 5, seed: 19 },
   glyphs: {
     fontSize: 7,
@@ -20,7 +33,7 @@ const defaults = {
   gravity: { strength: 2, radius: 220, swirl: 1.4, horizon: 12, glow: 1 }
 }
 
-const schema = [
+const schema: ControlGroup[] = [
   ['Terrain', [
     { p: 'terrain.scale', l: 'Scale', min: 0.4, max: 2.5, step: 0.05 },
     { p: 'terrain.detail', l: 'Fine detail', min: 0, max: 2, step: 0.05 },
@@ -61,67 +74,68 @@ const schema = [
   ]]
 ]
 
-function clone(value) {
+function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value))
 }
 
-function merge(target, source) {
+function merge(target: Record<string, unknown>, source: unknown): void {
   for (const key in target) {
-    if (source && source[key] !== undefined) {
-      if (typeof target[key] === 'object') merge(target[key], source[key])
-      else if (typeof source[key] === typeof target[key]) target[key] = source[key]
+    const nextValue = source && typeof source === 'object' ? (source as Record<string, unknown>)[key] : undefined
+    if (nextValue !== undefined) {
+      if (typeof target[key] === 'object') merge(target[key] as Record<string, unknown>, nextValue)
+      else if (typeof nextValue === typeof target[key]) target[key] = nextValue
     }
   }
 }
 
-function Terrain() {
-  let config = clone(defaults)
+function Terrain(): JSX.Element {
+  let config: TerrainConfig = clone(defaults)
   const [currentConfig, setCurrentConfig] = createSignal(config)
   const [json, setJson] = createSignal(JSON.stringify(config, null, 2))
   const [status, setStatus] = createSignal('')
   const [open, setOpen] = createSignal(false)
-  const [panel, setPanel] = createSignal()
-  const [textarea, setTextarea] = createSignal()
-  let terrains = []
-  let changeTimer
-  let refreshTerrain = () => {}
+  const [panel, setPanel] = createSignal<HTMLElement>()
+  const [textarea, setTextarea] = createSignal<HTMLTextAreaElement>()
+  let terrains: TerrainApi[] = []
+  let changeTimer: ReturnType<typeof setTimeout>
+  let refreshTerrain: (path: string) => void = () => {}
 
-  function value(path) {
+  function value(path: string): string | number | boolean {
     const [group, key] = path.split('.')
-    return config[group][key]
+    return (config as unknown as Record<string, Record<string, string | number | boolean>>)[group][key]
   }
 
   function sync() {
     setJson(JSON.stringify(config, null, 2))
   }
 
-  function say(message) {
+  function say(message: string): void {
     setStatus(message)
     clearTimeout(changeTimer)
     changeTimer = setTimeout(() => setStatus(''), 2200)
   }
 
-  function setValue(path, nextValue) {
+  function setValue(path: string, nextValue: string | number | boolean): void {
     const [group, key] = path.split('.')
     config = clone(config)
-    config[group][key] = nextValue
+    ;(config as unknown as Record<string, Record<string, string | number | boolean>>)[group][key] = nextValue
     setCurrentConfig(config)
     refreshTerrain(path)
     sync()
   }
 
-  function applySettings(settings) {
+  function applySettings(settings: unknown): void {
     const nextConfig = clone(defaults)
-    merge(nextConfig, settings)
+    merge(nextConfig as unknown as Record<string, unknown>, settings)
     for (const [, fields] of schema) {
       for (const definition of fields) {
         const [section, key] = definition.p.split('.')
         const nextValue = nextConfig[section][key]
         if (definition.t === 'text') {
-          if (!nextValue || nextValue.length > definition.max || definition.exact && nextValue.length !== definition.exact) throw new Error('Invalid settings')
+          if (typeof nextValue !== 'string' || !nextValue || definition.max !== undefined && nextValue.length > definition.max || definition.exact && nextValue.length !== definition.exact) throw new Error('Invalid settings')
         } else if (definition.t === 'check') {
           if (typeof nextValue !== 'boolean') throw new Error('Invalid settings')
-        } else if (!Number.isFinite(nextValue) || nextValue < definition.min || nextValue > definition.max) {
+        } else if (typeof nextValue !== 'number' || !Number.isFinite(nextValue) || definition.min !== undefined && nextValue < definition.min || definition.max !== undefined && nextValue > definition.max) {
           throw new Error('Invalid settings')
         }
       }
@@ -136,7 +150,7 @@ function Terrain() {
     const text = JSON.stringify(config, null, 2)
     function fallback() {
       setJson(text)
-      textarea().select()
+      textarea()?.select()
       try {
         say(document.execCommand('copy') ? 'Copied' : 'Select and copy manually')
       } catch {
@@ -148,7 +162,7 @@ function Terrain() {
   }
 
   onMount(() => {
-    const terrainsList = []
+    const terrainsList: TerrainApi[] = []
     const pointer = { x: 0, y: 0, on: false, down: false, time: 0 }
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
@@ -236,8 +250,8 @@ function Terrain() {
       )
     }
 
-    function createTerrain(canvas, options) {
-      const context = canvas.getContext('2d')
+    function createTerrain(canvas: HTMLCanvasElement, options: TerrainOptions): TerrainApi {
+      const context = canvas.getContext('2d')!
       let width
       let height
       let columns
@@ -620,8 +634,8 @@ function Terrain() {
       return api
     }
 
-    terrainsList.push(createTerrain(document.getElementById('land'), { seedOffset: 0, radiusScale: 1, opacityScale: 1 }))
-    terrainsList.push(createTerrain(document.getElementById('band'), { seedOffset: 38, radiusScale: 0.82, opacityScale: 0.82 }))
+    terrainsList.push(createTerrain(document.getElementById('land') as HTMLCanvasElement, { seedOffset: 0, radiusScale: 1, opacityScale: 1 }))
+    terrainsList.push(createTerrain(document.getElementById('band') as HTMLCanvasElement, { seedOffset: 38, radiusScale: 0.82, opacityScale: 0.82 }))
     terrains = terrainsList
     refreshTerrain = (path) => {
       if (path === 'glyphs.fontSize') terrainsList.forEach((terrain) => terrain.size())
@@ -629,7 +643,7 @@ function Terrain() {
       else poke()
     }
 
-    const nav = document.getElementById('nav')
+    const nav = document.getElementById('nav') as HTMLElement
     const updateNavigation = () => nav.classList.toggle('solid', scrollY > innerHeight * 0.6)
     window.addEventListener('scroll', updateNavigation, { passive: true })
     window.addEventListener('pointermove', handlePointerMove, { passive: true })
@@ -641,7 +655,7 @@ function Terrain() {
     document.addEventListener('keydown', (event) => {
       if (event.key !== 'Escape' || !open()) return
       setOpen(false)
-      document.getElementById('tbtn').focus()
+      ;(document.getElementById('tbtn') as HTMLButtonElement).focus()
     })
     updateNavigation()
     sync()
@@ -649,6 +663,7 @@ function Terrain() {
 
   return (
     <>
+      {import.meta.env.DEV && <>
       <button id="tbtn" type="button" aria-expanded={open()} aria-controls="panel" onClick={() => {
         const isOpen = !open()
         setOpen(isOpen)
@@ -665,7 +680,7 @@ function Terrain() {
                 return (
                   <label class="control-field" for={`terrain-${definition.p.replaceAll('.', '-')}`}>
                     <span>{definition.l}</span>
-                    <output>{definition.t === 'text' ? '' : definition.t === 'check' ? (currentConfig()[section][key] ? 'on' : 'off') : currentConfig()[section][key]}</output>
+                    <output>{definition.t === 'text' ? '' : definition.t === 'check' ? ((currentConfig() as unknown as Record<string, Record<string, string | number | boolean>>)[section][key] ? 'on' : 'off') : currentConfig()[section][key]}</output>
                     <input
                       id={`terrain-${definition.p.replaceAll('.', '-')}`}
                       type={definition.t === 'check' ? 'checkbox' : definition.t === 'text' ? 'text' : 'range'}
@@ -677,7 +692,7 @@ function Terrain() {
                       value={definition.t === 'check' ? undefined : currentConfig()[section][key]}
                       onInput={(event) => {
                         const nextValue = definition.t === 'text' ? event.currentTarget.value : parseFloat(event.currentTarget.value)
-                        if (definition.t === 'text' && (!nextValue || definition.exact && nextValue.length !== definition.exact)) return
+                        if (definition.t === 'text' && (typeof nextValue !== 'string' || !nextValue || definition.exact && nextValue.length !== definition.exact)) return
                         if (definition.t !== 'check') setValue(definition.p, nextValue)
                       }}
                       onChange={(event) => definition.t === 'check' && setValue(definition.p, event.currentTarget.checked)}
@@ -712,6 +727,7 @@ function Terrain() {
         </div>
         <div id="status" role="status" aria-live="polite">{status()}</div>
       </aside>
+      </>}
     </>
   )
 }
