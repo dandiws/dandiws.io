@@ -321,7 +321,7 @@ h1 span + span {
 
 .project-corner {
   position: absolute;
-  color: var(--soft);
+  color: var(--dim);
   font: 12px/1.05 var(--mono);
   opacity: 0;
   transition: opacity 0.2s;
@@ -364,24 +364,24 @@ h1 span + span {
 }
 
 @keyframes horizontal-flicker {
-  0%, 24% { content: '-'; opacity: 1; }
-  25%, 49% { content: '~'; opacity: 0.55; }
-  50%, 74% { content: '='; opacity: 1; }
-  75%, 100% { content: '–'; opacity: 0.65; }
+  0%, 24% { content: '-'; }
+  25%, 49% { content: '~'; }
+  50%, 74% { content: '='; }
+  75%, 100% { content: '–'; }
 }
 
 @keyframes vertical-flicker {
-  0%, 24% { content: '|'; opacity: 1; }
-  25%, 49% { content: '!'; opacity: 0.55; }
-  50%, 74% { content: '/'; opacity: 1; }
-  75%, 100% { content: ':'; opacity: 0.65; }
+  0%, 24% { content: '|'; }
+  25%, 49% { content: '!'; }
+  50%, 74% { content: '/'; }
+  75%, 100% { content: ':'; }
 }
 
 @keyframes corner-flicker {
-  0%, 24% { content: '+'; opacity: 1; }
-  25%, 49% { content: 'x'; opacity: 0.55; }
-  50%, 74% { content: '*'; opacity: 1; }
-  75%, 100% { content: '#'; opacity: 0.65; }
+  0%, 24% { content: '+'; }
+  25%, 49% { content: 'x'; }
+  50%, 74% { content: '*'; }
+  75%, 100% { content: '#'; }
 }
 
 .project-corner.top-left {
