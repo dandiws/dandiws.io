@@ -55,12 +55,19 @@ const projects = [
   }
 ]
 
+const projectFrame = [
+  { position: 'top-left', lines: ['+----------', '|'] },
+  { position: 'top-right', lines: ['----------+', '|'] },
+  { position: 'bottom-left', lines: ['|', '+----------'] },
+  { position: 'bottom-right', lines: ['|', '----------+'] }
+]
+
 const experience = [
   {
     dates: 'June 2021 — Present',
     title: 'Software Development Engineer',
     company: 'GDP Labs',
-    description: 'Developed and maintained an Ionic Angular SDK for Bank Mega’s mobile app and an iOS chat SDK for Halo BCA.'
+    description: 'At GDP Labs, I’ve contributed to web, mobile, and backend systems across banking, insurance, and connected commerce. My work includes rebuilding life insurance purchase flows and developing solutions for smart vending and connected coffee ecosystems, spanning mobile applications, e-commerce, POS, and back-office systems. The vending platform supports 6,000+ machines and processes high daily transaction volumes, providing experience with large-scale, interconnected production systems.'
   },
   {
     dates: 'November 2019 — May 2021',
@@ -78,9 +85,7 @@ const experience = [
 
 const socials = [
   { label: 'GitHub', href: 'https://github.com/dandiws' },
-  { label: 'LinkedIn', href: 'https://id.linkedin.com/in/dandi-wiratsangka-5300a9132' },
-  { label: 'Dribbble', href: 'https://dribbble.com/dandiws' },
-  { label: 'Résumé', href: '/resume.pdf' }
+  { label: 'LinkedIn', href: 'https://id.linkedin.com/in/dandi-wiratsangka-5300a9132' }
 ]
 ---
 
@@ -99,7 +104,6 @@ const socials = [
     <header class="hero" id="top">
       <canvas id="land" aria-hidden="true"></canvas>
       <div class="terrain-touch-zone" aria-hidden="true"></div>
-      <p class="hint mono" aria-hidden="true">bend the terrain · press to carve</p>
       <div class="hero-content">
         <p class="tag mono load">SOFTWARE ENGINEER · INDONESIA</p>
         <h1><span class="load delay-one">Engineering</span><span class="load delay-two">with intention.</span></h1>
@@ -122,6 +126,18 @@ const socials = [
         <div class="projects">
           {projects.map((project) => (
             <article class="project">
+              {projectFrame.map((corner, cornerIndex) => (
+                <span class={`project-corner ${corner.position}`} aria-hidden="true">
+                  {corner.lines.map((line, lineIndex) => (
+                    <>
+                      {Array.from(line).map((char, charIndex) => (
+                        <span class={`project-frame-char ${char === '-' ? 'horizontal' : char === '|' ? 'vertical' : 'corner'}`} data-char={char} style={`--flicker-duration:${650 + Math.random() * 700}ms;--flicker-delay:${Math.random() * -1400}ms`}></span>
+                      ))}
+                      {lineIndex < corner.lines.length - 1 && <br />}
+                    </>
+                  ))}
+                </span>
+              ))}
               <div>
                 <span class="mono muted">{project.year}</span>
                 <div class="mono project-role">{project.role}</div>
@@ -204,7 +220,6 @@ const socials = [
 
   <footer class="mono">
     <span>© {new Date().getFullYear()} Dandi Wiratsangka Sejati</span>
-    <span>Terrain generated live from text</span>
   </footer>
 
   <Terrain client:load />

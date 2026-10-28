@@ -227,7 +227,7 @@ h1 span + span {
   display: inline-block;
   padding: 13px 22px;
   border: 1px solid var(--ink);
-  font: 400 13px var(--mono);
+  font: 600 13px var(--mono);
   transition: background 0.25s, color 0.25s, border-color 0.25s;
 }
 
@@ -308,29 +308,102 @@ h1 span + span {
 }
 
 .project {
+  position: relative;
   display: grid;
   gap: 18px;
-  padding: 34px 0 38px;
-  border-top: 1px solid var(--line);
-  transition: border-color 0.3s;
-}
-
-.project:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.project:hover {
-  border-top-color: var(--soft);
+  padding: 42px 0 46px;
 }
 
 .project h3 {
   margin: 0;
   font: 400 clamp(1.3rem, 2vw, 1.8rem) / 1.14 var(--serif);
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.project:hover h3 {
-  transform: translateX(12px);
+.project-corner {
+  position: absolute;
+  color: var(--soft);
+  font: 12px/1.05 var(--mono);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.project:hover .project-corner,
+.project:focus-within .project-corner {
+  opacity: 1;
+}
+
+.project-frame-char {
+  display: inline-block;
+}
+
+.project-frame-char::before {
+  content: attr(data-char);
+}
+
+.project:hover .project-frame-char::before,
+.project:focus-within .project-frame-char::before {
+  animation-duration: var(--flicker-duration);
+  animation-timing-function: steps(1, end);
+  animation-delay: var(--flicker-delay);
+  animation-iteration-count: infinite;
+}
+
+.project:hover .project-frame-char.horizontal::before,
+.project:focus-within .project-frame-char.horizontal::before {
+  animation-name: horizontal-flicker;
+}
+
+.project:hover .project-frame-char.vertical::before,
+.project:focus-within .project-frame-char.vertical::before {
+  animation-name: vertical-flicker;
+}
+
+.project:hover .project-frame-char.corner::before,
+.project:focus-within .project-frame-char.corner::before {
+  animation-name: corner-flicker;
+}
+
+@keyframes horizontal-flicker {
+  0%, 24% { content: '-'; opacity: 1; }
+  25%, 49% { content: '~'; opacity: 0.55; }
+  50%, 74% { content: '='; opacity: 1; }
+  75%, 100% { content: '–'; opacity: 0.65; }
+}
+
+@keyframes vertical-flicker {
+  0%, 24% { content: '|'; opacity: 1; }
+  25%, 49% { content: '!'; opacity: 0.55; }
+  50%, 74% { content: '/'; opacity: 1; }
+  75%, 100% { content: ':'; opacity: 0.65; }
+}
+
+@keyframes corner-flicker {
+  0%, 24% { content: '+'; opacity: 1; }
+  25%, 49% { content: 'x'; opacity: 0.55; }
+  50%, 74% { content: '*'; opacity: 1; }
+  75%, 100% { content: '#'; opacity: 0.65; }
+}
+
+.project-corner.top-left {
+  top: 10px;
+  left: 0;
+}
+
+.project-corner.top-right {
+  top: 10px;
+  right: 0;
+  text-align: right;
+}
+
+.project-corner.bottom-left {
+  bottom: 10px;
+  left: 0;
+}
+
+.project-corner.bottom-right {
+  right: 0;
+  bottom: 10px;
+  text-align: right;
 }
 
 .project p {
@@ -621,6 +694,10 @@ footer {
 }
 
 @media (min-width: 860px) {
+  nav {
+    font-size: 14px;
+  }
+
   .under {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
@@ -670,10 +747,6 @@ footer {
     display: none;
   }
 
-  .project:hover h3 {
-    transform: none;
-  }
-
   footer span:last-child {
     display: none;
   }
@@ -690,8 +763,13 @@ footer {
     opacity: 1;
   }
 
-  .project h3,
+  .project-corner,
+  .project-frame-char::before,
   #panel {
     transition: none;
+  }
+
+  .project-frame-char::before {
+    animation: none !important;
   }
 }
