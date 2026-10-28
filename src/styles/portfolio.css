@@ -145,6 +145,21 @@ nav .name {
   display: block;
   width: 100%;
   height: 100%;
+  touch-action: pan-y;
+}
+
+.terrain-touch-zone {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .terrain-touch-zone {
+    position: absolute;
+    inset: 0 0 50%;
+    z-index: 1;
+    display: block;
+    touch-action: none;
+  }
 }
 
 .hero::after {

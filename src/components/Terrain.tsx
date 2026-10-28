@@ -187,7 +187,6 @@ function Terrain(): JSX.Element {
 
     function handlePointerDown(event) {
       if (reducedMotion.matches) return
-      if (event.pointerType !== 'mouse') return
       if (event.target instanceof Element && event.target.closest('#panel, #tbtn')) return
       pointer.x = event.clientX
       pointer.y = event.clientY
@@ -208,7 +207,10 @@ function Terrain(): JSX.Element {
     }
 
     function handlePointerCancel() {
+      const wasDown = pointer.down
       pointer.on = false
+      pointer.down = false
+      if (wasDown) terrainsList.forEach((terrain) => terrain.release())
       poke()
     }
 
