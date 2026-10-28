@@ -387,7 +387,7 @@ function Terrain(): JSX.Element {
         canvas.width = Math.round(width * pixelRatio)
         canvas.height = Math.round(height * pixelRatio)
         smallScreen = innerWidth < 700
-        fontSize = config.glyphs.fontSize + (smallScreen ? 3 : 0)
+        fontSize = config.glyphs.fontSize * (smallScreen ? 0.8 : 1)
         cellWidth = fontSize * 0.62
         cellHeight = fontSize * 1.25
         columns = Math.ceil(width / cellWidth) + 1
@@ -507,7 +507,7 @@ function Terrain(): JSX.Element {
         context.textBaseline = 'middle'
         const tone = Math.round(glyphs.tone)
         context.fillStyle = `rgb(${tone},${tone},${tone - 3})`
-        const scale = 0.0042 * terrain.scale * (smallScreen ? 0.9 : 1)
+        const scale = 0.0042 * terrain.scale * (smallScreen ? 0.9 * Math.min(1.5, 700 / width) : 1)
         const seed = terrain.seed + options.seedOffset
         const gain = glyphs.opacity * options.opacityScale * (smallScreen ? 0.8 : 1)
         const fade = 1 - 0.01 * brush.fadeSpeed
