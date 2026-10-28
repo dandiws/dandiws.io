@@ -1,5 +1,6 @@
 ---
 import '../styles/portfolio.css'
+import { Font } from 'astro:assets'
 
 interface Props {
   title?: string
@@ -29,15 +30,12 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://dandiws.my.id/images/space.jpeg" />
     <title>{title}</title>
+    <Font cssVariable="--font-young-serif" preload />
+    <Font cssVariable="--font-instrument-sans" />
+    <Font cssVariable="--font-jetbrains-mono" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@300;400&family=Young+Serif&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

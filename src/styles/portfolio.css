@@ -5,9 +5,9 @@
   --soft: #a4a4a0;
   --dim: #6c6c69;
   --line: #2a2a28;
-  --serif: 'Young Serif', 'Instrument Serif', 'Times New Roman', serif;
-  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --serif: var(--font-young-serif), 'Instrument Serif', 'Times New Roman', serif;
+  --sans: var(--font-instrument-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: var(--font-jetbrains-mono), ui-monospace, Menlo, Consolas, monospace;
   --body-size: 17px;
   --body-leading: 1.6;
   --pad: clamp(20px, 4.5vw, 72px);
